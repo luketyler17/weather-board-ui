@@ -36,7 +36,6 @@ const InnerText = () => {
                 <div>
                     loading
                 </div>) : (
-
                 <Box
                     component="main"
                     sx={{ flexGrow: 1, bgcolor: 'white', p: 3 }}
@@ -49,7 +48,6 @@ const InnerText = () => {
                     }}
 
                 >
-                    <Toolbar/>
                     <Grid style={{
                         height: '70%',
                         width:'100%',

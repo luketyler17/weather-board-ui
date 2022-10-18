@@ -183,25 +183,25 @@ export default function MobileNav() {
                 > */}
                 <Toolbar sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
                     <Grid container spacing={1}>
-                        <Grid item xs={6} md={6} lg={6} xl={6} sx={{display:'fixed', position:'left'}}>
+                        <Grid item xs={1.5} md={6} lg={6} xl={6} sx={{display:'fixed', position:'left'}}>
                         <NavBarMenu />
                         </Grid>
 
-                        <Grid item xs={6} md={5} lg={5} xl={5} sx={{ display: 'flex', justifyContent:'flex-end' }}>
-
-                            <Button sx={buttonSX} onClick={handleCountdowns}>
-                                Show Countdowns
-                            </Button>
-
-                        </Grid>
                         
-                        <Grid item xs={12} md={6} lg={6} xl={6} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                        <Grid item xs={8} md={6} lg={6} xl={6} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
                             
                             <Typography variant="h6" noWrap component="div" >
                                 <h1 style={{ color: 'black', fontSize: '80%' }}><CloudOutlinedIcon sx={{ color: 'black', height: '10%', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
                             </Typography>
 
 
+
+                        </Grid>
+                        <Grid item xs={2.5} md={5} lg={5} xl={5} sx={{ display: 'flex', justifyContent:'flex-end' }}>
+
+                            <Button sx={buttonSX} onClick={handleCountdowns}>
+                                Show Countdowns
+                            </Button>
 
                         </Grid>
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
@@ -6,6 +6,11 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import CCSFSLightningSplash from './InnerComponents/CCSFSLightningSplash';
+import KSCLightningSplash from './InnerComponents/KSCLightningSplash';
+import OtherLightningSplash from './InnerComponents/OtherLightningSplash';
+import PSFBLightningSplash from './InnerComponents/PatrickLightningSplash';
+import { Card } from '@mui/material';
+import { AppContext } from '../context/AppContext';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -45,7 +50,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function LightningHomeAccordion() {
   const [expanded, setExpanded] = React.useState('panel1');
-
+  const {showCountdowns} = useContext(AppContext)
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -57,6 +62,15 @@ export default function LightningHomeAccordion() {
           <Typography>Cape Canaveral Space Force Station</Typography>
         </AccordionSummary>
         <AccordionDetails>
+        <Card elevation={10} style={{height:'10%', width:'100%', display:'flex', flexDirection:'row'}}>
+            <div style={{width:'45%'}}/>
+            <div style={{width:'63%', display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+            </div>
+        </Card>
             <CCSFSLightningSplash/>
         </AccordionDetails>
       </Accordion>
@@ -65,12 +79,16 @@ export default function LightningHomeAccordion() {
           <Typography>Kennedy Space Center</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
+        <Card elevation={10} style={{height:'10%', width:'100%', display:'flex', flexDirection:'row'}}>
+            <div style={{width:'45%'}}/>
+            <div style={{width:'63%', display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+            </div>
+        </Card>
+            <KSCLightningSplash/>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -78,12 +96,16 @@ export default function LightningHomeAccordion() {
           <Typography>Patrick SFB</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
+        <Card elevation={10} style={{height:'10%', width:'100%', display:'flex', flexDirection:'row'}}>
+            <div style={{width:'45%'}}/>
+            <div style={{width:'63%', display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+            </div>
+        </Card>
+            <PSFBLightningSplash/>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
@@ -91,12 +113,16 @@ export default function LightningHomeAccordion() {
           <Typography>Other</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
+        <Card elevation={10} style={{height:'10%', width:'100%', display:'flex', flexDirection:'row'}}>
+            <div style={{width:'45%'}}/>
+            <div style={{width:'63%', display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+            </div>
+        </Card>
+            <OtherLightningSplash/>
         </AccordionDetails>
       </Accordion>
     </div>

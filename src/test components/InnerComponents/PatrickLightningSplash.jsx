@@ -7,17 +7,17 @@ import { AppContext } from '../../context/AppContext';
 
 
 
-const CCSFSLightningSplash = () => {
-    const CCSFSLightning = ["Cape Central", "CX-20/16/LZ", "CX-36/46", "CX-37/ASOC/PPF", "CX-40/41/SPOC", "Port"]
+const PSFBLightningSplash = () => {
+    const PSFBLightning = ["Patrick SFB"]
     const { showCountdowns, lightning } = useContext(AppContext)
 
     return (
         <Card elevation={10}>
-            {CCSFSLightning.map((location, index) => <MobileInnerLightning key={index} states={lightning.filter(array => array.location == location)} location={location} />)}
+            {PSFBLightning.map((location, index) => <MobileInnerLightning key={index} states={lightning.filter(array => array.location == location)} location={location} />)}
         </Card>
 
     )
 }
 
 
-export default CCSFSLightningSplash
+export default PSFBLightningSplash

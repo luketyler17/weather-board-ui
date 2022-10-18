@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import LightningHomeAccordion from './lightningAccordion';
 import WindHomeAccordion from './windAccordion';
 import StormHomeAccordion from './stormAccordion';
+import { BsLightning } from 'react-icons/bs'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

@@ -24,7 +24,6 @@ const UserPage = () => {
 
         return (
             <Box sx={{ display: 'flex', flexDirection:'row'}}>
-
                         <LeftBar />
                         <InnerText />
 

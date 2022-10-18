@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -25,7 +25,7 @@ const SplashSevereStorm = ({ states }) => {
     const CCSFSSevere = ['CCSFS']
     const KSCSevere = ['KSC']
     const PSFBSevere = ['PSFB']
-    const {showCountdowns} = useContext(AppContext)
+    const { showCountdowns } = useContext(AppContext)
 
     return (
         <Card elevation={5} sx={{
@@ -57,56 +57,79 @@ const SplashSevereStorm = ({ states }) => {
                                 width: '50%'
 
                             }}>
-                           
-                                <h2 style={{
-                                    textAlign: "left",
-                                    marginLeft: '5px',
 
-                                }}>Cape Canaveral Space Force Station</h2>
+                            <h2 style={{
+                                textAlign: "left",
+                                marginLeft: '5px',
+
+                            }}>Cape Canaveral Space Force Station</h2>
+                            <div style={{
+                                display: 'flex',
+                                marginBottom: '5px',
+                            }}>
                                 <div style={{
+                                    width: '50%',
+                                    margin: '0'
+                                }}></div>
+                                <div style={{
+                                    width: '70%',
                                     display: 'flex',
-                                    marginBottom: '5px',
+                                    justifyContent: 'space-evenly',
                                 }}>
                                     <div style={{
-                                        width: '40%',
-                                        margin: '0'
-                                    }}></div>
-                                    <div style={{
-                                        display: 'flex',
-                                        width: '70%',
-                                        justifyContent: 'space-evenly'
+                                        width: '5%'
+                                    }}><div style={{
+                                        width: '95%',
+                                    }}>
 
+                                        </div>
+                                    </div>
+                                    <div style={{
+                                        width: '20%',
                                     }}>
                                         <div style={{
-                                            width: '5%'
-                                        }}></div>
-                                        <div style={{
-                                            width: '20%',
-                                            paddingLeft:'22px'
+                                            width: '95%',
+                                            fontSize: '75%',
                                         }}>
                                             Status
                                         </div>
+                                    </div>
+                                    <div style={{
+                                        width: '20%',
+
+                                    }}>
                                         <div style={{
-                                            width: '20%'
+                                            width: '95%',
+                                            fontSize: '75%',
                                         }}>
                                             Start Time
                                         </div>
+                                    </div>
+                                    <div style={{
+                                        width: '20%',
+                                    }}>
                                         <div style={{
-                                            width: '20%'
+                                            width: '95%',
+                                            fontSize: '75%',
                                         }}>
                                             End Time
                                         </div>
+                                    </div>
+                                    <div style={{
+                                        width: '20%'
+                                    }}>
                                         <div style={{
-                                            width: '20%',
-                                            marginRight:'2px'
+                                            width: '95%',
+                                            fontSize: '75%',
                                         }}>
-                                            {showCountdowns===true &&
-                                        "Countdown"}
+                                            Countdown
                                         </div>
                                     </div>
                                 </div>
-                                {CCSFSSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item)=>item.location==='CCSFS')} location={location} />)}
-                            
+
+                            </div>
+                            {CCSFSSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item) => item.location === 'CCSFS')} location={location} />)}
+
                         </Card>
                         <Card elevation={10}
                             style={{
@@ -116,55 +139,55 @@ const SplashSevereStorm = ({ states }) => {
                                 width: '50%'
 
                             }}>
-                            
-                                <h2 style={{
-                                    textAlign: "left",
-                                    marginLeft: '5px',
-                                }}>Kennedy Space Center</h2>
+
+                            <h2 style={{
+                                textAlign: "left",
+                                marginLeft: '5px',
+                            }}>Kennedy Space Center</h2>
+                            <div style={{
+                                display: 'flex',
+                                marginBottom: '5px',
+                            }}>
+                                <div style={{
+                                    width: '40%',
+                                    margin: '0'
+                                }}></div>
                                 <div style={{
                                     display: 'flex',
-                                    marginBottom: '5px',
+                                    width: '70%',
+                                    justifyContent: 'space-evenly'
+
                                 }}>
                                     <div style={{
-                                        width: '40%',
-                                        margin: '0'
+                                        width: '5%'
                                     }}></div>
                                     <div style={{
-                                        display: 'flex',
-                                        width: '70%',
-                                        justifyContent: 'space-evenly'
-
+                                        width: '22%',
+                                        paddingLeft: '22px'
                                     }}>
-                                        <div style={{
-                                            width: '5%'
-                                        }}></div>
-                                        <div style={{
-                                            width: '22%',
-                                            paddingLeft:'22px'
-                                        }}>
-                                            Status
-                                        </div>
-                                        <div style={{
-                                            width: '20%'
-                                        }}>
-                                            Start Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%'
-                                        }}>
-                                            End Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            marginRight:'2px'
-                                        }}>
-                                            {showCountdowns===true &&
-                                        "Countdown"}
-                                        </div>
+                                        Status
+                                    </div>
+                                    <div style={{
+                                        width: '20%'
+                                    }}>
+                                        Start Time
+                                    </div>
+                                    <div style={{
+                                        width: '20%'
+                                    }}>
+                                        End Time
+                                    </div>
+                                    <div style={{
+                                        width: '20%',
+                                        marginRight: '2px'
+                                    }}>
+                                        {showCountdowns === true &&
+                                            "Countdown"}
                                     </div>
                                 </div>
-                                {KSCSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item)=> item.location=== 'KSC')} location={location} />)}
-                            
+                            </div>
+                            {KSCSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item) => item.location === 'KSC')} location={location} />)}
+
                         </Card>
                         <Card elevation={10}
                             style={{
@@ -174,55 +197,55 @@ const SplashSevereStorm = ({ states }) => {
                                 width: '50%'
 
                             }}>
-                            
-                                <h2 style={{
-                                    textAlign: "left",
-                                    marginLeft: '5px',
-                                }}>Patrick Space Force Base</h2>
+
+                            <h2 style={{
+                                textAlign: "left",
+                                marginLeft: '5px',
+                            }}>Patrick Space Force Base</h2>
+                            <div style={{
+                                display: 'flex',
+                                marginBottom: '5px',
+                            }}>
+                                <div style={{
+                                    width: '40%',
+                                    margin: '0'
+                                }}></div>
                                 <div style={{
                                     display: 'flex',
-                                    marginBottom: '5px',
+                                    width: '70%',
+                                    justifyContent: 'space-evenly'
+
                                 }}>
                                     <div style={{
-                                        width: '40%',
-                                        margin: '0'
+                                        width: '5%'
                                     }}></div>
                                     <div style={{
-                                        display: 'flex',
-                                        width: '70%',
-                                        justifyContent: 'space-evenly'
-
+                                        width: '22%',
+                                        paddingLeft: '22px'
                                     }}>
-                                        <div style={{
-                                            width: '5%'
-                                        }}></div>
-                                        <div style={{
-                                            width: '22%',
-                                            paddingLeft:'22px'
-                                        }}>
-                                            Status
-                                        </div>
-                                        <div style={{
-                                            width: '20%'
-                                        }}>
-                                            Start Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%'
-                                        }}>
-                                            End Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            marginRight:'2px'
-                                        }}>
-                                            {showCountdowns===true &&
-                                        "Countdown"}
-                                        </div>
+                                        Status
+                                    </div>
+                                    <div style={{
+                                        width: '20%'
+                                    }}>
+                                        Start Time
+                                    </div>
+                                    <div style={{
+                                        width: '20%'
+                                    }}>
+                                        End Time
+                                    </div>
+                                    <div style={{
+                                        width: '20%',
+                                        marginRight: '2px'
+                                    }}>
+                                        {showCountdowns === true &&
+                                            "Countdown"}
                                     </div>
                                 </div>
-                                {PSFBSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item)=>item.location===location)} location={location} />)}
-                            
+                            </div>
+                            {PSFBSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item) => item.location === location)} location={location} />)}
+
                         </Card>
                     </div>
 
