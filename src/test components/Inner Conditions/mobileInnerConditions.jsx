@@ -61,10 +61,10 @@ const MobileInnerConditions = ({ item, location }) => {
                     paddingBottom: '3px',
                     marginBottom: '3px',
                 }}>
-                        {item.type === 'Clear' && <BsCheckCircle style={{ color: '#03AD00', height: '100%', width: 'auto' }} />}
-                        {item.category === 'Watch' && <BsExclamationCircle style={{ color: '#D68E24', height: '100%', width: 'auto' }} />}
-                        {item.category === 'Warning' && <HiOutlineXCircle style={{ color: 'white', height: '100%', width: 'auto' }} />}
-                        {item.category === 'Advisory' && <AiOutlineQuestionCircle style={{ color: 'rgba(223, 0, 254)', height: '100%', width: 'auto' }} />}
+                        {item.type === 'Clear' && <BsCheckCircle style={{ color: '#03AD00', height: '100%', width: '100%' }} />}
+                        {item.category === 'Watch' && <BsExclamationCircle style={{ color: '#D68E24', height: '100%', width: '100%' }} />}
+                        {item.category === 'Warning' && <HiOutlineXCircle style={{ color: 'white', height: '100%', width: '100%' }} />}
+                        {item.category === 'Advisory' && <AiOutlineQuestionCircle style={{ color: 'rgba(223, 0, 254)', height: '100%', width: '100%' }} />}
                     </div>
                 </div>
                 <div style={{
@@ -114,7 +114,7 @@ const MobileInnerConditions = ({ item, location }) => {
                     </div>
                 </div>
                 <div style={{
-                    width: '20%'
+                    width: '22%'
                 }}>{showCountdowns === true &&
                     <div style={{
                         backgroundColor: (item.type == 'Clear' ? '#F8FFF8' : (item.category == 'Warning') ? 'white' : (item.category == 'Watch') ? '#FFFF97' : '#F2DCFA'),

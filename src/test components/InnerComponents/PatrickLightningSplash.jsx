@@ -12,7 +12,7 @@ const PSFBLightningSplash = () => {
     const { showCountdowns, lightning } = useContext(AppContext)
 
     return (
-        <Card elevation={10}>
+        <Card elevation={10} sx={{paddingTop:'2%'}}>
             {PSFBLightning.map((location, index) => <MobileInnerLightning key={index} states={lightning.filter(array => array.location == location)} location={location} />)}
         </Card>
 

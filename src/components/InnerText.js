@@ -44,7 +44,8 @@ const InnerText = () => {
                         width:'100%',
                         
                         display:'flex',
-                        justifyContent:'center'
+                        justifyContent:'center',
+                       
                     }}
 
                 >
@@ -55,7 +56,8 @@ const InnerText = () => {
                         flexDirection:'column',
                         justifyContent:'center',
                         placeContent:'center',
-                        paddingTop:'3%'
+                        paddingTop:'3%',
+                        
                     }}
 
                     >
