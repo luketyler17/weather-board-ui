@@ -38,7 +38,7 @@ const SiteView = () => {
     ]
     
     const { lightning, wind, storm, area, site, setSite, showCountdowns  } = useContext(AppContext)
-    console.log('SiteView', site)
+    
     
     if (site!==[]){
         cookies.set('site', site, {path:'/'})

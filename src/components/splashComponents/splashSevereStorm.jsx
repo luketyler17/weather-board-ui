@@ -163,23 +163,27 @@ const SplashSevereStorm = ({ states }) => {
                                     }}></div>
                                     <div style={{
                                         width: '22%',
-                                        paddingLeft: '22px'
+                                        paddingLeft: '22px',
+                                        fontSize: '75%',
                                     }}>
                                         Status
                                     </div>
                                     <div style={{
-                                        width: '20%'
+                                        width: '20%',
+                                        fontSize: '75%',
                                     }}>
                                         Start Time
                                     </div>
                                     <div style={{
-                                        width: '20%'
+                                        width: '20%',
+                                        fontSize: '75%',
                                     }}>
                                         End Time
                                     </div>
                                     <div style={{
                                         width: '20%',
-                                        marginRight: '2px'
+                                        marginRight: '2px',
+                                        fontSize: '75%',
                                     }}>
                                         {showCountdowns === true &&
                                             "Countdown"}
@@ -221,23 +225,27 @@ const SplashSevereStorm = ({ states }) => {
                                     }}></div>
                                     <div style={{
                                         width: '22%',
-                                        paddingLeft: '22px'
+                                        paddingLeft: '22px',
+                                        fontSize: '75%',
                                     }}>
                                         Status
                                     </div>
                                     <div style={{
-                                        width: '20%'
+                                        width: '20%',
+                                        fontSize: '75%',
                                     }}>
                                         Start Time
                                     </div>
                                     <div style={{
-                                        width: '20%'
+                                        width: '20%',
+                                        fontSize: '75%',
                                     }}>
                                         End Time
                                     </div>
                                     <div style={{
                                         width: '20%',
-                                        marginRight: '2px'
+                                        marginRight: '2px',
+                                        fontSize: '75%',
                                     }}>
                                         {showCountdowns === true &&
                                             "Countdown"}

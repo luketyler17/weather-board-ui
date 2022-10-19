@@ -1,10 +1,35 @@
-import React, { useState } from 'react'
-import { useContext } from 'react'
-import { Button } from '@mui/material';
+import React from 'react'
+import MobileNav from '../test components/MobileNav'
+import {
+    Grid, Card,
+    CardActionArea,
+    CardMedia,
+    CardContent,
+    Typography,
+} from '@mui/material'
+import SplashTabs from '../test components/splashtabs'
+import LeftBar from '../components/LeftBar'
 import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
+import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import { Paper, FormGroup, FormControlLabel } from '@mui/material';
+import DangerousIcon from '@mui/icons-material/Dangerous';
+import { HiOutlineXCircle } from 'react-icons/hi'
+import { BsExclamationCircle } from 'react-icons/bs'
+import { BsCheckCircle } from 'react-icons/bs'
+import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import AirIcon from '@mui/icons-material/Air';
+import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { Switch } from '@mui/material'
@@ -13,20 +38,13 @@ import Stack from '@mui/material/Stack';
 import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
 import FormControl from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress'
-import {Grid }from '@mui/material';
-import { HomeOutlined } from '@mui/icons-material';
 import NavBarMenu from '../test components/menu'
-
+import { useState, useContext } from 'react'
 let wslogo = '../images/45th_Weather_Squadron_Patch.png';
-// import { AppContext } from '../App.js';
-
-const drawerWidth = 240;
-
-
 const cookies = new Cookies()
 
-export default function MobileNav() {
 
+const TabletView = () => {
     cookies.get('area')
     let userInfo = cookies.get('authentication')
 
@@ -37,7 +55,48 @@ export default function MobileNav() {
     const [loading, setLoading] = useState(false)
     cookies.get('site')
 
+    const buttonSX = {
+        width: 'auto',
+        color: 'white',
+        backgroundColor: '#01042F',
+        borderRadius: '20px',
+        fontFamily: 'Kanit',
+        border: 'none',
+        textDecoration: 'underline',
+        "&:hover": {
+            color: '#01042F',
+            backgroundColor: 'white',
+            border: '1px solid #01042F',
+            textDecoration: 'underline',
+            fontWeight: 'bold'
+        }
+    }
+    const locationButtonSX = {
+        display: 'flex',
+        textAlign: 'center',
+        fontSize: '16px',
+        color: 'white',
+        fontWeight: '900',
+        fontFamily: 'Kanit',
+        bgcolor: '#01042F',
+        height: '40px',
+        "&:hover": {
+            bgcolor: 'white', color: '#01042F', border: '1px solid #01042F'
+        }
+    }
+    const siteButtonSX = {
+        textAlign: 'center',
+        fontSize: '13px',
+        color: 'white',
+        fontWeight: '800',
+        fontFamily: 'Kanit',
+        bgcolor: '#01042F',
+        height: '40px',
+        "&:hover": {
+            bgcolor: 'white', color: '#01042F', border: '1px solid #01042F'
+        }
 
+    }
 
     const handleCCSFS = () => {
         setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
@@ -100,118 +159,26 @@ export default function MobileNav() {
 
         }
     }
+    return (
 
-    const buttonSX = {
-        width: 'auto',
-        marginTop:'5%',
-        height:'50%',
-        color: '#01042F',
-        backgroundColor: 'white',
-        borderRadius: '8%',
-        fontFamily: 'Kanit',
-        fontSize:'6px',
-        border: '1px solid #01042F',
-        textDecoration: 'underline',
-        "&:hover": {
-            color: 'white',
-            backgroundColor: '#01042F',
-            border: '1px solid #01042F',
-            textDecoration: 'underline',
-            fontWeight: 'bold'
-        }
-    }
-    const locationButtonSX = {
-        display: 'flex',
-        textAlign: 'center',
-        fontSize: '16px',
-        color: 'white',
-        fontWeight: '900',
-        fontFamily: 'Kanit',
-        bgcolor: '#01042F',
-        height: '40px',
-        "&:hover": {
-            bgcolor: 'white', color: '#01042F', border: '1px solid #01042F'
-        }
-    }
-    const siteButtonSX = {
-        textAlign: 'center',
-        fontSize: '13px',
-        color: 'white',
-        fontWeight: '800',
-        fontFamily: 'Kanit',
-        bgcolor: '#01042F',
-        height: '40px',
-        "&:hover": {
-            bgcolor: 'white', color: '#01042F', border: '1px solid #01042F'
-        }
+        <Box sx={{ width: '100%', height: '100vh' }}>
 
-    }
-    if (loading === true) {
-        return (
-            <Box sx={{ display: 'flex', placeContent: 'center center', paddingTop: '10%' }}>
-                <CircularProgress />
-            </Box>
-        )
-    } else {
-
-        return (
-            <>
-                <CssBaseline />
-                {/* <AppBar
-                    position="fixed"
-                    
-                    sx={{ border:'1px solid pink', display: 'flex', flexDirection: 'row', width: `100%`, justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white' }
-                    }
-                > */}
-                <Toolbar sx={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                    <Grid container spacing={1}>
-                        <Grid item xs={1} md={6} lg={6} xl={6} sx={{marginLeft:'-3%',display:'fixed', position:'left'}}>
-                        <NavBarMenu />
-                        </Grid>
-
-                        
-                        <Grid item xs={10} md={6} lg={6} xl={6} sx={{ marginLeft:'3%',display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                            
-                            <Typography  variant="h6" noWrap component="div" >
-                                <h1 style={{ color: 'black', fontSize: '100%' }}>&nbsp;Weather Warning eBoard&nbsp;</h1>
-                            </Typography>
-                            
-
-
-
-                        </Grid>
-                        <Grid item  xs={1} md={5} lg={5} xl={5} sx={{ display: 'flex', justifyContent:'flex-end', marginRight:'-3%' }}>
-                        <Button onClick={()=> navigate('/')}>
-                        <CloudOutlinedIcon sx={{ color: 'black', height: '80%', width: '80%' }} />
-                        </Button>
-                        </Grid>
-
-                    </Grid>
-                </Toolbar>
-                {/* </AppBar> */}
-
-                {/* <Drawer
-                    sx={{
-                        width: '20%',
-
-                        flexShrink: 1,
-                        '& .MuiDrawer-paper': {
-                            width: '20%',
-                            boxSizing: 'border-box',
-                            height: '100%',
-                            border: '1px solid #01042F',
-                            bgcolor: '#01042F',
-                        },
-                    }}
+            <Grid container spacing={0} sx={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <Grid item xs={12} md={12} lg={12} xl={12} >
+                    <Card >
+                        <MobileNav />
+                    </Card>
+                </Grid>
+                <Drawer
                     variant="permanent"
-                    anchor="left" */}
+                    anchor="left"
 
-
-                {/* <Toolbar sx={{ bgcolor: '#01042F', height: '50%', display: 'flex', placeContent: 'center' }}>
+                >
+                    <Toolbar sx={{ bgcolor: '#01042F', height: '30%', display: 'flex', placeContent: 'center' }}>
                         <img href='/' style={{ height: '150px', cursor: 'pointer', width: 'auto' }} src={wslogo} onClick={() => navigate('/')} />
-                    </Toolbar> */}
+                    </Toolbar>
 
-                {/* <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
+                    <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
                         <List>
                             <ListItem key='Locations' disablePadding />
                             <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
@@ -280,10 +247,26 @@ export default function MobileNav() {
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />
                         </List>
-                    </List> */}
+                    </List>
 
-                {/* </Drawer> */}
-            </>
-        );
-    }
+                </Drawer>
+                <Grid container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                <Grid item lg={3} md={3} sm={3} />
+                        <Card elevation={10} sx={{ display: 'flex', justifyContent: 'center', height: '35%', width: '35%', bgcolor: 'lightgrey' }} >
+                            <img style={{ height: 'auto', width: '100%' }} src={'./images/wholemap.gif'}></img>
+                        </Card>
+                    <Grid item xs={12} md={12} lg={12} xl={12} sx={{ display: 'flex', justifyContent: 'center', margin: '1.5%' }}>
+                        <Grid item lg={3} md={3} sm={3} />
+                        <Card elevation={6}>
+                            <SplashTabs />
+                        </Card>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Box>
+
+    )
 }
+
+export default TabletView

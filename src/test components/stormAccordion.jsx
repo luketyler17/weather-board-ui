@@ -5,6 +5,10 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import CCSFSStormSplash from './InnerComponents/CCSFSStormSplash';
+import { Card } from '@mui/material';
+import KSCStormSplash from './InnerComponents/KSCStormSplash';
+import PatrickStormSplash from './InnerComponents/PatrickStormSplash';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -56,12 +60,16 @@ export default function StormHomeAccordion() {
           <Typography>Cape Canaveral Space Force Station</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
+        <Card elevation={10} style={{height:'10%', width:'100%', display:'flex', flexDirection:'row'}}>
+            <div style={{width:'45%'}}/>
+            <div style={{width:'63%', display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+            </div>
+        </Card>
+          <CCSFSStormSplash/>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -69,12 +77,16 @@ export default function StormHomeAccordion() {
           <Typography>Kennedy Space Center</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
+        <Card elevation={10} style={{height:'10%', width:'100%', display:'flex', flexDirection:'row'}}>
+            <div style={{width:'45%'}}/>
+            <div style={{width:'63%', display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+            </div>
+        </Card>
+        <KSCStormSplash/>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -82,12 +94,16 @@ export default function StormHomeAccordion() {
           <Typography>Patrick SFB</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
+        <Card elevation={10} style={{height:'10%', width:'100%', display:'flex', flexDirection:'row'}}>
+            <div style={{width:'45%'}}/>
+            <div style={{width:'63%', display:'flex', flexDirection:'row', justifyContent:'space-evenly'}}>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
+                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+            </div>
+        </Card>
+          <PatrickStormSplash/>
         </AccordionDetails>
       </Accordion>
     </div>

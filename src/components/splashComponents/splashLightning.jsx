@@ -87,24 +87,28 @@ const SplashLightning = ({ states }) => {
 
                                     </div>
                                 <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         Status
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                        Start Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         End Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
-                                }}> {showCountdowns===true &&
-                                        "Countdown"}
+                                    width: '20%',
+                                    fontSize: '75%',
+                                }}> 
+                                    Countdown
                                     </div>
                                 </div>
                             </div>
@@ -147,24 +151,27 @@ const SplashLightning = ({ states }) => {
                                     width: '5%'
                                 }}></div>
                                 <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         Status
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         Start Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         End Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
-                                }}>{showCountdowns===true &&
-                                    "Countdown"}
+                                    width: '20%',
+                                    fontSize: '75%',
+                                }}> Countdown
                                     </div>
                                 </div>
                                 </div>
@@ -203,24 +210,28 @@ const SplashLightning = ({ states }) => {
                                     width: '5%'
                                 }}></div>
                                 <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         Status
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         Start Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         End Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
-                                }}>{showCountdowns===true &&
-                                    "Countdown"}
+                                    width: '20%',
+                                    fontSize: '75%',
+                                }}>
+                                    Countdown
                                     </div>
                                 </div>
                                 </div>
@@ -258,24 +269,28 @@ const SplashLightning = ({ states }) => {
                                     width: '5%'
                                 }}></div>
                                 <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         Status
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         Start Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
+                                    width: '20%',
+                                    fontSize: '75%',
                                 }}>
                                         End Time
                                     </div>
                                     <div style={{
-                                    width: '20%'
-                                }}>{showCountdowns===true &&
-                                    "Countdown"}
+                                    width: '20%',
+                                    fontSize: '75%',
+                                }}>
+                                    Countdown
                                     </div>
                                 </div>
                             </div>

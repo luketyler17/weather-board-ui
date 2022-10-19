@@ -15,7 +15,9 @@ import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import TestHome from './test components/testhome';
-
+import MobileArea from './test components/location components/mobilearea';
+import MobileSiteView from './test components/location components/mobilesite';
+import TabletView from './Tablet/tabletView';
 
 const url = 'https://weatherwarn.herokuapp.com'
 const cookies = new Cookies()
@@ -128,8 +130,6 @@ function App() {
   }
 
   const isMobileMatch = useMediaQuery("(max-width:600px)");
-
-
   console.log(windowSize)
   useEffect(() => {
 
@@ -156,19 +156,41 @@ function App() {
     return (
       <AppContext.Provider value={passContext}>
         <Router>
-          <Routes>
-            {
-              windowSize.innerWidth > 1900 ? (<Route path='/' element={<UserPage />} />
-              ) : (<Route path='/' element={<TestHome />} />)
-            }
+          {
+            windowSize.innerWidth > 1200 ? (
+              <Routes>
+                <Route path='/' element={<UserPage />} />
+                <Route path='/area' element={<AreaView />} />
+                <Route path='/admin' element={<AdminPage />} />
+                <Route path='/area' element={<AreaView />} />
+                <Route path='/site' element={<SiteView />} />
+                <Route path='/sign_in' element={<SignIn />} />
+                <Route path='/sign_up' element={<SignUp />} />
+              </Routes>
+            ) : (
+              windowSize.innerWidth > 500 ? (
+                <Routes>
+                  <Route path='/' element={<TabletView />} />
+                  <Route path='/admin' element={<AdminPage />} />
+                  <Route path='/area' element={<MobileArea />} />
+                  <Route path='/site' element={<MobileSiteView />} />
+                  <Route path='/sign_in' element={<SignIn />} />
+                  <Route path='/sign_up' element={<SignUp />} />
+                </Routes>
+              ) :
+                (
 
-
-            <Route path='/admin' element={<AdminPage />} />
-            <Route path='/area' element={<AreaView />} />
-            <Route path='/site' element={<SiteView />} />
-            <Route path='/sign_in' element={<SignIn />} />
-            <Route path='/sign_up' element={<SignUp />} />
-          </Routes>
+                  <Routes>
+                    <Route path='/' element={<TestHome />} />
+                    <Route path='/admin' element={<AdminPage />} />
+                    <Route path='/area' element={<MobileArea />} />
+                    <Route path='/site' element={<MobileSiteView />} />
+                    <Route path='/sign_in' element={<SignIn />} />
+                    <Route path='/sign_up' element={<SignUp />} />
+                  </Routes>
+                )
+            )
+          }
         </Router>
       </AppContext.Provider>
     );
