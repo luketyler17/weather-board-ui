@@ -39,7 +39,7 @@ const MobileInnerLightning = ({ states, location }) => {
         return (
             <>
             
-            {states.map((item) => <MobileInnerConditions item={item} location={location}/>)}
+            {states.map((item, index) => <MobileInnerConditions key={index} item={item} location={location}/>)}
             </>
         )
     }

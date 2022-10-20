@@ -38,7 +38,7 @@ const MobileInnerWind = ({ states, category }) => {
         )
     } else {
         return (
-            states.map((item) =>{ return (<MobileInnerWindConditions item={item} category={category}/>)
+            states.map((item, index) =>{ return (<MobileInnerWindConditions key={index} item={item} category={category}/>)
                 
             })
         )

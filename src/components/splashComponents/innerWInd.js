@@ -37,7 +37,7 @@ const InnerWind = ({ states, category }) => {
         )
     } else {
         return (
-            states.map((item) =>{ return (<InnerWindConditions item={item} category={category}/>)
+            states.map((item, index) =>{ return (<InnerWindConditions key={index} item={item} category={category}/>)
                 
             })
         )

@@ -4,35 +4,15 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { HiMenu } from 'react-icons/hi';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { Card, Grid, Paper, FormGroup, FormControlLabel } from '@mui/material';
-
-
-import InnerText from '../components/InnerText.js';
-import DangerousIcon from '@mui/icons-material/Dangerous';
-import { HiOutlineXCircle } from 'react-icons/hi'
-import { BsExclamationCircle } from 'react-icons/bs'
-import { BsCheckCircle } from 'react-icons/bs'
-import { AiOutlineQuestionCircle } from 'react-icons/ai'
-import AirIcon from '@mui/icons-material/Air';
-import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
-import { Switch } from '@mui/material'
-import Cookies from 'universal-cookie';
-import Stack from '@mui/material/Stack';
-import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
-import FormControl from "@mui/material";
-import CircularProgress from '@mui/material/CircularProgress'
 
-import NavMenu from '../test components/menu'
+import Cookies from 'universal-cookie';
+
 
 const cookies = new Cookies()
 
@@ -152,7 +132,7 @@ const siteButtonSX = {
                             <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
                             <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
-                            <ListItemButton key='Cape Canaveral SFS' disablePadding sx={locationButtonSX} onClick={() => handleCCSFS()} >
+                            <ListItemButton key='CCSFS'  sx={locationButtonSX} onClick={() => handleCCSFS()} >
                                 Cape Canaveral SFS
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />
@@ -160,7 +140,7 @@ const siteButtonSX = {
                                 <ListItem key={text} disablePadding >
                                     <ListItemButton
                                         sx={siteButtonSX}
-                                        disablePadding
+                                        
                                         onClick={() => {
                                             setSite(text)
                                             setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
@@ -173,13 +153,13 @@ const siteButtonSX = {
                             ))}
                             <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Kennedy Space Center' sx={{ display: 'flex', textAlign: 'center' }} disablePadding />
-                            <ListItemButton key='Kennedy Space Center' sx={locationButtonSX} onClick={() => handleKSC()} disablePadding>
+                            <ListItemButton key='KSC' sx={locationButtonSX} onClick={() => handleKSC()} >
                                 Kennedy Space Center
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />
                             {['KSC Industrial', 'LC-39', 'SLF'].map((text, index) => (
-                                <ListItem key={text} disablePadding>
-                                    <ListItemButton sx={siteButtonSX} disablePadding
+                                <ListItem key={index} disablePadding>
+                                    <ListItemButton sx={siteButtonSX} 
                                         onClick={() => {
                                             setSite(text)
                                             setArea(['KSC Industrial', 'LC-39', 'SLF'])
@@ -192,12 +172,12 @@ const siteButtonSX = {
                             ))}
                             <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Other' disablePadding />
-                            <ListItemButton key='Other' sx={locationButtonSX} onClick={() => handleOther()} disablePadding>
+                            <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
                                 Other
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />
                             {['CIDCO Park', 'Astrotech'].map((text, index) => (
-                                <ListItem key={text} disablePadding >
+                                <ListItem key={index} disablePadding >
                                     <ListItemButton sx={siteButtonSX}
                                         onClick={() => {
                                             setSite(text)

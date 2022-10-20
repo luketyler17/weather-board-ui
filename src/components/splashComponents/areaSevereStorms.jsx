@@ -53,9 +53,9 @@ const AreaSevereStorms = ({ states, location }) => {
         )
     } else {
         return (
-            states.map((item) => {
+            states.map((item, index) => {
                 return (
-                    <InnerAreaStorms item={item}/>
+                    <InnerAreaStorms key={index} item={item}/>
 
                 )
             })

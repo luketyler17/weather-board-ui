@@ -62,7 +62,7 @@ color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? '#C90000' 
                 height: 'auto',
             }}>
                 <div style={{
-                    width: 'auto%'
+                    width: '5%'
                 }}><div style={{
                     width: '95%',
                     marginTop: '3px',
@@ -77,7 +77,7 @@ color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? '#C90000' 
                     </div>
                 </div>
                 <div style={{
-                    width: 'auto',
+                    width: '20%',
                     color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? 'white' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)')
                 }}>
                     <div style={{

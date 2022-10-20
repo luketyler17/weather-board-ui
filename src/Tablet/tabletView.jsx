@@ -184,7 +184,7 @@ const TabletView = () => {
                             <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
                             <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
-                            <ListItemButton key='Cape Canaveral SFS' disablePadding sx={locationButtonSX} onClick={() => handleCCSFS()} >
+                            <ListItemButton key='CCSFS' sx={locationButtonSX} onClick={() => handleCCSFS()} >
                                 Cape Canaveral SFS
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />
@@ -192,7 +192,7 @@ const TabletView = () => {
                                 <ListItem key={text} disablePadding >
                                     <ListItemButton
                                         sx={siteButtonSX}
-                                        disablePadding
+                                        
                                         onClick={() => {
                                             setSite(text)
                                             setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
@@ -205,13 +205,13 @@ const TabletView = () => {
                             ))}
                             <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Kennedy Space Center' sx={{ display: 'flex', textAlign: 'center' }} disablePadding />
-                            <ListItemButton key='Kennedy Space Center' sx={locationButtonSX} onClick={() => handleKSC()} disablePadding>
+                            <ListItemButton key='KSC' sx={locationButtonSX} onClick={() => handleKSC()} >
                                 Kennedy Space Center
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />
                             {['KSC Industrial', 'LC-39', 'SLF'].map((text, index) => (
                                 <ListItem key={text} disablePadding>
-                                    <ListItemButton sx={siteButtonSX} disablePadding
+                                    <ListItemButton sx={siteButtonSX} 
                                         onClick={() => {
                                             setSite(text)
                                             setArea(['KSC Industrial', 'LC-39', 'SLF'])
@@ -224,7 +224,7 @@ const TabletView = () => {
                             ))}
                             <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Other' disablePadding />
-                            <ListItemButton key='Other' sx={locationButtonSX} onClick={() => handleOther()} disablePadding>
+                            <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
                                 Other
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />

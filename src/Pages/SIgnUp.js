@@ -76,7 +76,7 @@ export default function SignUp() {
     console.log("Input", input)
     switch(input) {
       case 23505:
-        return (<p>Email Already Exists</p>)
+        return (<div>Email Already Exists</div>)
     }
   }
 
