@@ -55,9 +55,9 @@ const SevereStormBar = ({ states, location }) => {
         )
     } else {
         return (
-            states.map((item) => {
+            states.map((item, index) => {
                 return (
-                    <InnerStormConditions item={item} />
+                    <InnerStormConditions key={index}item={item} />
 
                 )
             })

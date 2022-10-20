@@ -56,9 +56,9 @@ const MobileInnerStorm = ({ states, location }) => {
         )
     } else {
         return (
-            states.map((item) => {
+            states.map((item, index) => {
                 return (
-                    <MobileInnerStormConditions item={item} />
+                    <MobileInnerStormConditions key={index} item={item} />
 
                 )
             })

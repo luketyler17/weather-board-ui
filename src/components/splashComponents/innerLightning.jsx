@@ -45,7 +45,7 @@ const InnerLightning = ({ states, location }) => {
         )
     } else {
         return (
-            states.map((item) => <InnerConditions item={item} location={location}/>)
+            states.map((item, index) => <InnerConditions key={index} item={item} location={location}/>)
         )
     }
 }
