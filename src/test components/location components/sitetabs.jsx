@@ -12,6 +12,7 @@ import CCSFSStormSplash from '../InnerComponents/CCSFSStormSplash';
 import PatrickStormSplash from '../InnerComponents/PatrickStormSplash';
 import KSCStormSplash from '../InnerComponents/KSCStormSplash';
 import { Card } from '@mui/material';
+import NonPortCCSFSWindSplash from '../InnerComponents/NonPortCCSFSWindSplash';
 
 
 
@@ -74,7 +75,7 @@ if(site !=='CIDCO Park' && site !=='Astrotech'){
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
         <Card elevation={10} sx={{paddingTop:'2%'}}>
@@ -88,10 +89,10 @@ if(site !=='CIDCO Park' && site !=='Astrotech'){
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
-        {(area[0]==='Cape Central')?(<CCSFSWindSplash/>):
+        {(site==='Port')?(<CCSFSWindSplash/>):(site!=='Port' && area[0]==='Cape Central')?(<NonPortCCSFSWindSplash/>):
          (area[0]==='KSC Industrial')?(<KSCWindSplash/>):
          (<PatrickStormSplash/>)
         }
@@ -103,7 +104,7 @@ if(site !=='CIDCO Park' && site !=='Astrotech'){
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
       {(area[0]==='Cape Central')?(<CCSFSStormSplash/>):
@@ -128,7 +129,7 @@ if(site !=='CIDCO Park' && site !=='Astrotech'){
                 <div style={{fontSize:'48%',  fontFamily:'Kanit', width:'22%'}}>Status</div>
                 <div style={{fontSize:'48%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'48%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'45%',  fontFamily:'Kanit', width:'33%'}}>Count Down</div>
+                
             </div>
         </Card>
         <Card elevation={10}>
