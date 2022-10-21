@@ -18,7 +18,8 @@ import TestHome from './test components/testhome';
 import MobileArea from './test components/location components/mobilearea';
 import MobileSiteView from './test components/location components/mobilesite';
 import TabletView from './Tablet/tabletView';
-
+import TabletSiteView from './Tablet/tabletSite';
+import TabletArea from './Tablet/TabletArea';
 const url = 'https://weatherwarn.herokuapp.com'
 const cookies = new Cookies()
 function getWindowSize() {
@@ -70,7 +71,6 @@ function App() {
   const [windStartTime, setWindStartTime] = React.useState('');
   const [windEndTime, setWindEndTime] = React.useState('');
   const [weatherViolations, setWeatherViolations] = useState(undefined)
-  const [initialLoad, setInitialLoad] = useState(false)
   const [CCcheckedValues, setCCcheckedValues] = useState([])
 
   const [KSCCheckedValues, setKSCCheckedValues] = useState([])
@@ -172,8 +172,8 @@ function App() {
                 <Routes>
                   <Route path='/' element={<TabletView />} />
                   <Route path='/admin' element={<AdminPage />} />
-                  <Route path='/area' element={<MobileArea />} />
-                  <Route path='/site' element={<MobileSiteView />} />
+                  <Route path='/area' element={<TabletArea />} />
+                  <Route path='/site' element={<TabletSiteView />} />
                   <Route path='/sign_in' element={<SignIn />} />
                   <Route path='/sign_up' element={<SignUp />} />
                 </Routes>

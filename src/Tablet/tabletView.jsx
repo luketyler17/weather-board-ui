@@ -40,9 +40,10 @@ import FormControl from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress'
 import NavBarMenu from '../test components/menu'
 import { useState, useContext } from 'react'
+import TabletNav from './TabletNav'
+
 let wslogo = '../images/45th_Weather_Squadron_Patch.png';
 const cookies = new Cookies()
-
 
 const TabletView = () => {
     cookies.get('area')
@@ -169,87 +170,7 @@ const TabletView = () => {
                         <MobileNav />
                     </Card>
                 </Grid>
-                <Drawer
-                    variant="permanent"
-                    anchor="left"
-
-                >
-                    <Toolbar sx={{ bgcolor: '#01042F', height: '30%', display: 'flex', placeContent: 'center' }}>
-                        <img href='/' style={{ height: '150px', cursor: 'pointer', width: 'auto' }} src={wslogo} onClick={() => navigate('/')} />
-                    </Toolbar>
-
-                    <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
-                        <List>
-                            <ListItem key='Locations' disablePadding />
-                            <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
-                            <ListItemButton key='CCSFS' sx={locationButtonSX} onClick={() => handleCCSFS()} >
-                                Cape Canaveral SFS
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'].map((text, index) => (
-                                <ListItem key={text} disablePadding >
-                                    <ListItemButton
-                                        sx={siteButtonSX}
-                                        
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}
-                                    >{text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Kennedy Space Center' sx={{ display: 'flex', textAlign: 'center' }} disablePadding />
-                            <ListItemButton key='KSC' sx={locationButtonSX} onClick={() => handleKSC()} >
-                                Kennedy Space Center
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['KSC Industrial', 'LC-39', 'SLF'].map((text, index) => (
-                                <ListItem key={text} disablePadding>
-                                    <ListItemButton sx={siteButtonSX} 
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['KSC Industrial', 'LC-39', 'SLF'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}>
-                                        {text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Other' disablePadding />
-                            <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
-                                Other
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['CIDCO Park', 'Astrotech'].map((text, index) => (
-                                <ListItem key={text} disablePadding >
-                                    <ListItemButton sx={siteButtonSX}
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['CIDCO Park', 'Astrotech'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}>
-                                        {text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
-                                Patrick SFB
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                        </List>
-                    </List>
-
-                </Drawer>
+                <TabletNav />
                 <Grid container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
                 <Grid item lg={3} md={3} sm={3} />
                         <Card elevation={10} sx={{ display: 'flex', justifyContent: 'center', height: '35%', width: '35%', bgcolor: 'lightgrey' }} >
