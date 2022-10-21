@@ -76,7 +76,7 @@ if(area[0] !=='CIDCO Park'){
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
         
@@ -89,7 +89,7 @@ if(area[0] !=='CIDCO Park'){
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
       {(area[0] === 'Cape Central') ? (<CCSFSWindSplash/>): (area[0] === 'KSC Industrial')?(<KSCWindSplash/>) : (<PSFBWindSplash/>)}
@@ -101,7 +101,7 @@ if(area[0] !=='CIDCO Park'){
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
       {(area[0] === 'Cape Central') ? (<CCSFSStormSplash/>): (area[0] === 'KSC Industrial')?(<KSCStormSplash/>): (<PatrickStormSplash/>)}
@@ -123,7 +123,7 @@ if(area[0] !=='CIDCO Park'){
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
           <OtherLightningSplash/>

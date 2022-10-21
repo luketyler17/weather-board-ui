@@ -113,7 +113,7 @@ const MobileInnerConditions = ({ item, location }) => {
                         {item.type == 'Clear' ? '00:00' : (item.category == 'Warning' ? "INDEF" : item.category == 'Watch' ? item.end.slice(11, 16) : "00:00")}
                     </div>
                 </div>
-                <div style={{
+                {/* <div style={{
                     width: '22%'
                 }}>{showCountdowns === true &&
                     <div style={{
@@ -133,7 +133,7 @@ const MobileInnerConditions = ({ item, location }) => {
 
                         {item.type == 'Clear' ? '00:00' : (item.category == 'Warning' ? "INDEF" : item.category == 'Watch' ? <CountdownTimer item={item} /> : "00:00")}
                     </div>}
-                </div>
+                </div> */}
             </div>
         </div >
         </>

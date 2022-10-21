@@ -68,7 +68,7 @@ export default function LightningHomeAccordion() {
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
             <CCSFSLightningSplash/>
@@ -85,7 +85,7 @@ export default function LightningHomeAccordion() {
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
             <KSCLightningSplash/>
@@ -102,7 +102,7 @@ export default function LightningHomeAccordion() {
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
             <PSFBLightningSplash/>
@@ -119,7 +119,7 @@ export default function LightningHomeAccordion() {
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
             <OtherLightningSplash/>
