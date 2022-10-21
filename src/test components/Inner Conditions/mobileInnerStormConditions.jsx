@@ -122,7 +122,7 @@ color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? '#C90000' 
                         {item.end.slice(11, 16)}
                     </div>
                 </div>
-                <div style={{
+                {/* <div style={{
                     width: 'auto'
                 }}>{showCountdowns===true &&
                     <div style={{
@@ -139,7 +139,7 @@ color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? '#C90000' 
                     }}>
                         <CountdownTimer item={item}/>
                     </div>}
-                </div>
+                </div> */}
             </div>
         </div >
     )

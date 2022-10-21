@@ -66,7 +66,7 @@ export default function StormHomeAccordion() {
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
           <CCSFSStormSplash/>
@@ -83,7 +83,7 @@ export default function StormHomeAccordion() {
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
         <KSCStormSplash/>
@@ -100,7 +100,7 @@ export default function StormHomeAccordion() {
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Status</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'25%'}}>Start</div>
                 <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'22%'}}>End</div>
-                <div style={{fontSize:'52%',  fontFamily:'Kanit', width:'28%'}}>Count Down</div>
+                
             </div>
         </Card>
           <PatrickStormSplash/>

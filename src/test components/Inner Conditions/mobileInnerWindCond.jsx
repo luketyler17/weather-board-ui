@@ -108,7 +108,7 @@ const MobileInnerWindConditions = ({ item, category}) => {
                         {item.type == 'Clear' ? '00:00' : (item.type == 'Warning' ? (item.end.slice(11, 16)) : "INDEF")}
                     </div>
                 </div>
-                <div style={{
+                {/* <div style={{
                     width: '22%'
                 }}>{showCountdowns===true &&
                     <div style={{
@@ -127,7 +127,7 @@ const MobileInnerWindConditions = ({ item, category}) => {
                     }}>
                         {item.type == 'Clear' ? '00:00' : (item.type == 'Warning' ? <CountdownTimer item={item}/> : "INDEF")}
                     </div>}
-                </div>
+                </div> */}
             </div>
         </div >
     )
