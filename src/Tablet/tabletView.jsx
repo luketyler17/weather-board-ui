@@ -165,18 +165,18 @@ const TabletView = () => {
         <Box sx={{ width: '100%', height: '100vh' }}>
 
             <Grid container spacing={0} sx={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Grid item xs={12} md={12} lg={12} xl={12} >
+                <Grid item xs={12} md={12} lg={12} xl={12} marginBottom={2} >
                     <Card >
                         <MobileNav />
                     </Card>
                 </Grid>
                 <TabletNav />
                 <Grid container sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                <Grid item lg={3} md={3} sm={3} />
-                        <Card elevation={10} sx={{ display: 'flex', justifyContent: 'center', height: '35%', width: '35%', bgcolor: 'lightgrey' }} >
+                <Grid item lg={6} md={6} sm={6} marginRight={-25} marginTop={-20}/>
+                        <Card elevation={10} sx={{ display: 'flex', justifyContent: 'center', height: '25%', width: '55%', bgcolor: 'lightgrey', padding:'2%' }} >
                             <img style={{ height: 'auto', width: '100%' }} src={'./images/wholemap.gif'}></img>
                         </Card>
-                    <Grid item xs={12} md={12} lg={12} xl={12} sx={{ display: 'flex', justifyContent: 'center', margin: '1.5%' }}>
+                    <Grid item xs={9} md={9} lg={9} xl={9} marginTop={-15} marginRight={-5} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Grid item lg={3} md={3} sm={3} />
                         <Card elevation={6}>
                             <SplashTabs />

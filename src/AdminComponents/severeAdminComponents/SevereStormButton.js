@@ -24,13 +24,13 @@ color: white;
   opacity: 0.8;
   transform: scale (0.98);
   font-type: poppins;
+}
 `
 
 const SevereStormButton = ({ severeType, locations, stormConditions, severeStormTime2, severeStormTime, severeStormStartDate, severeStormEndDate }) => {
-  const { toggle, setToggle} = useContext(AppContext);
+  const {setLoading, toggle, setToggle} = useContext(AppContext);
   const url = 'https://weatherwarn.herokuapp.com'
   const handleSubmit = () => {
-    console.log(locations, severeType, stormConditions, severeStormTime, severeStormTime2, severeStormStartDate, severeStormEndDate)
     let fullStart = severeStormStartDate + ' ' + severeStormTime + ":00"
     let fullEnd = severeStormEndDate + ' ' + severeStormTime2 + ":00"
     let user = cookie.get('authentication', { path: '/' })
@@ -49,7 +49,11 @@ const SevereStormButton = ({ severeType, locations, stormConditions, severeStorm
           end: fullEnd,
           user: user.user_name
         })
-      }).then(res => res.json()).then(data => console.log(data))
+      }).then(res => res.json()).then(() =>{
+        let number = toggle +1
+        setToggle((number))
+        setLoading(0)
+      })
     } else if (severeType.includes("Watch")) {
       fetch(`${url}/storm`, {
         method: 'PATCH',
@@ -65,7 +69,12 @@ const SevereStormButton = ({ severeType, locations, stormConditions, severeStorm
           end: fullEnd,
           user: user.user_name
         })
-      }).then(res => res.json()).then(data => console.log(data))
+      }).then(res => res.json()).then(() =>{
+        let number= toggle +1
+        
+        setToggle((number))
+        setLoading(0)
+      })
     } else if (severeType.includes("Cancel")) {
       fetch(`${url}/storm`, {
         method: 'PATCH',
@@ -81,9 +90,13 @@ const SevereStormButton = ({ severeType, locations, stormConditions, severeStorm
           end: '1900-01-01 00:00:01',
           user: user.user_name
         })
-      }).then(res => res.json()).then(data => console.log(data))
+      }).then(res => res.json()).then(() =>{
+        let number = toggle +1
+        setToggle((number))
+        setLoading(0)
+      })
     }
-    setToggle(!toggle)
+   
   }
   return (
     <>

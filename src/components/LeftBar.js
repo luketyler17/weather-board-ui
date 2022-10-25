@@ -18,6 +18,10 @@ import Cookies from 'universal-cookie';
 import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
 import CircularProgress from '@mui/material/CircularProgress'
 import MapModal from './mapmodal'
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 let wslogo = '../images/45th_Weather_Squadron_Patch.png';
 
@@ -29,10 +33,15 @@ const cookies = new Cookies()
 
 export default function LeftBar() {
 
+
+    const handleChange = (event) => {
+        setRefreshRate(event.target.value);
+    };
+
     cookies.get('area')
     let userInfo = cookies.get('authentication')
 
-    const { area, setArea, site, setSite, imagePath, setImagePath, cookieData, setCookieData, showCountdowns, setShowCountdowns } = useContext(AppContext)
+    const { area, setArea, site, setSite, imagePath, setImagePath, cookieData, setCookieData, showCountdowns, setShowCountdowns, setRefreshRate, refreshRate } = useContext(AppContext)
     const navigate = useNavigate();
 
     const [checked, setChecked] = useState(true)
@@ -92,18 +101,34 @@ export default function LeftBar() {
         setLoading(false)
 
     }
-    
-    const handleCountdowns= ()=>{
-        if (showCountdowns === true){
+
+    const handleCountdowns = () => {
+        if (showCountdowns === true) {
             setShowCountdowns(false)
-            
-        }else{
+
+        } else {
             setShowCountdowns(true)
-            
+
         }
     }
 
     const buttonSX = {
+        width: 'auto',
+        color: 'white',
+        backgroundColor: '#01042F',
+        borderRadius: '20px',
+        fontFamily: 'Kanit',
+        border: 'none',
+        textDecoration: 'underline',
+        "&:hover": {
+            color: '#01042F',
+            backgroundColor: 'white',
+            border: '1px solid #01042F',
+            textDecoration: 'underline',
+            fontWeight: 'bold'
+        }
+    }
+    const dropDownSX = {
         width: 'auto',
         color: 'white',
         backgroundColor: '#01042F',
@@ -158,31 +183,45 @@ export default function LeftBar() {
                 <CssBaseline />
                 <AppBar
                     position="fixed"
-                    
-                    sx={{ border:'1px solid pink', display: 'flex', flexDirection: 'row', width: `90%`, justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white' }}
-                >
-                    <Toolbar sx={{width:'100%',display:'flex', flexDirection:'row', justifyContent:'space-evenly'}} xs={6} md={8} lg ={10} >
-                        
-                        <div style={{display:'flex', width:'40%', placeContent:'left'}}>
-                        <Typography variant="h6" noWrap component="div" >
-                            <h1 style={{ color: 'black', fontSize: '30px' }}><CloudOutlinedIcon sx={{ color: 'black', height: '40px', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
-                        </Typography>
-                        </div>
-                        <div style={{ width:'40%', paddingLeft:'6%'}}>
-                    <MapModal/>
-                    </div>
-                    
-                    <div style={{width:'50%', display: 'flex', flexDirection: 'row', width: '20%', justifyContent: 'space-evenly'}}>
-                        <Button sx={buttonSX} onClick={handleCountdowns}>
-                            Show Countdowns
-                        </Button>
-                        {cookies.get('authentication') !== undefined &&
-                            <Button href='/admin' sx={buttonSX}>Admin</Button>
-                        }
-                        {(cookies.get('authentication') === undefined) ? <Button onClick={handleSignIn} sx={buttonSX}>Sign In</Button> : <Button href='/' sx={buttonSX} onClick={handleSignOut} >Sign Out</Button>}
 
-                    </div>
-                        </Toolbar>
+                    sx={{ display: 'flex', flexDirection: 'row', width: `90%`, justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white' }}
+                >
+                    <Toolbar sx={{paddingTop:'5px', width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }} xs={6} md={8} lg={10} >
+
+                        <div style={{ display: 'flex', width: '40%', placeContent: 'left' }}>
+                            <Typography variant="h6" noWrap component="div" >
+                                <h1 style={{ color: 'black', fontSize: '30px' }}><CloudOutlinedIcon sx={{ color: 'black', height: '40px', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
+                            </Typography>
+                        </div>
+                        <div style={{ width: '40%', paddingLeft: '6%' }}>
+                            <MapModal />
+                        </div>
+
+                        <div style={{ width: '50%', display: 'flex', flexDirection: 'row', width: '30%', justifyContent: 'space-evenly' }}>
+                            <FormControl fullWidth sx={{width: '28%',}}>
+                                <InputLabel id="Refresh-Rate-label">Refresh Rate</InputLabel>
+                                <Select
+                                    labelId="Refresh-Rate-label"
+                                    id="Refresh-Rate"
+                                    value={refreshRate}
+                                    label="Refresh Rate"
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value={30000}>30 Seconds</MenuItem>
+                                    <MenuItem value={60000}>60 Seconds</MenuItem>
+                                    <MenuItem value={300000}>5 Minutes</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <Button sx={buttonSX} onClick={handleCountdowns}>
+                                Show Countdowns
+                            </Button>
+                            {cookies.get('authentication') !== undefined &&
+                                <Button href='/admin' sx={buttonSX}>Admin</Button>
+                            }
+                            {(cookies.get('authentication') === undefined) ? <Button onClick={handleSignIn} sx={buttonSX}>Sign In</Button> : <Button href='/' sx={buttonSX} onClick={handleSignOut} >Sign Out</Button>}
+
+                        </div>
+                    </Toolbar>
                 </AppBar>
 
                 <Drawer
@@ -200,7 +239,7 @@ export default function LeftBar() {
                     }}
                     variant="permanent"
                     anchor="left"
-                   
+
                 >
                     <Toolbar sx={{ bgcolor: '#01042F', height: '30%', display: 'flex', placeContent: 'center' }}>
                         <img href='/' style={{ height: '150px', cursor: 'pointer', width: 'auto' }} src={wslogo} onClick={() => navigate('/')} />
@@ -212,7 +251,7 @@ export default function LeftBar() {
                             <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
                             <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
-                            <ListItemButton key='CCSFS'  sx={locationButtonSX} onClick={() => handleCCSFS()} >
+                            <ListItemButton key='CCSFS' sx={locationButtonSX} onClick={() => handleCCSFS()} >
                                 Cape Canaveral SFS
                             </ListItemButton>
                             <Divider sx={{ bgcolor: 'white' }} />
@@ -220,7 +259,7 @@ export default function LeftBar() {
                                 <ListItem key={text} disablePadding >
                                     <ListItemButton
                                         sx={siteButtonSX}
-                                        
+
                                         onClick={() => {
                                             setSite(text)
                                             setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
@@ -239,7 +278,7 @@ export default function LeftBar() {
                             <Divider sx={{ bgcolor: 'white' }} />
                             {['KSC Industrial', 'LC-39', 'SLF'].map((text, index) => (
                                 <ListItem key={text} disablePadding>
-                                    <ListItemButton sx={siteButtonSX} 
+                                    <ListItemButton sx={siteButtonSX}
                                         onClick={() => {
                                             setSite(text)
                                             setArea(['KSC Industrial', 'LC-39', 'SLF'])

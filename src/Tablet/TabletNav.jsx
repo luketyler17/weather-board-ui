@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-
+import {Grid} from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress'
 
 import Drawer from '@mui/material/Drawer';
@@ -155,7 +155,7 @@ export default function TabletNav() {
     } else {
 
         return (
-            <>
+            <Grid item xs={3} md={3} lg={3} xl={3}>
                 <Drawer
                     variant="permanent"
                     anchor="left"
@@ -237,7 +237,7 @@ export default function TabletNav() {
                     </List>
 
                 </Drawer>
-            </>
+            </Grid>
         );
     }
 }

@@ -23,16 +23,16 @@ color: white;
   border: 1px solid #01042F;
   opacity: 0.8;
   transform: scale (0.98);
-  font-type: poppins;
+  font-family: Kanit;
+}
 `
 const url = 'https://weatherwarn.herokuapp.com'
 
 const AdminButton = ({ locations, violations, startTime, endTime, startDate, endDate }) => {
-  const { toggle, setToggle } = useContext(AppContext);
+  const { toggle, setToggle, setLoading } = useContext(AppContext);
 
   const handleSubmit = () => {
-
-    console.log(locations, violations, startTime, endTime, startDate, endDate)
+    console.log("Toggle", toggle)
     let fullStart = startDate + ' ' + startTime + ":00"
     let fullEnd = endDate + ' ' + endTime + ":00"
     let user = cookie.get('authentication', { path: '/' })
@@ -63,20 +63,30 @@ const AdminButton = ({ locations, violations, startTime, endTime, startDate, end
           end: fullEnd,
           user_name: user.user_name,
         })
-      }).then(data => console.log(data)).then(() => {
+      }).then(() => {
         if (violations[0] === 'Clear') {
           violations[0] = 'Cancel'
         }
       }
-      )
+      ).then(() => {
+        let number = toggle + 1
+        
+        setToggle(number)
+        console.log('button', number)
+        setLoading(0)
+      })
     }
     else {
-      console.log("Somethings wrong")
       if (violations[0] === 'Clear') {
         violations[0] = 'Cancel'
       }
+      let number = toggle + 1
+      
+      setToggle(number)
+      console.log('button', number)
+      setLoading(0)
+
     }
-    setToggle(!toggle)
   }
 
   return (

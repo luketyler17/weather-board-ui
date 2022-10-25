@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import { Box } from '@mui/material'
 import SplashTabs from './splashtabs'
-import PortraitMode from './PortraitMode';
+    
 
 
 const TestHome = () => {

@@ -23,24 +23,22 @@ color: white;
   border: 1px solid #01042F;
   opacity: 0.8;
   transform: scale (0.98);
-  font-type: poppins;
+  font-family: Kanit;
+}
 `
 
 const WindButton = () => {
 
-    const { toggle, setToggle, CCcheckedValues, CCWindProperties, KSCCheckedValues, KSCWindProperties, PSFBCheckedValues, PSFBWindProperties, windTime, windTime2, windStartTime, windEndTime } = useContext(AppContext);
+    const { setLoading, toggle, setToggle, CCcheckedValues, CCWindProperties, KSCCheckedValues, KSCWindProperties, PSFBCheckedValues, PSFBWindProperties, windTime, windTime2, windStartTime, windEndTime } = useContext(AppContext);
     const url = 'https://weatherwarn.herokuapp.com'
 
     const handleSubmit = () => {
-        console.log(CCcheckedValues, KSCCheckedValues, PSFBCheckedValues)
         let fullStart = windStartTime + ' ' + windTime + ":00"
         let fullEnd = windEndTime + ' ' + windTime2 + ":00"
         let user = cookie.get('authentication', { path: '/' })
+        let newToggle = (toggle ? false : true)
 
-        console.log("Checked Values:", CCcheckedValues, KSCCheckedValues, PSFBCheckedValues)
-        console.log("Checked Properties: ", CCWindProperties, KSCWindProperties, PSFBWindProperties)
         if (CCcheckedValues.length > 0) {
-            console.log(CCcheckedValues);
             CCcheckedValues.map(value => {
                 console.log(value)
                 if (value === '18 kt steady-state' || value === '18 kt steady-state clear') {
@@ -59,8 +57,14 @@ const WindButton = () => {
                             direction: CCWindProperties["18 kt steady-state"],
                             user_name: user.user_name
                         })
-                        
-                    }).then(res => console.log(res))
+
+                    }).then(() => {
+                        let number = toggle + 1
+
+                        setToggle(number)
+                        console.log('button', number)
+                        setLoading(0)
+                    })
 
                 } else if (value === "22 kt steady-state" || value === '22 kt steady-state clear') {
                     console.log("value made it here", value)
@@ -79,6 +83,12 @@ const WindButton = () => {
                             direction: CCWindProperties["22 kt steady-state"],
                             user_name: user.user_name
                         })
+                    }).then(() => {
+                        let number = toggle + 1
+
+                        setToggle(number)
+                        console.log('button', number)
+                        setLoading(0)
                     })
                 } else if (value === "Strong Winds" || value === "Strong Winds clear") {
                     console.log("value made it here", value)
@@ -98,6 +108,12 @@ const WindButton = () => {
                             speed: CCWindProperties["Strong Winds 2"],
                             user_name: user.user_name
                         })
+                    }).then(() => {
+                        let number = toggle + 1
+
+                        setToggle(number)
+                        console.log('button', number)
+                        setLoading(0)
                     })
                 } else if (value === "Damaging Winds" || value === "Damaging Winds clear") {
                     fetch(`${url}/wind`, {
@@ -116,8 +132,13 @@ const WindButton = () => {
                             speed: CCWindProperties["Damaging Winds 2"],
                             user_name: user.user_name
                         })
-                    })
+                    }).then(() => {
+                        let number = toggle + 1
 
+                        setToggle(number)
+                        console.log('button', number)
+                        setLoading(0)
+                    })
                 }
             })
         } else if (KSCCheckedValues.length > 0) {
@@ -140,7 +161,13 @@ const WindButton = () => {
 
                         })
                     }
-                    )
+                    ).then(() => {
+                        let number = toggle + 1
+
+                        setToggle(number)
+                        console.log('button', number)
+                        setLoading(0)
+                    })
                 } else if (value === "Strong Winds" || value === "Strong Winds clear") {
                     fetch(`${url}/wind`, {
                         method: 'PATCH',
@@ -158,6 +185,12 @@ const WindButton = () => {
                             speed: KSCWindProperties["Strong Winds 2"],
                             user_name: user.user_name
                         })
+                    }).then(() => {
+                        let number = toggle + 1
+
+                        setToggle(number)
+                        console.log('button', number)
+                        setLoading(0)
                     })
 
                 } else if (value === "Damaging Winds" || value === "Damaging Winds clear") {
@@ -177,6 +210,12 @@ const WindButton = () => {
                             speed: KSCWindProperties["Damaging Winds 2"],
                             user_name: user.user_name
                         })
+                    }).then(() => {
+                        let number = toggle + 1
+
+                        setToggle(number)
+                        console.log('button', number)
+                        setLoading(0)
                     })
 
                 }
@@ -202,6 +241,12 @@ const WindButton = () => {
                             end: (value === '25 kt observed clear') ? '1900-01-01 00:00:01' : fullEnd,
                             direction: PSFBWindProperties["25 kt observed"],
                             user_name: user.user_name
+                        }).then(() => {
+                            let number = toggle + 1
+
+                            setToggle(number)
+                            console.log('button', number)
+                            setLoading(0)
                         })
                     }
                     )
@@ -221,6 +266,12 @@ const WindButton = () => {
                             direction: PSFBWindProperties["Strong Winds 1"],
                             speed: PSFBWindProperties["Strong Winds 2"],
                             user_name: user.user_name
+                        }).then(() => {
+                            let number = toggle + 1
+
+                            setToggle(number)
+                            console.log('button', number)
+                            setLoading(0)
                         })
                     })
 
@@ -241,13 +292,18 @@ const WindButton = () => {
                             direction: PSFBWindProperties["Damaging Winds 1"],
                             speed: PSFBWindProperties["Damaging Winds 2"],
                             user_name: user.user_name
+                        }).then(() => {
+                            let number = toggle + 1
+
+                            setToggle(number)
+                            console.log('button', number)
+                            setLoading(0)
                         })
                     })
                 }
             }
             )
         }
-        setToggle(!toggle)
     }
 
     return (
