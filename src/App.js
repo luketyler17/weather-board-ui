@@ -76,10 +76,10 @@ function App() {
   const [KSCCheckedValues, setKSCCheckedValues] = useState([])
 
   const [PSFBCheckedValues, setPSFBCheckedValues] = useState([])
-
-  const [toggle, setToggle] = useState(false)
+  const [refreshRate, setRefreshRate] = useState(60000)
+  const [toggle, setToggle] = useState(0)
   const [showCountdowns, setShowCountdowns] = useState(true)
-
+  const [someState, setSomeState] = useState(0)
   const passContext = {
     area,
     setArea,
@@ -124,27 +124,62 @@ function App() {
     setToggle,
     toggle,
     showCountdowns,
-    setShowCountdowns
-
-
+    setShowCountdowns,
+    refreshRate, 
+    setRefreshRate,
+    url
   }
 
   const isMobileMatch = useMediaQuery("(max-width:600px)");
-  console.log(windowSize)
+  
   useEffect(() => {
+    if (someState == 0) {
+      Promise.all([
+        fetch(`${url}/lightning`)
+          .then(res => res.json())
+          .then(data => setLightning(data)),
+        fetch(`${url}/storm` )
+          .then(res => res.json())
+          .then(data => setStorm(data)),
+        fetch(`${url}/wind` )
+          .then(res => res.json())
+          .then(data => setWind(data))
+      ]).then(() => setLoading(0)).then(() => setSomeState(1))
+    }
+    else {
+      setLoading(0)
+      const interval = setInterval(() => {
+        Promise.all([
+          fetch(`${url}/lightning` )
+            .then(res => res.json())
+            .then(data => setLightning(data)),
+          fetch(`${url}/storm` )
+            .then(res => res.json())
+            .then(data => setStorm(data)),
+          fetch(`${url}/wind` )
+            .then(res => res.json())
+            .then(data => setWind(data))
+        ]).then(() => setLoading(0))
+      }, refreshRate);
+      console.log(refreshRate);
+      return () => clearInterval(interval);
+    }
+  }, [area, someState])
 
-    Promise.all([
-      fetch(`${url}/lightning`)
-        .then(res => res.json())
-        .then(data => setLightning(data)),
-      fetch(`${url}/storm`)
-        .then(res => res.json())
-        .then(data => setStorm(data)),
-      fetch(`${url}/wind`)
-        .then(res => res.json())
-        .then(data => setWind(data))
-    ]).then(() => setLoading(0))
-  }, [area, toggle])
+  useEffect(() => {
+      Promise.all([
+        fetch(`${url}/lightning`)
+          .then(res => res.json())
+          .then(data => setLightning(data)),
+        fetch(`${url}/storm`)
+          .then(res => res.json())
+          .then(data => setStorm(data)),
+        fetch(`${url}/wind`)
+          .then(res => res.json())
+          .then(data => setWind(data))
+      ])
+  }, [toggle])
+
   if (loading !== 0) {
     return (
       <Box sx={{ display: 'flex', placeContent: 'center center', paddingTop: '10%' }}>

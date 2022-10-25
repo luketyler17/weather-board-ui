@@ -51,7 +51,7 @@ export default function SplashTabs() {
 
   return (
     <Box sx={{ width: '105%' }}>
-      <Box sx={{ borderBottom: .5, borderColor: 'divider', display:'flex', justifyContent:'space-evenly' }}>
+      <Box sx={{ borderBottom: .5, borderColor: 'divider', display:'flex', justifyContent:'center' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Lightning" {...a11yProps(0)} />
           <Tab label="Wind" {...a11yProps(1)} />

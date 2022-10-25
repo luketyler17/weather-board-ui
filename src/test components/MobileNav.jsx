@@ -170,7 +170,7 @@ export default function MobileNav() {
                         </Grid>
 
                         
-                        <Grid item xs={10} md={6} lg={6} xl={6} sx={{ marginLeft:'3%',display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                        <Grid item xs={10} md={10} lg={10} xl={10} sx={{ marginLeft:'3%',display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
                             
                             <Typography  variant="h6" noWrap component="div" >
                                 <h1 style={{ color: 'black', fontSize: '100%' }}>&nbsp;Weather Warning eBoard&nbsp;</h1>
@@ -180,7 +180,7 @@ export default function MobileNav() {
 
 
                         </Grid>
-                        <Grid item  xs={1} md={5} lg={5} xl={5} sx={{ display: 'flex', justifyContent:'flex-end', marginRight:'-3%' }}>
+                        <Grid item  xs={1} md={2} lg={2} xl={2} sx={{ display: 'flex', justifyContent:'flex-end', marginRight:'-3%' }}>
                         <Button onClick={()=> navigate('/')}>
                         <CloudOutlinedIcon sx={{ color: 'black', height: '80%', width: '80%' }} />
                         </Button>

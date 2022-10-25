@@ -52,22 +52,24 @@ const TabletSiteView = () => {
 
         <Box sx={{ width: '100%', height: '100vh' }}>
             <Grid container spacing={0} sx={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Grid item xs={12} md={12} lg={12} xl={12} >
+            <Grid item xs={12} md={12} lg={12} xl={12} marginBottom={2} >
                     <Card >
                         <MobileNav />
                     </Card>
                 </Grid>
                 <TabletNav />
-                <Grid item xs={10} md={12} lg={12} xl={12} sx={{ display: 'flex', position: 'center', height: '25%', margin: '1.5%' }}>
-                    <Card elevation={10} sx={{ display: 'flex', justifyContent: 'space-evenly', height: '120%', width: '100%', bgcolor: 'lightgrey', padding: '1%' }} >
+                <div style={{display: 'flex', flexDirection:'column', width: '74%', justifyContent: 'right' }}>
+                <Grid item xs={12} md={6} lg={6} xl={6}  marginTop={-30} marginLeft={6} marginBottom={-10}>
+                    <Card elevation={10} sx={{ display: 'flex', justifyContent: 'center', height: '80%', width: '90%', bgcolor: 'lightgrey', padding: '1%' }}  >
                         <SiteImage images={imageArray.filter((item) => item.location === site)} />
                     </Card>
                 </Grid>
-                <Grid item xs={12} md={12} lg={12} xl={12} sx={{ display: 'flex', justifyContent: 'center', margin: '1.5%' }}>
+                <Grid item xs={12} md={6} lg={6} xl={6} marginBottom={1} marginTop={1} marginLeft={30} marginRight={-20} sx={{ marginRight: '50px', display: 'flex', justifyContent: 'center', margin: '1.5%' }}>
                     <Card elevation={6}>
                         <SiteTabs />
                     </Card>
                 </Grid>
+                </div>
             </Grid>
         </Box>
 

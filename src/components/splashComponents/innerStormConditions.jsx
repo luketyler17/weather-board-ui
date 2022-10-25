@@ -7,7 +7,6 @@ import { AppContext } from '../../context/AppContext'
 import React, {useContext} from 'react'
 const InnerStormConditions = ({item}) => {
 
-    console.log(item)
     const {showCountdowns} = useContext(AppContext)
     let border = (item.type == 'Clear' ? '#035600' : (item.type == 'Warning') ? '#C90000' : (item.type == 'Watch') ? '#D68E24' : '#B800F9')
     return (
