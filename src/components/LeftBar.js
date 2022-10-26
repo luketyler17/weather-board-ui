@@ -41,7 +41,7 @@ export default function LeftBar() {
     cookies.get('area')
     let userInfo = cookies.get('authentication')
 
-    const { area, setArea, site, setSite, imagePath, setImagePath, cookieData, setCookieData, showCountdowns, setShowCountdowns, setRefreshRate, refreshRate } = useContext(AppContext)
+    const {area, setArea, site, setSite, imagePath, setImagePath, cookieData, setCookieData, showCountdowns, setShowCountdowns, setRefreshRate, refreshRate } = useContext(AppContext)
     const navigate = useNavigate();
 
     const [checked, setChecked] = useState(true)

@@ -3,7 +3,7 @@ import { BsExclamationCircle } from 'react-icons/bs'
 import { BsCheckCircle } from 'react-icons/bs'
 import { GiCancel } from 'react-icons/gi'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
-import CountdownTimer from './CountdownTimer'
+import LightningCountdown from './LightningCountdown'
 import { AppContext } from '../../context/AppContext'
 import React, { useContext } from 'react'
 const InnerConditions = ({ item, location }) => {
@@ -122,7 +122,7 @@ const InnerConditions = ({ item, location }) => {
                         border: '1px solid black',
                     }}>
 
-                        {item.type == 'Clear' ? '00:00' : (item.category == 'Warning' ? "INDEF" : item.category == 'Watch' ? <CountdownTimer item={item} /> : "00:00")}
+                        {item.type == 'Clear' ? '00:00' : (item.category == 'Warning' ? "INDEF" : item.category == 'Watch' ? <LightningCountdown item={item} /> : "00:00")}
                     </div>}
                 </div>
             </div>
