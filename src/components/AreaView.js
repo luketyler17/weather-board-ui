@@ -14,6 +14,7 @@ import { BsLightning } from 'react-icons/bs'
 import { RiWindyLine } from 'react-icons/ri'
 import { RiThunderstormsLine } from 'react-icons/ri'
 import AreaSevereStorms from './splashComponents/areaSevereStorms'
+import AreaRing from './AreaRing'
 
 const cookies = new Cookies()
 
@@ -29,8 +30,9 @@ const AreaView = () => {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
             <LeftBar />
-            <Card sx={{ height: '20%', width: '100%', backgroundColor: 'white', marginLeft: '20px', marginRight: '20px' }}>
-                <Card elevation={10}  sx={{ display: 'flex', height: '20%', margin: '10px', bgcolor: 'grey', justifyContent: 'center' }}>
+            <Card sx={{ height: '20%', width: '100%', backgroundColor: 'white', marginLeft: '7.5%', marginRight: '5%' }}>
+                <Card elevation={10}  sx={{position:'relative', display: 'flex', height: '20%', margin: '10px', bgcolor: 'grey', justifyContent: 'center', marginTop:'5%' }}>
+                    <Box>
                     <img src={imagePath} alt="placehoder"
                         style={{
                             width: 'auto',
@@ -39,6 +41,12 @@ const AreaView = () => {
                             margin: '10px'
                         }}
                     />
+                    {area.map((location)=>{
+                        return(
+                            <AreaRing location={location} item={lightning.filter((item) => item.location === location)}/>
+                        )
+                    })}
+                    </Box>
                 </Card>
                 <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><BsLightning/> Lightning</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px' }}>

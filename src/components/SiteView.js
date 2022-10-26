@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Card } from '@mui/material'
+import { Card, CardMedia } from '@mui/material'
 import { Paper } from '@mui/material'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -15,6 +15,7 @@ import { BsLightning } from 'react-icons/bs'
 import { RiWindyLine } from 'react-icons/ri'
 import { RiThunderstormsLine } from 'react-icons/ri'
 import AreaSevereStorms from './splashComponents/areaSevereStorms'
+import SiteRing from './SiteRing';
 
 const cookies = new Cookies()
 
@@ -52,9 +53,12 @@ const SiteView = () => {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <LeftBar/>
-            <Card sx={{ height: '20%', width: '100%', backgroundColor: 'white', marginLeft: '20px', marginRight: '20px' }}>
-                <Card elevation={10} sx={{ display: 'flex', height: '20%', margin: '10px', bgcolor: 'grey', justifyContent: 'center' }}>
+            <Card sx={{height: '20%', width: '90%', backgroundColor: 'white', marginLeft: '7.5%', marginRight: '5%', marginTop:'2%' }}>
+                <Card elevation={10} sx={{position:'relative', display: 'flex', height: '20%', padding:'1%', margin: '10px', bgcolor: 'grey', justifyContent: 'center' }}>
+                    <Box >
                     <SiteImage images={imageArray.filter((item)=>item.location===site)} />
+                    <SiteRing item={lightning.filter((item) => item.location === site)} site={site}/>
+                    </Box>
                 </Card>
                 <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><BsLightning/> Lightning</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px' }}>
