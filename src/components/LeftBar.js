@@ -114,6 +114,8 @@ export default function LeftBar() {
 
     const buttonSX = {
         width: 'auto',
+        height:'50%',
+        marginTop:'2%',
         color: 'white',
         backgroundColor: '#01042F',
         borderRadius: '20px',

@@ -128,9 +128,13 @@ const siteButtonSX = {
         <MenuItem onClick={handleClose}>
         <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
                         <List>
-                            <ListItem key='Locations' disablePadding />
-                            <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
-                            <Divider sx={{ bgcolor: 'white' }} />
+                        <ListItemButton key='Home'  sx={locationButtonSX} onClick={() => navigate('/')} >
+                        <ListItemText sx={{textAlign:'center'}} primary={<h4 style={{ color: 'white' }}>Home</h4>} />
+                            </ListItemButton>
+                        <Divider sx={{ bgcolor: 'white' }} />
+                            {/* <ListItem key='Locations' disablePadding />
+                            <ListItemText sx={{textAlign:'center'}} primary={<h4 style={{ color: 'white' }}>Locations</h4>} />
+                            <Divider sx={{ bgcolor: 'white' }} /> */}
                             <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
                             <ListItemButton key='CCSFS'  sx={locationButtonSX} onClick={() => handleCCSFS()} >
                                 Cape Canaveral SFS

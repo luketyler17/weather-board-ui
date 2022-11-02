@@ -180,9 +180,9 @@ export default function MobileNav() {
 
 
                         </Grid>
-                        <Grid item  xs={1} md={2} lg={2} xl={2} sx={{ display: 'flex', justifyContent:'flex-end', marginRight:'-3%' }}>
+                        <Grid item  xs={1} md={2} lg={2} xl={2} sx={{ display: 'flex', justifyContent:'flex-end', marginRight:'-5%', marginLeft:'4.4%', marginTop:'-2.9%', marginBottom:'-2.5%' }}>
                         <Button onClick={()=> navigate('/')}>
-                        <CloudOutlinedIcon sx={{ color: 'black', height: '80%', width: '80%' }} />
+                        <CloudOutlinedIcon sx={{ color: 'black', height: '90%', width: '80%' }} />
                         </Button>
                         </Grid>
 

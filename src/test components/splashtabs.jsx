@@ -8,6 +8,8 @@ import LightningHomeAccordion from './lightningAccordion';
 import WindHomeAccordion from './windAccordion';
 import StormHomeAccordion from './stormAccordion';
 import { BsLightning } from 'react-icons/bs'
+import { Card } from '@mui/material';
+import MobileHomeImgContainer from './location components/mobilehomeimgcontainer';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,8 +52,9 @@ export default function SplashTabs() {
   };
 
   return (
-    <Box sx={{ width: '105%' }}>
-      <Box sx={{ borderBottom: .5, borderColor: 'divider', display:'flex', justifyContent:'center' }}>
+    <Box sx={{ width: '105%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <MobileHomeImgContainer/>
+      <Box sx={{ borderBottom: .5, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Lightning" {...a11yProps(0)} />
           <Tab label="Wind" {...a11yProps(1)} />
@@ -59,13 +62,13 @@ export default function SplashTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <LightningHomeAccordion/>
+        <LightningHomeAccordion />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <WindHomeAccordion/>
+        <WindHomeAccordion />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <StormHomeAccordion/>
+        <StormHomeAccordion />
       </TabPanel>
     </Box>
   );
