@@ -49,27 +49,29 @@ const MobileSiteView = () => {
 
         <Box sx={{ width: '100%', height: '100vh' }}>
             <Grid container spacing={0} sx={{height: '100%', width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent:'center' }}>
-                <Grid item marginBottom={-10}  xs={12} md={12} lg={12} xl={12} >
+                <Grid item xs={12} md={12} lg={12} xl={12} sx={{marginBottom:'-50%'}} >
                     <Card >
                         <MobileNav/>
                     </Card>
                 </Grid>
-                <Grid item xs={10.8} md={12} lg={12} xl={12} sx={{display:'flex', position:'center', height:'20%', margin:'1.5%'}}>
-                    <Card elevation={10} sx={{position:'relative', display: 'flex', height: '165%', width:"auto", margin: '10px',padding:'1%', bgcolor: 'grey', justifyContent: 'center' }}>
+                {/* <Grid item xs={10.8} md={12} lg={12} xl={12} sx={{display:'flex', position:'center', height:'20%', margin:'1.5%'}}>
+                    <Card elevation={10} sx={{position:'relative', display: 'flex', height: '165%', width:"auto", margin: '10px',padding:'1%', bgcolor: 'grey', justifyContent: 'center' }}> */}
                     {/* <Card elevation={10} sx={{position:'relative', display:'flex', justifyContent:'space-evenly', height:'120%', width:'100%', bgcolor:'lightgrey', padding:'1%'}} > */}
-                    <Box >
+                    {/* <Box >
                     
                     <SiteImage images={imageArray.filter((item)=>item.location===site)} />
                     <SiteRing item={lightning.filter((item) => item.location === site)} site={site}/>
                     
-                    </Box>
-                    </Card>
-                </Grid>
-                <Grid item  xs={12} md={12} lg={12} xl={12} sx={{display:'flex', justifyContent:'center', margin:'1.5%'}}>
+                    </Box> */}
+                    {/* </Card>
+                </Grid> */}
+                <Box sx={{height:'52%'}}>
+                <Grid item  xs={12} md={12} lg={12} xl={12} sx={{display:'flex', justifyContent:'center', margin:'1.5%', marginTop:'-28%'}}>
                     <Card elevation={6}>
-                        <SiteTabs />
+                        <SiteTabs image={imageArray.filter((image)=>image.location===site)}/>
                     </Card>
                 </Grid>
+                </Box>
             </Grid>
         </Box>
 

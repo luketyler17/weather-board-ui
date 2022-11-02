@@ -1,14 +1,14 @@
 import React from 'react'
 
-const  AreaRing = ({item, site})=>{
+const  SiteRing = ({item, site})=>{
     console.log('SR', item)
     const styles=[{
         location:'Cape Central',
         style:{
             position:'relative',
             bottom:'98%',
-            left:'10%',
-            width:'81.5%',
+            left:'9.7%',
+            width:'81.7%',
             height:'97%',
             borderRadius:'50%',
             border:((item[0].type==='Clear')?'4px solid green':(item[0].category==='Watch')? '4px solid yellow':'4px solid red')
@@ -140,4 +140,4 @@ const styler=() =>{
     )
 }
 
-export default AreaRing
+export default SiteRing

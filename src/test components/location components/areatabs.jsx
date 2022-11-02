@@ -16,9 +16,11 @@ import PatrickStormSplash from '../InnerComponents/PatrickStormSplash';
 import PSFBWindSplash from '../InnerComponents/PSFBWindSplash';
 import OtherLightningSplash from '../InnerComponents/OtherLightningSplash';
 import { Card } from '@mui/material';
+import Cookies from 'universal-cookie';
+import AreaImgContainer from './areaimgcontainer';
 
 
-
+const cookies = new Cookies()
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -52,7 +54,7 @@ function a11yProps(index) {
   };
 }
 
-export default function AreaTabs() {
+export default function AreaTabs({image}) {
   const [value, setValue] = React.useState(0);
   const {area} = useContext(AppContext)
 
@@ -61,7 +63,8 @@ export default function AreaTabs() {
   };
 if(area[0] !=='CIDCO Park'){
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%'}}>
+      <AreaImgContainer/>
       <Box sx={{ borderBottom: 1, borderColor: 'divider', display:'flex', justifyContent:'space-evenly' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Lightning" {...a11yProps(0)} />
@@ -111,6 +114,7 @@ if(area[0] !=='CIDCO Park'){
 }else{
     return(
         <Box sx={{ width: '100%' }}>
+          <AreaImgContainer/>
         <Box sx={{ borderBottom: 1, borderColor: 'divider', display:'flex', justifyContent:'space-evenly' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Lightning" {...a11yProps(0)} />

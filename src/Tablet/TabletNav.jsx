@@ -6,16 +6,17 @@ import Toolbar from '@mui/material/Toolbar';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import {Grid} from '@mui/material';
+import { Grid } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress'
-
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-
+import Typography from '@mui/material/Typography';
+import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined';
+import MapModal from '../components/mapmodal'
 
 let wslogo = '../images/45th_Weather_Squadron_Patch.png';
 // import { AppContext } from '../App.js';
@@ -155,89 +156,99 @@ export default function TabletNav() {
     } else {
 
         return (
-            <Grid item xs={3} md={3} lg={3} xl={3}>
-                <Drawer
-                    variant="permanent"
-                    anchor="left"
+            <>
+                <Toolbar sx={{width: '100%', display: 'flex', height: '250px' }} xs={3} md={3} lg={3} >
 
-                >
-                    <Toolbar sx={{ bgcolor: '#01042F', height: '30%', display: 'flex', placeContent: 'center' }}>
-                        <img href='/' style={{ height: '150px', cursor: 'pointer', width: 'auto' }} src={wslogo} onClick={() => navigate('/')} />
-                    </Toolbar>
+                    <div style={{ display: 'flex', width: '100%', justifyContent: 'center', height:'15%' }}>
+                        <Typography variant="h6" noWrap component="div" >
+                            <h1 style={{ color: 'black', fontSize: '30px' }}><CloudOutlinedIcon sx={{ color: 'black', height: '40px', width: '40px', fontSize: '40%' }} />&nbsp;Weather Warning eBoard</h1>
+                        </Typography>
+                    </div>
 
-                    <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
-                        <List>
-                            <ListItem key='Locations' disablePadding />
-                            <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
-                            <ListItemButton key='CCSFS' sx={locationButtonSX} onClick={() => handleCCSFS()} >
-                                Cape Canaveral SFS
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'].map((text, index) => (
-                                <ListItem key={text} disablePadding >
-                                    <ListItemButton
-                                        sx={siteButtonSX}
-                                        
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}
-                                    >{text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Kennedy Space Center' sx={{ display: 'flex', textAlign: 'center' }} disablePadding />
-                            <ListItemButton key='KSC' sx={locationButtonSX} onClick={() => handleKSC()} >
-                                Kennedy Space Center
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['KSC Industrial', 'LC-39', 'SLF'].map((text, index) => (
-                                <ListItem key={text} disablePadding>
-                                    <ListItemButton sx={siteButtonSX} 
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['KSC Industrial', 'LC-39', 'SLF'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}>
-                                        {text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Other' disablePadding />
-                            <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
-                                Other
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['CIDCO Park', 'Astrotech'].map((text, index) => (
-                                <ListItem key={text} disablePadding >
-                                    <ListItemButton sx={siteButtonSX}
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['CIDCO Park', 'Astrotech'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}>
-                                        {text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
-                                Patrick SFB
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
+                </Toolbar>
+                <Grid item xs={3} md={3} lg={3} xl={3}>
+                    <Drawer
+                        variant="permanent"
+                        anchor="left"
+
+                    >
+                        <Toolbar sx={{ bgcolor: '#01042F', height: '30%', display: 'flex', placeContent: 'center' }}>
+                            <img href='/' style={{ height: '150px', cursor: 'pointer', width: 'auto' }} src={wslogo} onClick={() => navigate('/')} />
+                        </Toolbar>
+                        <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
+                            <List>
+                                <ListItem key='Locations' disablePadding />
+                                <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
+                                <Divider sx={{ bgcolor: 'white' }} />
+                                <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
+                                <ListItemButton key='CCSFS' sx={locationButtonSX} onClick={() => handleCCSFS()} >
+                                    Cape Canaveral SFS
+                                </ListItemButton>
+                                <Divider sx={{ bgcolor: 'white' }} />
+                                {['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'].map((text, index) => (
+                                    <ListItem key={text} disablePadding >
+                                        <ListItemButton
+                                            sx={siteButtonSX}
+
+                                            onClick={() => {
+                                                setSite(text)
+                                                setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
+                                                setCookieData({ area: area, site: site })
+                                                navigate('/site')
+                                            }}
+                                        >{text}
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                                <Divider sx={{ bgcolor: 'white' }} />
+                                <ListItem key='Kennedy Space Center' sx={{ display: 'flex', textAlign: 'center' }} disablePadding />
+                                <ListItemButton key='KSC' sx={locationButtonSX} onClick={() => handleKSC()} >
+                                    Kennedy Space Center
+                                </ListItemButton>
+                                <Divider sx={{ bgcolor: 'white' }} />
+                                {['KSC Industrial', 'LC-39', 'SLF'].map((text, index) => (
+                                    <ListItem key={text} disablePadding>
+                                        <ListItemButton sx={siteButtonSX}
+                                            onClick={() => {
+                                                setSite(text)
+                                                setArea(['KSC Industrial', 'LC-39', 'SLF'])
+                                                setCookieData({ area: area, site: site })
+                                                navigate('/site')
+                                            }}>
+                                            {text}
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                                <Divider sx={{ bgcolor: 'white' }} />
+                                <ListItem key='Other' disablePadding />
+                                <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
+                                    Other
+                                </ListItemButton>
+                                <Divider sx={{ bgcolor: 'white' }} />
+                                {['CIDCO Park', 'Astrotech'].map((text, index) => (
+                                    <ListItem key={text} disablePadding >
+                                        <ListItemButton sx={siteButtonSX}
+                                            onClick={() => {
+                                                setSite(text)
+                                                setArea(['CIDCO Park', 'Astrotech'])
+                                                setCookieData({ area: area, site: site })
+                                                navigate('/site')
+                                            }}>
+                                            {text}
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                                <Divider sx={{ bgcolor: 'white' }} />
+                                <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
+                                    Patrick SFB
+                                </ListItemButton>
+                                <Divider sx={{ bgcolor: 'white' }} />
+                            </List>
                         </List>
-                    </List>
 
-                </Drawer>
-            </Grid>
+                    </Drawer>
+                </Grid>
+            </>
         );
     }
 }
