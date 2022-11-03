@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
-
-import { Card, Grid, Paper } from '@mui/material';
-import { BsLightning } from 'react-icons/bs'
+import { Card} from '@mui/material';
 import MobileInnerLightning from '../Inner Conditions/mobileInnerLightning';
 import { AppContext } from '../../context/AppContext';
 
@@ -9,7 +7,7 @@ import { AppContext } from '../../context/AppContext';
 
 const KSCLightningSplash = () => {
     const KSCLightning = ["KSC Industrial", "LC-39", "SLF"]
-    const { showCountdowns, lightning } = useContext(AppContext)
+    const {lightning } = useContext(AppContext)
 
     return (
         <Card elevation={10} sx={{paddingTop:'2%'}}>

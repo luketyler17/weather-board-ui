@@ -2,7 +2,6 @@ import { HiOutlineXCircle } from 'react-icons/hi'
 import { BsExclamationCircle } from 'react-icons/bs'
 import { BsCheckCircle } from 'react-icons/bs'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
-import CountdownTimer from '../../components/splashComponents/CountdownTimer'
 import { AppContext } from '../../context/AppContext'
 import React, {useContext} from 'react'
 
@@ -108,26 +107,6 @@ const MobileInnerWindConditions = ({ item, category}) => {
                         {item.type == 'Clear' ? '00:00' : (item.type == 'Warning' ? (item.end.slice(11, 16)) : "INDEF")}
                     </div>
                 </div>
-                {/* <div style={{
-                    width: '22%'
-                }}>{showCountdowns===true &&
-                    <div style={{
-                        backgroundColor: (item.type == 'Clear' ? '#F8FFF8' : (item.type == 'Warning') ? 'white' : (item.type == 'Watch') ? '#FFFF97' : '#F2DCFA'),
-                        color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? 'black' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)'),
-                        width: '100%',
-                        marginTop: '3px',
-                        marginRight:'3px',
-                        paddingTop: '3px',
-                        paddingBottom: '3px',
-                        marginBottom: '3px',
-                        borderRadius: '5px',
-                        textAlign: 'center',
-                        border: '1px solid black',
-                        fontSize:'45%'
-                    }}>
-                        {item.type == 'Clear' ? '00:00' : (item.type == 'Warning' ? <CountdownTimer item={item}/> : "INDEF")}
-                    </div>}
-                </div> */}
             </div>
         </div >
     )

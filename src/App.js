@@ -80,6 +80,9 @@ function App() {
   const [toggle, setToggle] = useState(0)
   const [showCountdowns, setShowCountdowns] = useState(true)
   const [someState, setSomeState] = useState(0)
+  const [deutanopia, setDeutanopia] = useState(false)
+  const [protanopia, setProtanopia] = useState(false)
+  const [tritanopia, setTritanopia] = useState(false)
   const passContext = {
     area,
     setArea,
@@ -127,7 +130,13 @@ function App() {
     setShowCountdowns,
     refreshRate, 
     setRefreshRate,
-    url
+    url,
+    protanopia,
+    setProtanopia,
+    deutanopia,
+    setDeutanopia,
+    tritanopia,
+    setTritanopia
   }
 
   const isMobileMatch = useMediaQuery("(max-width:600px)");

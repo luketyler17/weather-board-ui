@@ -2,21 +2,12 @@ import React, {useContext} from 'react'
 import MobileNav from '../MobileNav'
 import {
     Grid, Card,
-    CardActionArea,
-    CardMedia,
-    CardContent,
-    Typography,
 } from '@mui/material'
 import { Box } from '@mui/material'
 
 import Cookies from 'universal-cookie'
 import { AppContext } from '../../context/AppContext'
 import SiteTabs from './sitetabs'
-import SiteImage from '../../components/siteimage'
-import SiteRing from '../../components/SiteRing'
-
-
-
 
 const cookies = new Cookies()
 const MobileSiteView = () => {
@@ -54,17 +45,6 @@ const MobileSiteView = () => {
                         <MobileNav/>
                     </Card>
                 </Grid>
-                {/* <Grid item xs={10.8} md={12} lg={12} xl={12} sx={{display:'flex', position:'center', height:'20%', margin:'1.5%'}}>
-                    <Card elevation={10} sx={{position:'relative', display: 'flex', height: '165%', width:"auto", margin: '10px',padding:'1%', bgcolor: 'grey', justifyContent: 'center' }}> */}
-                    {/* <Card elevation={10} sx={{position:'relative', display:'flex', justifyContent:'space-evenly', height:'120%', width:'100%', bgcolor:'lightgrey', padding:'1%'}} > */}
-                    {/* <Box >
-                    
-                    <SiteImage images={imageArray.filter((item)=>item.location===site)} />
-                    <SiteRing item={lightning.filter((item) => item.location === site)} site={site}/>
-                    
-                    </Box> */}
-                    {/* </Card>
-                </Grid> */}
                 <Box sx={{height:'52%'}}>
                 <Grid item  xs={12} md={12} lg={12} xl={12} sx={{display:'flex', justifyContent:'center', margin:'1.5%', marginTop:'-28%'}}>
                     <Card elevation={6}>

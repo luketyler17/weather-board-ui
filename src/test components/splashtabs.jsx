@@ -7,8 +7,6 @@ import Box from '@mui/material/Box';
 import LightningHomeAccordion from './lightningAccordion';
 import WindHomeAccordion from './windAccordion';
 import StormHomeAccordion from './stormAccordion';
-import { BsLightning } from 'react-icons/bs'
-import { Card } from '@mui/material';
 import MobileHomeImgContainer from './location components/mobilehomeimgcontainer';
 
 function TabPanel(props) {
