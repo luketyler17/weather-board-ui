@@ -1,8 +1,5 @@
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import React, { useContext } from 'react';
-import MailIcon from '@mui/icons-material/Mail';
-import { Card, Grid, Paper } from '@mui/material';
-import { RiWindyLine } from 'react-icons/ri'
+import { Card} from '@mui/material';
 import MobileInnerWind from '../Inner Conditions/mobileInnerWind';
 import { AppContext } from '../../context/AppContext';
 
@@ -10,7 +7,7 @@ import { AppContext } from '../../context/AppContext';
 const PSFBWindSplash = () => {
     const PSFBcategories = ["25 kt observed", "Strong Winds", "Damaging Winds"]
 
-    const { showCountdowns, wind } = useContext(AppContext)
+    const {wind } = useContext(AppContext)
 
     return (
 

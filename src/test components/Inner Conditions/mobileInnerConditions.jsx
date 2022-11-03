@@ -1,14 +1,12 @@
 import { HiOutlineXCircle } from 'react-icons/hi'
 import { BsExclamationCircle } from 'react-icons/bs'
 import { BsCheckCircle } from 'react-icons/bs'
-import { GiCancel } from 'react-icons/gi'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
-import CountdownTimer from '../../components/splashComponents/CountdownTimer'
 import { AppContext } from '../../context/AppContext'
 import React, { useContext } from 'react'
 const MobileInnerConditions = ({ item, location }) => {
 
-    const { showCountdowns } = useContext(AppContext)
+    const { protanopia, deutanopia, tritanopia} = useContext(AppContext)
     let border = (item.type == 'Clear' ? '#035600' : (item.category == 'Warning') ? '#C90000' : (item.category == 'Watch') ? '#D68E24' : '#B800F9')
     return (
         <>
@@ -39,7 +37,12 @@ const MobileInnerConditions = ({ item, location }) => {
                 margin: '0 auto',
                 marginRight: '5px',
                 marginBottom: '5px',
-                backgroundColor: (item.type == 'Clear' ? '#F8FFF8' : (item.category == 'Warning') ? '#C90000' : (item.category == 'Watch') ? '#FFFF97' : '#F2DCFA'),
+                backgroundColor: (
+                    (protanopia === true) ? (item.type == 'Clear' ? '#efecf4' : (item.category == 'Warning') ? '#968726' : (item.category == 'Watch') ? '#ffea86' : '#b9c5fa'):
+                    (deutanopia === true) ? (item.type == 'Clear' ? '#ffeafd' : (item.category == 'Warning') ? '#a98200' : (item.category == 'Watch') ? '#ffd79d' : '#8fbefc'):
+                    (tritanopia === true) ? (item.type == 'Clear' ? '#d6f4f8' : (item.category == 'Warning') ? '#fe1c00' : (item.category == 'Watch') ? '#fdcbe9' : '#bb8791'):
+                    (item.type == 'Clear' ? '#F8FFF8' : (item.category == 'Warning') ? '#C90000' : (item.category == 'Watch') ? '#FFFF97' : '#F2DCFA')
+                ),
                 border: `2px solid ${border}`,
                 color:(item.type == 'Clear' ? '#035600' : (item.category == 'Warning') ? '#C90000' : (item.category == 'Watch') ? '#D68E24' : '#B800F9'),
                 fontFamily:'Kanit',
@@ -113,27 +116,6 @@ const MobileInnerConditions = ({ item, location }) => {
                         {item.type == 'Clear' ? '00:00' : (item.category == 'Warning' ? "INDEF" : item.category == 'Watch' ? item.end.slice(11, 16) : "00:00")}
                     </div>
                 </div>
-                {/* <div style={{
-                    width: '22%'
-                }}>{showCountdowns === true &&
-                    <div style={{
-                        backgroundColor: (item.type == 'Clear' ? '#F8FFF8' : (item.category == 'Warning') ? 'white' : (item.category == 'Watch') ? '#FFFF97' : '#F2DCFA'),
-                        color: (item.type == 'Clear' ? '#03AD00' : (item.category == 'Warning') ? 'black' : (item.category == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)'),
-                        width: '95%',
-                        height:'auto',
-                        marginTop: '3px',
-                        paddingTop: '3px',
-                        paddingBottom: '3px',
-                        marginBottom: '3px',
-                        borderRadius: '5px',
-                        textAlign: 'center',
-                        border: '1px solid black',
-                        fontSize:'45%'
-                    }}>
-
-                        {item.type == 'Clear' ? '00:00' : (item.category == 'Warning' ? "INDEF" : item.category == 'Watch' ? <CountdownTimer item={item} /> : "00:00")}
-                    </div>}
-                </div> */}
             </div>
         </div >
         </>

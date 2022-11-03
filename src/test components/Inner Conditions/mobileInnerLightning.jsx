@@ -1,8 +1,4 @@
-import { HiOutlineXCircle } from 'react-icons/hi'
-import { BsExclamationCircle } from 'react-icons/bs'
 import { BsCheckCircle } from 'react-icons/bs'
-import { AiOutlineQuestionCircle } from 'react-icons/ai'
-import { useState, useContext } from "react"
 import MobileInnerConditions from './mobileInnerConditions'
 
 const MobileInnerLightning = ({ states, location }) => {

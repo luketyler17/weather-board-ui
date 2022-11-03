@@ -3,7 +3,6 @@ import { HiOutlineXCircle } from 'react-icons/hi'
 import { BsExclamationCircle } from 'react-icons/bs'
 import { BsCheckCircle } from 'react-icons/bs'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
-import CountdownTimer from '../../components/splashComponents/CountdownTimer'
 import { AppContext } from '../../context/AppContext'
 
 
@@ -122,24 +121,6 @@ color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? '#C90000' 
                         {item.end.slice(11, 16)}
                     </div>
                 </div>
-                {/* <div style={{
-                    width: 'auto'
-                }}>{showCountdowns===true &&
-                    <div style={{
-                        backgroundColor: (item.type == 'Clear' ? '#F8FFF8' : (item.type == 'Warning') ? 'white' : (item.type == 'Watch') ? '#FFFF97' : '#F2DCFA'),
-                        color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? 'black' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)'),
-                        width: '100%',
-                        marginTop: '3px',
-                        padding:'3px',
-                        marginBottom: '3px',
-                        borderRadius: '5px',
-                        textAlign: 'center',
-                        border: '1px solid black',
-                        fontSize: '60%',
-                    }}>
-                        <CountdownTimer item={item}/>
-                    </div>}
-                </div> */}
             </div>
         </div >
     )

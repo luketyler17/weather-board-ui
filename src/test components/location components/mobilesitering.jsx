@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MobileSiteRing = ({item, site}) => {
+const MobileSiteRing = ({item}) => {
     const styles = [
         {
             location: 'LC-39',

@@ -2,10 +2,6 @@ import React from 'react'
 import MobileNav from './MobileNav'
 import {
     Grid, Card,
-    CardActionArea,
-    CardMedia,
-    CardContent,
-    Typography,
 } from '@mui/material'
 import { Box } from '@mui/material'
 import SplashTabs from './splashtabs'

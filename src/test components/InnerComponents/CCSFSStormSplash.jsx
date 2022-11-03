@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Card, Grid, Paper } from '@mui/material';
+import { Card} from '@mui/material';
 import MobileInnerStorm from '../Inner Conditions/mobileInnerStorm';
 import { AppContext } from '../../context/AppContext';
 
@@ -8,7 +8,7 @@ import { AppContext } from '../../context/AppContext';
 
 const CCSFSStormSplash = () => {
     const CCSFSSevere = ['CCSFS']
-    const { showCountdowns, storm } = useContext(AppContext)
+    const { storm } = useContext(AppContext)
 
     return (
 

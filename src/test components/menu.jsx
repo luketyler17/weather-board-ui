@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext} from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -20,11 +20,8 @@ export default function NavBarMenu() {
     cookies.get('area')
     let userInfo = cookies.get('authentication')
 
-    const { area, setArea, site, setSite, imagePath, setImagePath, cookieData, setCookieData, showCountdowns, setShowCountdowns } = useContext(AppContext)
+    const { area, setArea, site, setSite, setImagePath, setCookieData} = useContext(AppContext)
     const navigate = useNavigate();
-
-    const [checked, setChecked] = useState(true)
-    const [loading, setLoading] = useState(false)
     cookies.get('site')
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -114,7 +111,7 @@ const siteButtonSX = {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <HiMenu style={{height:'25px', width:'25px'}}/>
+        <HiMenu style={{ color:'#01042F',height:'25px', width:'25px'}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -132,9 +129,6 @@ const siteButtonSX = {
                         <ListItemText sx={{textAlign:'center'}} primary={<h4 style={{ color: 'white' }}>Home</h4>} />
                             </ListItemButton>
                         <Divider sx={{ bgcolor: 'white' }} />
-                            {/* <ListItem key='Locations' disablePadding />
-                            <ListItemText sx={{textAlign:'center'}} primary={<h4 style={{ color: 'white' }}>Locations</h4>} />
-                            <Divider sx={{ bgcolor: 'white' }} /> */}
                             <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
                             <ListItemButton key='CCSFS'  sx={locationButtonSX} onClick={() => handleCCSFS()} >
                                 Cape Canaveral SFS
