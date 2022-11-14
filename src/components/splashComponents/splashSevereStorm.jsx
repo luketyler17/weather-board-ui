@@ -27,6 +27,7 @@ const SplashSevereStorm = ({ states }) => {
     const PSFBSevere = ['PSFB']
     const { showCountdowns } = useContext(AppContext)
 
+
     return (
         <Card elevation={5} sx={{
             height: '50%',

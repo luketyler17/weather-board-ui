@@ -29,10 +29,10 @@ const AreaRing =({location, item}) =>{
         location:'CX-20/16/LZ',
         style:{
             position:'relative',
-            bottom:'84.9%',
+            bottom:'84.6%',
             left:'55.4%',
             width:'18.6%',
-            height:'13.1%',
+            height:'13%',
             borderRadius:'50%',
             border:((item[0].type==='Clear')?'4px solid green':(item[0].category==='Watch')? '4px solid yellow':'4px solid red')
         }
@@ -41,7 +41,7 @@ const AreaRing =({location, item}) =>{
         location:'CX-36/46',
         style:{
             position:'relative',
-            bottom:'83.9%',
+            bottom:'83.6%',
             left:'67.2%',
             width:'13%',
             height:'8.8%',
@@ -53,10 +53,10 @@ const AreaRing =({location, item}) =>{
         location:'CX-37/ASOC/PPF',
         style:{
             position:'relative',
-            bottom:'120.9%',
+            bottom:'120.4%',
             left:'38.9%',
             width:'20%',
-            height:'13.7%',
+            height:'13.6%',
             borderRadius:'50%',
             border:((item[0].type==='Clear')?'4px solid green':(item[0].category==='Watch')? '4px solid yellow':'4px solid red')
         }
@@ -65,10 +65,10 @@ const AreaRing =({location, item}) =>{
         location:'CX-40/41/SPOC',
         style:{
             position:'relative',
-            bottom:'147%',
+            bottom:'146.4%',
             left:'37.7%',
             width:'19.3%',
-            height:'13%',
+            height:'12.7%',
             borderRadius:'50%',
             border:((item[0].type==='Clear')?'4px solid green':(item[0].category==='Watch')? '4px solid yellow':'4px solid red')
         }

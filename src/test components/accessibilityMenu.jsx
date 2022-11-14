@@ -6,7 +6,7 @@ import { AppContext } from '../context/AppContext';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 export default function AccessibilityMenu() {
-  const {setDeutanopia, setTritanopia, setProtanopia} = useContext(AppContext)
+  const {mode, setMode, defaultTheme, protTheme, duetTheme, tritTheme} = useContext(AppContext)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -16,27 +16,19 @@ export default function AccessibilityMenu() {
     setAnchorEl(null)
   }
   const handleDeutanopia = () => {
-    setDeutanopia(true)
-    setProtanopia(false)
-    setTritanopia(false)
+    setMode(duetTheme)
     setAnchorEl(null);
   };
   const handleProtanopia = () => {
-    setProtanopia(true)
-    setDeutanopia(false)
-    setTritanopia(false)
+    setMode(protTheme)
     setAnchorEl(null);
   };
   const handleTritanopia = () => {
-    setTritanopia(true)
-    setProtanopia(false)
-    setDeutanopia(false)
+    setMode(tritTheme)
     setAnchorEl(null);
   };
   const handleDefaults = () =>{
-    setTritanopia(false)
-    setProtanopia(false)
-    setDeutanopia(false)
+    setMode(defaultTheme)
     setAnchorEl(null);
   }
   return (

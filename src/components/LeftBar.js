@@ -22,7 +22,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import AccessibilityMenu from '../test components/accessibilityMenu'
+import {Paper} from '@mui/material'
+import {useTheme} from '@mui/material'
 let wslogo = '../images/45th_Weather_Squadron_Patch.png';
 
 
@@ -32,7 +34,7 @@ const drawerWidth = 240;
 const cookies = new Cookies()
 
 export default function LeftBar() {
-
+    const theme= useTheme()
 
     const handleChange = (event) => {
         setRefreshRate(event.target.value);
@@ -182,16 +184,16 @@ export default function LeftBar() {
 
         return (
             <>
-                <CssBaseline />
+                
                 <AppBar
                     position="fixed"
-
+                    
                     sx={{ display: 'flex', flexDirection: 'row', width: `90%`, justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white' }}
                 >
                     <Toolbar sx={{paddingTop:'5px', width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }} xs={6} md={8} lg={10} >
 
-                        <div style={{ display: 'flex', width: '40%', placeContent: 'left' }}>
-                            <Typography variant="h6" noWrap component="div" >
+                        <div color='default' style={{ display: 'flex', width: '40%', placeContent: 'left'}}>
+                            <Typography variant="h6" noWrap component="Paper" >
                                 <h1 style={{ color: 'black', fontSize: '30px' }}><CloudOutlinedIcon sx={{ color: 'black', height: '40px', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
                             </Typography>
                         </div>
@@ -200,8 +202,8 @@ export default function LeftBar() {
                         </div>
 
                         <div style={{ width: '50%', display: 'flex', flexDirection: 'row', width: '30%', justifyContent: 'space-evenly' }}>
-                            <FormControl fullWidth sx={{width: '28%',}}>
-                                <InputLabel id="Refresh-Rate-label">Refresh Rate</InputLabel>
+                            <FormControl fullWidth sx={{width: '28%'}}>
+                                <InputLabel sx={{color:'#01042F'}} id="Refresh-Rate-label">Refresh Rate</InputLabel>
                                 <Select
                                     labelId="Refresh-Rate-label"
                                     id="Refresh-Rate"
@@ -221,6 +223,12 @@ export default function LeftBar() {
                                 <Button href='/admin' sx={buttonSX}>Admin</Button>
                             }
                             {(cookies.get('authentication') === undefined) ? <Button onClick={handleSignIn} sx={buttonSX}>Sign In</Button> : <Button href='/' sx={buttonSX} onClick={handleSignOut} >Sign Out</Button>}
+                            <div style={{width:'5%', height:'100%', marginTop: '5px'}}>
+
+                            <AccessibilityMenu />
+                            
+
+                            </div>
 
                         </div>
                     </Toolbar>
