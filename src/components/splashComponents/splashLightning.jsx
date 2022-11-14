@@ -27,6 +27,7 @@ const SplashLightning = ({ states }) => {
     const PSFBLightning = ["Patrick SFB"]
     const {showCountdowns} = useContext(AppContext)
 
+
     return (
         <Card elevation={5} xs={6} md={8} sx={{
             height: '50%',

@@ -4,11 +4,14 @@ import { BsCheckCircle } from 'react-icons/bs'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import CountdownTimer from './CountdownTimer'
 import { AppContext } from '../../context/AppContext'
-import React, {useContext} from 'react'
-const InnerStormConditions = ({item}) => {
+import React, { useContext } from 'react'
+const InnerStormConditions = ({ item }) => {
 
-    const {showCountdowns} = useContext(AppContext)
-    let border = (item.type == 'Clear' ? '#035600' : (item.type == 'Warning') ? '#C90000' : (item.type == 'Watch') ? '#D68E24' : '#B800F9')
+    const { showCountdowns } = useContext(AppContext)
+    const { mode } = useContext(AppContext)
+    let border = (
+        (item.type == 'Clear' ? mode.clear.border : (item.type == 'Warning') ? mode.warning.border : (item.type == 'Watch') ? mode.watch.border : mode.advisory.border)
+    )
     return (
         <div style={{
             display: 'flex',
@@ -20,22 +23,25 @@ const InnerStormConditions = ({item}) => {
                 width: '50%',
                 margin: '0',
                 verticalAlign: 'middle',
-                color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? '#C90000' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)'),
+                color: (item.type == 'Clear' ? mode.clear.locationColor : (item.type == 'Warning') ? mode.warning.locationColor : (item.type == 'Watch') ? mode.watch.locationColor : mode.advisory.locationColor),
+
                 fontWeight: 'bold',
                 marginLeft: '10px',
             }}>
                 Expected Hail Size: {((item.type=='Clear') ? 'Clear': (item.type == 'Watch') ? 'Watch': (item.type =='Warning') ? `${item.hail_diameter} in`: 'Clear')}
                 <div style={{
-                    color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? '#C90000' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)')
-                }}>Expected Winds: {((item.type == 'Clear') ? 'Clear': (item.type == 'Watch')? 'Watch' : (item.type =='Warning') ? `${item.wind_speed} KT` :'Clear')}</div>
+                    color: (item.type == 'Clear' ? mode.clear.locationColor : (item.type == 'Warning') ? mode.warning.locationColor : (item.type == 'Watch') ? mode.watch.locationColor : mode.advisory.locationColor)
+                }}>Expected Winds: {((item.type == 'Clear') ? 'Clear': (item.type == 'Watch')? 'Watch' : (item.type =='Warning') ? `From: ${item.wind_direction}° at ${item.wind_speed} KT` :'Clear')}</div>
             </div>
+
 
             <div style={{
                 width: '70%',
                 margin: '0 auto',
                 marginRight: '5px',
                 marginBottom: '5px',
-                backgroundColor: (item.type == 'Clear' ? '#F8FFF8' : (item.type == 'Warning') ? '#C90000' : (item.type == 'Watch') ? '#FFFF97' : '#F2DCFA'),
+                backgroundColor: ((item.type === 'Clear') ? mode.clear.innerDiv : (item.type === 'Warning') ? mode.warning.innerDiv : (item.type === 'Watch') ? mode.watch.innerDiv : mode.advisory.innerDiv),
+
                 border: `2px solid ${border}`,
                 borderRadius: '25px',
                 textAlign: 'left',
@@ -53,16 +59,16 @@ const InnerStormConditions = ({item}) => {
                     paddingTop: '3px',
                     paddingBottom: '3px',
                     marginBottom: '3px',
-                }}>
-                        {item.type === 'Clear' && <BsCheckCircle style={{ color: '#03AD00', height: '100%', width: 'auto' }} />}
-                        {item.type === 'Watch' && <BsExclamationCircle style={{ color: '#D68E24', height: '100%', width: 'auto'  }} />}
-                        {item.type === 'Warning' && <HiOutlineXCircle style={{ color: 'white' , height: '100%', width: 'auto' }} />}
-                        {item.type === 'Advisory' && <AiOutlineQuestionCircle style={{ color: 'rgba(223, 0, 254)', height: '100%', width: 'auto'  }} />}
+                }}> {item.type === 'Clear' && <BsCheckCircle style={{ color: mode.clear.iconColor, height: '100%', width: 'auto' }} />}
+                        {item.type === 'Watch' && <BsExclamationCircle style={{ color: mode.watch.iconColor, height: '100%', width: 'auto' }} />}
+                        {item.type === 'Warning' && <HiOutlineXCircle style={{ color: mode.warning.iconColor, height: '100%', width: 'auto' }} />}
+                        {item.type === 'Advisory' && <AiOutlineQuestionCircle style={{ color: mode.advisory.iconColor, height: '100%', width: 'auto' }} />}
                     </div>
                 </div>
                 <div style={{
                     width: '20%',
-                    color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? 'white' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)')
+                    color: (item.type == 'Clear' ? mode.clear.textColor : (item.type == 'Warning') ? mode.warning.textColor : (item.type == 'Watch') ? mode.watch.textColor : mode.advisory.textColor)
+
                 }}>
                     <div style={{
                         width: '95%',
@@ -70,6 +76,7 @@ const InnerStormConditions = ({item}) => {
                         paddingTop: '3px',
                         paddingBottom: '3px',
                         marginBottom: '3px',
+                        color: (item.type == 'Clear' ? mode.clear.textColor : (item.type == 'Warning') ? mode.warning.textColor : (item.type == 'Watch') ? mode.watch.textColor : mode.advisory.textColor)
                     }}>
                         {item.type}
                     </div>
@@ -84,7 +91,8 @@ const InnerStormConditions = ({item}) => {
                         paddingTop: '3px',
                         paddingBottom: '3px',
                         marginBottom: '3px',
-                        color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? 'white' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)')
+                        color: (item.type == 'Clear' ? mode.clear.textColor : (item.type == 'Warning') ? mode.warning.textColor : (item.type == 'Watch') ? mode.watch.textColor : mode.advisory.textColor)
+
                     }}>
                         {item.start.slice(11, 16)}
                     </div>
@@ -98,17 +106,18 @@ const InnerStormConditions = ({item}) => {
                         paddingTop: '3px',
                         paddingBottom: '3px',
                         marginBottom: '3px',
-                        color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? 'white' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)')
+                        color: (item.type == 'Clear' ? mode.clear.textColor : (item.type == 'Warning') ? mode.warning.textColor : (item.type == 'Watch') ? mode.watch.textColor : mode.advisory.textColor)
+
                     }}>
                         {item.end.slice(11, 16)}
                     </div>
                 </div>
                 <div style={{
                     width: '22%'
-                }}>{showCountdowns===true &&
+                }}>{showCountdowns === true &&
                     <div style={{
-                        backgroundColor: (item.type == 'Clear' ? '#F8FFF8' : (item.type == 'Warning') ? 'white' : (item.type == 'Watch') ? '#FFFF97' : '#F2DCFA'),
-                        color: (item.type == 'Clear' ? '#03AD00' : (item.type == 'Warning') ? 'black' : (item.type == 'Watch') ? '#D68E24' : 'rgba(223, 0, 254)'),
+                        backgroundColor: ((item.type === 'Clear') ? mode.clear.innerDiv : (item.type === 'Warning') ? 'white' : (item.type === 'Watch') ? mode.watch.innerDiv : mode.advisory.innerDiv),
+                        color: (item.type == 'Clear' ? mode.clear.textColor : (item.type == 'Warning') ? 'black' : (item.type == 'Watch') ? mode.watch.textColor : mode.advisory.textColor),
                         width: '100%',
                         marginTop: '3px',
                         paddingTop: '3px',
@@ -118,7 +127,7 @@ const InnerStormConditions = ({item}) => {
                         textAlign: 'center',
                         border: '1px solid black',
                     }}>
-                        <CountdownTimer item={item}/>
+                        <CountdownTimer item={item} />
                     </div>}
                 </div>
             </div>

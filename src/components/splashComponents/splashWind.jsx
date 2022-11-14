@@ -25,6 +25,7 @@ const SplashWind = ({ states }) => {
     const PSFBcategories = ["25 kt observed", "Strong Winds", "Damaging Winds"]
     const { showCountdowns } = useContext(AppContext)
 
+
     return (
         <Card elevation={5} sx={{
             height: '50%',

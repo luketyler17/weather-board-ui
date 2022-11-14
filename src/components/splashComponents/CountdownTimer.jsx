@@ -33,43 +33,6 @@ const CountdownTimer = ({ item }) => {
                 {hours < 10 ? (`0${hours}`) : hours}:{minutes < 10 ? (`0${minutes}`) : minutes}:{seconds < 10 ? (`0${seconds}`) : seconds}
             </div>
         );
-        // } else if (new Date(item.end)< new Date() ) {
-    //     // if prop has hail size === Severe Storm
-    //     if (item.hasOwnProperty(item.hail_diameter)) {
-    //         fetch(`${url}/storm`, {
-    //             method: 'PATCH',
-    //             mode: 'no-cors',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({
-    //                 is_active: true,
-    //                 type: "Clear",
-    //                 location: item.location,
-    //                 wind_speed: 0,
-    //                 wind_direction: 0,
-    //                 hail_diameter: 0,
-    //                 start: '1900-01-01 00:00:01',
-    //                 end: '1900-01-01 00:00:01',
-    //                 user: user.user_name
-    //             })
-    //         })
-    //     } else if (!item.hasOwnProperty(item.wind_speed) && !item.hasOwnProperty(item.hail_diameter)) {
-    //         fetch(`${url}/lightning`, {
-    //             method: 'PATCH',
-    //             mode: 'no-cors',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({
-    //                 is_active: true,
-    //                 type: 'Clear',
-    //                 location: item.location,
-    //                 category: 'N/A',
-    //                 start: '1900-01-01 00:00:01',
-    //                 end: '1900-01-01 00:00:01',
-    //                 user_name: user.user_name,
-    //             })
-
-    //         })}
-    //         // if prop has no hail size but has wind speed === wind
-    //         // else it is lightning
         } else {
             return (
                 <div className="timer">
