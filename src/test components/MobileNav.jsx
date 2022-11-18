@@ -35,17 +35,17 @@ export default function MobileNav() {
             <>
                 <CssBaseline />
 
-                <Toolbar sx={{ width: '100%', display: 'inline-flex', flexDirection: 'row', alignItems:'stretch', justifyContent: 'space-evenly'}}>
-                    <Grid container spacing={-1}>
-                        <Grid item xs={1} md={6} lg={6} xl={6} sx={{marginLeft:'-3%',display:'fixed', position:'left', paddingTop:'1%'}}>
+                <Toolbar sx={{ width: '100%', display: 'inline-flex', flexDirection: 'row', alignItems:'stretch', justifyContent: 'space-evenly', bgcolor:'primary.main'}}>
+                    <Grid container spacing={-1} sx={{bgcolor:'primary.main'}}>
+                        <Grid item xs={1} md={6} lg={6} xl={6} sx={{marginLeft:'-3%',display:'fixed', position:'left', paddingTop:'1%', bgcolor:'primary.main'}}>
                         <NavBarMenu />
                         </Grid>
 
                         
-                        <Grid item xs={9} md={9} lg={9} xl={9} sx={{ marginLeft:'3%',display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                        <Grid item xs={9} md={9} lg={9} xl={9} sx={{ bgcolor:'primary.main',marginLeft:'3%',display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
                             
                             <Typography  variant="h6" noWrap component="div" >
-                                <h1 style={{ color: '#01042F', fontSize: '90%', paddingTop:'6%' }}>&nbsp;Weather Warning eBoard&nbsp;</h1>
+                                <h1 style={{fontSize: '90%', paddingTop:'6%' }}>&nbsp;Weather Warning eBoard&nbsp;</h1>
                             </Typography>
                             
 
@@ -54,7 +54,7 @@ export default function MobileNav() {
                         </Grid>
                         <Grid item  xs={1} md={1} lg={1} xl={1} sx={{ display: 'flex', justifyContent:'center', paddingBottom:'1%', marginRight:'-2%'}}>
                         <Button onClick={()=> navigate('/')}>
-                        <HomeOutlinedIcon sx={{ color: '#01042F', height: '80%', width: '70%', margin:'0px' }} />
+                        <HomeOutlinedIcon sx={{ color:'text.primary', height: '80%', width: '70%', margin:'0px' }} />
                         </Button>
                         </Grid>
                         <Grid item xs={1} md={1} lg={1} xl={1} sx={{paddingTop:'1.5%'}}>

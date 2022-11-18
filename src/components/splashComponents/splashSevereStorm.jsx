@@ -1,22 +1,9 @@
 import React, { useContext } from 'react'
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { Card, Grid, Paper } from '@mui/material';
 import { RiThunderstormsLine } from 'react-icons/ri'
 import SevereStormBar from './severeStormBar';
 import { AppContext } from '../../context/AppContext'
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,16 +12,40 @@ const SplashSevereStorm = ({ states }) => {
     const CCSFSSevere = ['CCSFS']
     const KSCSevere = ['KSC']
     const PSFBSevere = ['PSFB']
-    const { showCountdowns } = useContext(AppContext)
+    const { showCountdowns, area, site, setImagePath, setCookieData, setArea } = useContext(AppContext)
+    const navigate = useNavigate()
+
+    const handleCCSFS = () => {
+        setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
+        setImagePath('./images/CCSFS.jpg')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
+
+    const handleKSC = () => {
+        setArea(['KSC Industrial', 'LC-39', 'SLF'])
+        setImagePath('./images/KSCArea.jpg')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
+
+    const handlePatrick = () => {
+        setArea(['Patrick SFB'])
+        setImagePath('./images/psfb.PNG')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
 
 
     return (
         <Card elevation={5} sx={{
             height: '50%',
             margin: '15px',
+            bgcolor:'primary.main'
+
 
         }} style={{
-            backgroundColor: 'white'
+            
         }}>
             <h1 style={{
                 textAlign: "left",
@@ -52,16 +63,18 @@ const SplashSevereStorm = ({ states }) => {
                     }}>
                         <Card elevation={10}
                             style={{
-                                backgroundColor: 'white',
+                               
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%'
 
                             }}>
 
-                            <h2 style={{
+                            <h2 onClick={handleCCSFS} style={{
                                 textAlign: "left",
                                 marginLeft: '5px',
+                                cursor:'pointer',
+                                textDecoration:'underline'
 
                             }}>Cape Canaveral Space Force Station</h2>
                             <div style={{
@@ -123,7 +136,7 @@ const SplashSevereStorm = ({ states }) => {
                                             width: '95%',
                                             fontSize: '75%',
                                         }}>
-                                            Countdown
+                                            {showCountdowns===true? "Countdown" : ''}
                                         </div>
                                     </div>
                                 </div>
@@ -134,16 +147,18 @@ const SplashSevereStorm = ({ states }) => {
                         </Card>
                         <Card elevation={10}
                             style={{
-                                backgroundColor: 'white',
+                                
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%'
 
                             }}>
 
-                            <h2 style={{
+                            <h2 onClick={handleKSC} style={{
                                 textAlign: "left",
                                 marginLeft: '5px',
+                                cursor:'pointer',
+                                textDecoration:'underline'
                             }}>Kennedy Space Center</h2>
                             <div style={{
                                 display: 'flex',
@@ -196,16 +211,18 @@ const SplashSevereStorm = ({ states }) => {
                         </Card>
                         <Card elevation={10}
                             style={{
-                                backgroundColor: 'white',
+                                
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%'
 
                             }}>
 
-                            <h2 style={{
+                            <h2 onClick={handlePatrick} style={{
                                 textAlign: "left",
                                 marginLeft: '5px',
+                                cursor:'pointer',
+                                textDecoration:'underline'
                             }}>Patrick Space Force Base</h2>
                             <div style={{
                                 display: 'flex',

@@ -50,7 +50,9 @@ export default function LeftBar() {
     const [loading, setLoading] = useState(false)
     cookies.get('site')
 
-
+const handleHome = () => {
+    navigate('/')
+}
 
     const handleCCSFS = () => {
         setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
@@ -188,13 +190,13 @@ export default function LeftBar() {
                 <AppBar
                     position="fixed"
                     
-                    sx={{ display: 'flex', flexDirection: 'row', width: `90%`, justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white' }}
+                    sx={{ display: 'flex', flexDirection: 'row', width: `90%`, justifyContent: 'space-between', alignItems: 'center', bgcolor:'primary.main' }}
                 >
                     <Toolbar sx={{paddingTop:'5px', width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }} xs={6} md={8} lg={10} >
 
-                        <div color='default' style={{ display: 'flex', width: '40%', placeContent: 'left'}}>
-                            <Typography variant="h6" noWrap component="Paper" >
-                                <h1 style={{ color: 'black', fontSize: '30px' }}><CloudOutlinedIcon sx={{ color: 'black', height: '40px', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
+                        <div onClick={handleHome} style={{cursor:'pointer', display: 'flex', width: '40%', placeContent: 'left'}}>
+                            <Typography color='text.primary' variant="h6" noWrap component="Paper" >
+                                <h1 style={{ color:'text.primary', fontSize: '30px' }}><CloudOutlinedIcon sx={{ height: '40px', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
                             </Typography>
                         </div>
                         <div style={{ width: '40%', paddingLeft: '6%' }}>
@@ -217,7 +219,7 @@ export default function LeftBar() {
                                 </Select>
                             </FormControl>
                             <Button sx={buttonSX} onClick={handleCountdowns}>
-                                Show Countdowns
+                                {showCountdowns ? 'Hide Countdowns' : 'Show Countdowns'}
                             </Button>
                             {cookies.get('authentication') !== undefined &&
                                 <Button href='/admin' sx={buttonSX}>Admin</Button>
@@ -300,6 +302,10 @@ export default function LeftBar() {
                                 </ListItem>
                             ))}
                             <Divider sx={{ bgcolor: 'white' }} />
+                            <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
+                                Patrick SFB
+                            </ListItemButton>
+                            <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Other' disablePadding />
                             <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
                                 Other
@@ -318,11 +324,7 @@ export default function LeftBar() {
                                     </ListItemButton>
                                 </ListItem>
                             ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
-                                Patrick SFB
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
+                            {/* <Divider sx={{ bgcolor: 'white' }} /> */}
                         </List>
                     </List>
 

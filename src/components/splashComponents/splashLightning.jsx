@@ -1,22 +1,9 @@
-import React , {useContext}from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import React, { useContext } from 'react';
 import { Card, Grid, Paper } from '@mui/material';
 import { BsLightning } from 'react-icons/bs'
 import InnerLightning from './innerLightning';
 import { AppContext } from '../../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,17 +12,46 @@ const SplashLightning = ({ states }) => {
     const KSCLightning = ["KSC Industrial", "LC-39", "SLF"]
     const OtherLightning = ["Astrotech", "CIDCO Park"]
     const PSFBLightning = ["Patrick SFB"]
-    const {showCountdowns} = useContext(AppContext)
+    const { showCountdowns, setArea, setImagePath, setCookieData, area, site } = useContext(AppContext)
+
+    const navigate = useNavigate();
+
+    const handleCCSFS = () => {
+        setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
+        setImagePath('./images/CCSFS.jpg')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
+
+    const handleKSC = () => {
+        setArea(['KSC Industrial', 'LC-39', 'SLF'])
+        setImagePath('./images/KSCArea.jpg')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
+
+    const handleOther = () => {
+        setArea(['CIDCO Park', 'Astrotech'])
+        setImagePath('./images/Other Area.jpg')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
+
+    const handlePatrick = () => {
+        setArea(['Patrick SFB'])
+        setImagePath('./images/psfb.PNG')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
 
 
     return (
         <Card elevation={5} xs={6} md={8} sx={{
             height: '50%',
             margin: '15px',
+            bgcolor: 'primary.main'
         }}
-            style={{
-                backgroundColor: 'white'
-            }}>
+        >
             <h1 style={{
                 textAlign: "left",
                 margin: '10px',
@@ -47,26 +63,32 @@ const SplashLightning = ({ states }) => {
             }}>
                 <div className="textContainer" style={{
                     flex: '1',
+                    
                 }}>
                     <div style={{
-                        display: 'flex'
+                        display: 'flex',
+                        
                     }}>
-                        <Card elevation={10}
+                        <Paper elevation={10}
                             style={{
-                                backgroundColor: 'white',
-                                margin: '10px',
+                                // backgroundColor: 'white',
+                                marginTop: '15px',
                                 height: '75%',
                                 width: '50%',
-                                margin: '15px',
+                                marginLeft: '10px',
                                 flex: '1',
-                                paddingLeft: '5px'
+                                paddingLeft: '5px',
+                                
                             }}
-                                xs={2}
-                                md={4}
-                            >
+                            xs={2}
+                            md={4}
+                        >
 
-                            <h2 style={{
+                            <h2 onClick={handleCCSFS} style={{
                                 textAlign: "left",
+                                cursor:'pointer',
+                                textDecoration:'underline'
+                
                             }}>Cape Canaveral Space Force Station</h2>
                             <div style={{
                                 display: 'flex',
@@ -80,50 +102,49 @@ const SplashLightning = ({ states }) => {
                                     display: 'flex',
                                     width: '70%',
                                     justifyContent: 'space-evenly'
-                                    
+
                                 }}>
                                     <div style={{
-                                    width: '5%'
-                                }}>
+                                        width: '5%'
+                                    }}>
 
                                     </div>
-                                <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
+                                    <div style={{
+                                        width: '20%',
+                                        fontSize: '75%',
+                                    }}>
                                         Status
                                     </div>
                                     <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                       Start Time
+                                        width: '20%',
+                                        fontSize: '75%',
+                                    }}>
+                                        Start Time
                                     </div>
                                     <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
+                                        width: '20%',
+                                        fontSize: '75%',
+                                    }}>
                                         End Time
                                     </div>
                                     <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}> 
-                                    Countdown
+                                        width: '20%',
+                                        fontSize: '75%',
+                                    }}>
+                                        {showCountdowns===true? "Countdown" : ''}
                                     </div>
                                 </div>
                             </div>
                             {CCSFSLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
 
-                        </Card>
+                        </Paper>
                         <div
                             style={{
                                 width: '50%',
                                 marginRight: '25px',
                             }}>
-                            <Card elevation={10}
+                            <Paper elevation={10}
                                 style={{
-                                    backgroundColor: 'white',
                                     margin: '10px',
                                     height: 'auto',
                                     width: '100%',
@@ -131,174 +152,183 @@ const SplashLightning = ({ states }) => {
                                     flex: '1 1 20em',
                                     paddingLeft: '5px'
                                 }}>
-                                <h2 style={{
+                                <h2 onClick={handleKSC} style={{
                                     textAlign: "left",
+                                    cursor: 'pointer',
+                                    textDecoration:'underline'
                                 }}>Kennedy Space Center</h2>
-                               <div style={{
-                                display: 'flex',
-                                marginBottom: '5px',
-                            }}>
-                                <div style={{
-                                    width: '50%',
-                                    margin: '0'
-                                }}></div>
                                 <div style={{
                                     display: 'flex',
-                                    width: '70%',
-                                    justifyContent: 'space-evenly'
+                                    marginBottom: '5px',
                                     
                                 }}>
                                     <div style={{
-                                    width: '5%'
-                                }}></div>
-                                <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        Status
-                                    </div>
+                                        width: '50%',
+                                        margin: '0'
+                                    }}></div>
                                     <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        Start Time
+                                        display: 'flex',
+                                        width: '70%',
+                                        justifyContent: 'space-evenly'
+
+                                    }}>
+                                        <div style={{
+                                            width: '5%'
+                                        }}></div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}>
+                                            Status
+                                        </div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}>
+                                            Start Time
+                                        </div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}>
+                                            End Time
+                                        </div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}> {showCountdowns===true? "Countdown" : ''}
+                                        </div>
                                     </div>
-                                    <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        End Time
-                                    </div>
-                                    <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}> Countdown
-                                    </div>
-                                </div>
                                 </div>
                                 {KSCLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
-                            </Card>
+                            </Paper>
                             <Card elevation={10}
                                 style={{
-                                    backgroundColor: 'white',
-                                    margin: '10px',
-                                    height: 'auto',
-                                    width: '100%',
+                                    
                                     margin: '15px',
                                     flex: '1 1 20em',
-                                    paddingLeft: '5px'
+                                    paddingLeft: '5px',
+                                    width: '100%',
+                                    height: 'auto'
 
                                 }}>
-                                <h2 style={{
+                                <h2 onClick={handleOther} style={{
                                     textAlign: "left",
-                                    margin: '0'
-                                }}>Patrick Space Force Base</h2>
-                               <div style={{
-                                display: 'flex',
-                                marginBottom: '5px',
-                            }}>
-                                <div style={{
-                                    width: '50%',
-                                    margin: '0'
-                                }}></div>
+                                    cursor: 'pointer',
+                                    textDecoration:'underline'
+                                }}>Other</h2>
                                 <div style={{
                                     display: 'flex',
-                                    width: '70%',
-                                    justifyContent: 'space-evenly'
-                                    
+                                    marginBottom: '5px',
                                 }}>
                                     <div style={{
-                                    width: '5%'
-                                }}></div>
-                                <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        Status
-                                    </div>
+                                        width: '50%',
+                                        margin: '0'
+                                    }}></div>
                                     <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        Start Time
-                                    </div>
-                                    <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        End Time
-                                    </div>
-                                    <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                    Countdown
+                                        display: 'flex',
+                                        width: '70%',
+                                        justifyContent: 'space-evenly'
+
+                                    }}>
+                                        <div style={{
+                                            width: '5%'
+                                        }}></div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}>
+                                            Status
+                                        </div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}>
+                                            Start Time
+                                        </div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}>
+                                            End Time
+                                        </div>
+                                        <div style={{
+                                            width: '20%',
+                                            fontSize: '75%',
+                                        }}>
+                                            {showCountdowns===true? "Countdown" : ''}
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
-                                {PSFBLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
+                                {OtherLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
                             </Card>
                         </div>
                     </div>
 
-                    <Card elevation={10}
-                        style={{
-                        backgroundColor: 'white',
-                        margin: '15px',
-                        flex: '1 1 20em',
-                        paddingLeft: '5px'
-
-                    }}>
-                        <h2 style={{
-                            textAlign: "left",
-                        }}>Other</h2>
-                        <div style={{
-                                display: 'flex',
-                                marginBottom: '5px',
-                            }}>
-                                <div style={{
-                                    width: '50%',
-                                    margin: '0'
-                                }}></div>
-                                <div style={{
-                                    display: 'flex',
-                                    width: '70%',
-                                    justifyContent: 'space-evenly'
-                                    
-                                }}>
-                                    <div style={{
-                                    width: '5%'
-                                }}></div>
-                                <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        Status
-                                    </div>
-                                    <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        Start Time
-                                    </div>
-                                    <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                        End Time
-                                    </div>
-                                    <div style={{
-                                    width: '20%',
-                                    fontSize: '75%',
-                                }}>
-                                    Countdown
-                                    </div>
-                                </div>
-                            </div>
-                        {OtherLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
-                    </Card>
                 </div>
             </div>
+            <Card elevation={10}
+                style={{
+                    
+                    margin: '10px',
+                    height: 'auto',
+                    width: '48.3%',
+                    marginTop: '-37px',
+                    flex: '1 1 20em',
+                    paddingLeft: '5px'
+
+                }}>
+                <h2 onClick={handlePatrick} style={{
+                    textAlign: "left",
+                    margin: '0',
+                    cursor: 'pointer',
+                    textDecoration:'underline'
+                }}>Patrick Space Force Base</h2>
+                <div style={{
+                    display: 'flex',
+                    marginBottom: '5px',
+                }}>
+                    <div style={{
+                        width: '50%',
+                        margin: '0'
+                    }}></div>
+                    <div style={{
+                        display: 'flex',
+                        width: '70%',
+                        justifyContent: 'space-evenly'
+
+                    }}>
+                        <div style={{
+                            width: '5%'
+                        }}></div>
+                        <div style={{
+                            width: '20%',
+                            fontSize: '75%',
+                        }}>
+                            Status
+                        </div>
+                        <div style={{
+                            width: '20%',
+                            fontSize: '75%',
+                        }}>
+                            Start Time
+                        </div>
+                        <div style={{
+                            width: '20%',
+                            fontSize: '75%',
+                        }}>
+                            End Time
+                        </div>
+                        <div style={{
+                            width: '20%',
+                            fontSize: '75%',
+                        }}>
+                            {showCountdowns===true? "Countdown" : ''}
+                        </div>
+                    </div>
+                </div>
+                {PSFBLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
+            </Card>
         </Card>
     )
 }

@@ -110,8 +110,9 @@ const siteButtonSX = {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={{color:'text.primary'}}
       >
-        <HiMenu style={{ color:'#01042F',height:'25px', width:'25px'}}/>
+        <HiMenu style={{ height:'25px', width:'25px'}}/>
       </Button>
       <Menu
         id="basic-menu"

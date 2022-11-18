@@ -53,7 +53,7 @@ const SiteView = () => {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <LeftBar/>
-            <Card sx={{height: '20%', width: '90%', backgroundColor: 'white', marginLeft: '7.5%', marginRight: '5%', marginTop:'2%' }}>
+            <Card sx={{height: '20%', width: '90%', marginLeft: '7.5%', marginRight: '5%', marginTop:'2%' }}>
                 <Card elevation={10} sx={{position:'relative', display: 'flex', height: '20%', padding:'1%', margin: '10px', bgcolor: 'grey', justifyContent: 'center' }}>
                     <Box >
                     <SiteImage images={imageArray.filter((item)=>item.location===site)} />
@@ -61,7 +61,7 @@ const SiteView = () => {
                     </Box>
                 </Card>
                 <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><BsLightning/> Lightning</h4>
-                    <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px' }}>
+                    <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card style={{
                             width:'100%',
                             height:'20%',
@@ -105,7 +105,7 @@ const SiteView = () => {
                             
                         </Card>
                         <Card>
-                            <ListItem sx={{ bgcolor: 'white', margin: '10px', height: '25px', boxSizing: 'border-box', width: 'calc(100%-5%)', borderRadius: '20px', paddingBottom:'20px' }}>
+                            <ListItem sx={{ bgcolor:'primary.secondary', margin: '10px', height: '25px', boxSizing: 'border-box', width: 'calc(100%-5%)', borderRadius: '20px', paddingBottom:'20px' }}>
                                 <div style={{ height: '25px', width: '100%'}}>
                                     <InnerLightning states={lightning.filter((item) => item.location === site)} location={site} />
                                 </div>
@@ -116,7 +116,7 @@ const SiteView = () => {
 
                 {area[0] !== 'CIDCO Park' &&
                     <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><RiWindyLine/> Winds</h4>
-                    <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px' }}>
+                    <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card style={{
                             width:'100%',
                             height:'20%',
@@ -161,28 +161,28 @@ const SiteView = () => {
                         </Card>
                         <Card sx={{ display: 'flex', flexDirection: 'column', boxSizing: 'border-box', width: 'calc(100%-5%)', boxSizing: 'border-box', width: 'calc(100%-5%)' }}>
                             {area[0] === 'Cape Central' &&
-                                <ListItem sx={{ bgcolor: 'white', margin: '10px', height: '25px', boxSizing: 'border-box', width: 'calc(100%-5%)', borderRadius: '20px' }}>
+                                <ListItem sx={{ bgcolor:'primary.secondary', margin: '10px', height: '25px', boxSizing: 'border-box', width: 'calc(100%-5%)', borderRadius: '20px' }}>
                                     
                                     <div style={{ height: '25px', width:'100%' }}>
                                         <InnerWind states={wind.filter((item) => item.location === 'CCSFS').filter((i) => i.category === '18 kt steady-state')} category={'18 kt steady-state'} />
                                     </div>
                                 </ListItem>}
                             {area[0] === 'KSC Industrial' &&
-                                <ListItem sx={{ bgcolor: 'white', margin: '10px', height: '25px', boxSizing: 'border-box', width: 'calc(100%-5%)', borderRadius: '20px' }}>
+                                <ListItem sx={{ bgcolor:'primary.secondary', margin: '10px', height: '25px', boxSizing: 'border-box', width: 'calc(100%-5%)', borderRadius: '20px' }}>
                                     
                                     <div style={{ height: '25px', width:'100%' }}>
                                         <InnerWind states={wind.filter((item) => item.location === 'KSC').filter((i) => i.category === '18 kt steady-state')} category={'18 kt steady-state'} />
                                     </div>
                                 </ListItem>}
                             {site === 'Port' &&
-                                <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
+                                <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
                                     
                                     <div style={{ height: '25px', width:'100%' }}>
                                         <InnerWind states={wind.filter((item) => item.location === 'CCSFS').filter((i) => i.category === '22 kt steady-state')} category={'22 kt steady-state'} />
                                     </div>
                                 </ListItem>}
                             {area[0] === 'Patrick SFB' &&
-                                <ListItem sx={{ width: 'auto', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
+                                <ListItem sx={{ width: 'auto', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
                                     
                                     <div style={{ height: '25px', width:'100%' }}>
                                         <InnerWind states={wind.filter((item) => item.location === 'Patrick SFB').filter((i) => i.category === '25 kt observed')} category={'25 kt observed'} />
@@ -193,7 +193,7 @@ const SiteView = () => {
                                 </ListItem>}
                             {area[0] === 'Cape Central' &&
 
-                                <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
+                                <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
                                     
                                     <div style={{ height: '25px', width:'100%' }}>
                                         <InnerWind states={wind.filter((item) => item.location === 'CCSFS').filter((i) => i.category === 'Strong Winds')} category={'Strong Winds'} />
@@ -202,7 +202,7 @@ const SiteView = () => {
 
                             }
                             {area[0] === 'Cape Central' &&
-                                <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>
+                                <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>
                                     
                                     <div style={{ height: '25px', width:'100%' }}>
                                         <InnerWind states={wind.filter((item) => item.location === 'CCSFS').filter((i) => i.category === 'Damaging Winds')} category={'Damaging Winds'} />
@@ -211,13 +211,13 @@ const SiteView = () => {
                             }
                             {area[0] === 'KSC Industrial' &&
                                 <>
-                                    <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
+                                    <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
                                         
                                         <div style={{ height: '25px', width:'100%' }}>
                                             <InnerWind states={wind.filter((item) => item.location === 'KSC').filter((i) => i.category === 'Strong Winds')} category={'Strong Winds'}/>
                                         </div>
                                     </ListItem>
-                                    <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>
+                                    <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>
                                         
                                         <div style={{ height: '25px', width:'100%' }}>
                                             <InnerWind states={wind.filter((item) => item.location === 'KSC').filter((i) => i.category === 'Damaging Winds')} category={'Damaging Winds'} />
@@ -230,13 +230,13 @@ const SiteView = () => {
 
 
                                 <>
-                                    <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
+                                    <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px' }}>
                                         
                                         <div style={{ height: '25px', width:'100%' }}>
                                             <InnerWind states={wind.filter((item) => item.location === 'CCSFS').filter((i) => i.category === 'Strong Winds')} category={'Strong Winds'} />
                                         </div>
                                     </ListItem>
-                                    <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>
+                                    <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>
                                         
                                         <div style={{ height: '25px', width:'100%' }}>
                                             <InnerWind states={wind.filter((item) => item.location === 'Patrick SFB').filter((i) => i.category === 'Damaging Winds')} category={'Damaging Winds'} />
@@ -254,7 +254,7 @@ const SiteView = () => {
 
                 {area[0] !== 'CIDCO Park' &&
                 <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><RiThunderstormsLine/> Severe Storms</h4>
-                    <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px' }}>
+                    <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card style={{
                             width:'100%',
                             height:'20%',
@@ -301,7 +301,7 @@ const SiteView = () => {
                         {area[0] === 'KSC Industrial' &&
                             <>
                                 
-                            <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>   
+                            <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>   
                                     <div style={{ height: '25px', width: '100%' }}>
                                     <AreaSevereStorms states={storm.filter((item) => item.location === 'KSC')} location={'KSC'}>From:{storm.filter((item) => item.location === 'KSC').filter((i) => i.wind_direction)}&nbsp; At:{storm.filter((item) => item.location === 'KSC').filter((i) => i.wind_speed)}KT </AreaSevereStorms>
                                     </div>
@@ -313,7 +313,7 @@ const SiteView = () => {
                         {area[0] === 'Cape Central' &&
                             <>
                                 
-                            <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>   
+                            <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>   
                                     <div style={{ height: '25px', width: '100%' }}>
                                     <AreaSevereStorms states={storm.filter((item) => item.location === 'CCSFS')} location={'CCSFS'}>From:{storm.filter((item) => item.location === 'CCSFS').filter((i) => i.wind_direction)}&nbsp; At:{storm.filter((item) => item.location === 'CCSFS').filter((i) => i.wind_speed)}KT </AreaSevereStorms>
                                     </div>
@@ -325,7 +325,7 @@ const SiteView = () => {
                         {area[0] === 'Patrick SFB' &&
                             <>
                                 
-                                <ListItem sx={{ width: '30%', bgcolor: 'white', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>   
+                                <ListItem sx={{ width: '30%', bgcolor:'primary.secondary', margin: '10px', height: '25px', width: '100%', borderRadius: '20px', paddingBottom:'20px' }}>   
                                         <div style={{ height: '25px', width: '100%' }}>
                                         <AreaSevereStorms states={storm.filter((item) => item.location === 'PSFB')} location={'PSFB'}>From:{storm.filter((item) => item.location === 'PSFB').filter((i) => i.wind_direction)}&nbsp; At:{storm.filter((item) => item.location === 'PSFB').filter((i) => i.wind_speed)}KT </AreaSevereStorms>
                                         </div>
