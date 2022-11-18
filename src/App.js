@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import './App.css';
+// import './App.css';
 import LeftBar from './components/LeftBar';
 import AdminPage from './Pages/AdminPage';
 import AreaView from './components/AreaView';
@@ -20,6 +20,9 @@ import MobileSiteView from './test components/location components/mobilesite';
 import TabletView from './Tablet/tabletView';
 import TabletSiteView from './Tablet/tabletSite';
 import TabletArea from './Tablet/TabletArea';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { colors } from '@mui/material';
 
 const url = 'https://weatherwarn.herokuapp.com'
 const cookies = new Cookies()
@@ -81,6 +84,33 @@ function App() {
   const [toggle, setToggle] = useState(0)
   const [showCountdowns, setShowCountdowns] = useState(true)
   const [someState, setSomeState] = useState(0)
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary:{
+        main: colors.grey[600]
+      },
+      background:{
+        paper:colors.grey[900],
+        default:colors.grey[900],
+        
+      },
+    },
+  });
+
+  const lightTheme = createTheme({
+    palette:{
+      mode: 'light',
+      primary:{
+        main:'#FFFFFF'
+      },
+      text:{
+        primary:'#01042F'
+      }
+    },
+  });
+
   const defaultTheme = {
     clear: {
       border: '#035600',
@@ -91,7 +121,7 @@ function App() {
     },
     warning: {
       border: '#C90000',
-      locationColor: '#C90000',
+      locationColor: '#FF4A4A',
       innerDiv: '#C90000',
       textColor: 'white',
       iconColor: 'white',
@@ -112,6 +142,7 @@ function App() {
     }
   }
   const [mode, setMode] = useState(defaultTheme)
+  const [theming, SetTheming] = useState( lightTheme )
   const protTheme = {
     clear: {
       border: '#39538f',
@@ -175,7 +206,7 @@ function App() {
   const tritTheme = {
     clear: {
       border: '#333236',
-      locationColor: '#333236',
+      locationColor:'#333236',
       innerDiv: '#d6f4f8',
       textColor: '#333236',
       iconColor: '#333236',
@@ -257,7 +288,10 @@ function App() {
     protTheme,
     duetTheme,
     tritTheme,
-
+    theming,
+    SetTheming,
+    lightTheme,
+    darkTheme
   }
 
   const isMobileMatch = useMediaQuery("(max-width:600px)");
@@ -318,7 +352,8 @@ function App() {
   } else {
 
     return (
-
+        <ThemeProvider theme={theming}>
+        <CssBaseline/>
         <AppContext.Provider value={passContext}>
           <Router>
             {
@@ -358,6 +393,7 @@ function App() {
             }
           </Router>
         </AppContext.Provider>
+        </ThemeProvider>
       
     );
   }

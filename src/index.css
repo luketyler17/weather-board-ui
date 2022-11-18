@@ -4,7 +4,7 @@ h1 {
   font-family: 'Kanit';
   font-size: 25px;
   font-weight: 700;
-  color: rgb(0, 0, 0);
+  
   text-align: center;
 }
 
@@ -13,7 +13,7 @@ h2 {
   font-family: 'Kanit';
   font-size: 18px;
   font-weight: 700;
-  color: rgb(0, 0, 0);
+  
   text-align: center;
 }
 
@@ -21,7 +21,7 @@ h3 {
   font-family: 'Kanit';
   font-size: 15px;
   font-weight: 200;
-  color: rgb(0, 0, 0);
+  
   text-align: center;
 }
 
@@ -30,6 +30,6 @@ h4 {
   font-family: 'Kanit';
   font-size: 15px;
   font-weight: 200;
-  color: rgb(0, 0, 0);
+  
   
 }

@@ -1,38 +1,47 @@
 import React, { useContext } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { Card, Grid, Paper } from '@mui/material';
 import { RiWindyLine } from 'react-icons/ri'
 import InnerWind from './innerWInd'
 import { AppContext } from '../../context/AppContext'
+import { useNavigate } from 'react-router-dom';
 
 
 const SplashWind = ({ states }) => {
     const CCSFScategories = ["18 kt steady-state", "22 kt steady-state", "Strong Winds", "Damaging Winds"]
     const KSCcategories = ["18 kt steady-state", "Strong Winds", "Damaging Winds"]
     const PSFBcategories = ["25 kt observed", "Strong Winds", "Damaging Winds"]
-    const { showCountdowns } = useContext(AppContext)
+    const { showCountdowns, setArea, setCookieData, setImagePath, site, area } = useContext(AppContext)
+
+    const navigate = useNavigate();
+
+    const handleCCSFS = () => {
+        setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
+        setImagePath('./images/CCSFS.jpg')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
+
+    const handleKSC = () => {
+        setArea(['KSC Industrial', 'LC-39', 'SLF'])
+        setImagePath('./images/KSCArea.jpg')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
+
+
+    const handlePatrick = () => {
+        setArea(['Patrick SFB'])
+        setImagePath('./images/psfb.PNG')
+        setCookieData({ area: area, site: site })
+        navigate('/area')
+    }
 
 
     return (
         <Card elevation={5} sx={{
             height: '50%',
             margin: '15px',
-
-        }} style={{
-            backgroundColor: 'white'
+            bgcolor:'primary.main'
         }}>
             <h1 style={{
                 textAlign: "left",
@@ -50,7 +59,6 @@ const SplashWind = ({ states }) => {
                     }}>
                         <Card elevation={10}
                             style={{
-                                backgroundColor: 'white',
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%',
@@ -59,8 +67,11 @@ const SplashWind = ({ states }) => {
                                 paddingLeft: '5px'
 
                             }}>
-                            <h2 style={{
+                            <h2 onClick={handleCCSFS} style={{
                                 textAlign: "left",
+                                cursor: "pointer",
+                                textDecoration:'underline',
+                               
                             }}>Cape Canaveral Space Force Station</h2>
                             <div style={{
                                 display: 'flex',
@@ -117,7 +128,7 @@ const SplashWind = ({ states }) => {
                         </Card>
                         <Card elevation={10}
                             style={{
-                                backgroundColor: 'white',
+                                
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%',
@@ -125,8 +136,10 @@ const SplashWind = ({ states }) => {
                                 flex: '1',
                                 paddingLeft: '5px'
                             }}>
-                            <h2 style={{
+                            <h2 onClick={handleKSC} style={{
                                 textAlign: "left",
+                                cursor: "pointer",
+                                textDecoration:'underline'   
                             }}>Kennedy Space Center</h2>
                             <div style={{
                                 display: 'flex',
@@ -182,7 +195,7 @@ const SplashWind = ({ states }) => {
                         </Card >
                         <Card elevation={10}
                             style={{
-                                backgroundColor: 'white',
+                                
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%',
@@ -191,8 +204,10 @@ const SplashWind = ({ states }) => {
                                 paddingLeft: '5px'
 
                             }}>
-                            <h2 style={{
+                            <h2 onClick={handlePatrick} style={{
                                 textAlign: "left",
+                                cursor:'pointer',
+                                textDecoration:'underline'
                             }}>Patrick Space Force Base</h2>
                             <div style={{
                                 display: 'flex',

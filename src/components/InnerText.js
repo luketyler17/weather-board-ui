@@ -38,7 +38,7 @@ const InnerText = () => {
                 </div>) : (
                 <Box
                     component="main"
-                    sx={{ flexGrow: 1, bgcolor: 'white', p: 3 }}
+                    sx={{ flexGrow: 1, bgcolor:'background.paper', p: 3 }}
                     style={{
                         height: '70%',
                         width:'100%',

@@ -6,22 +6,37 @@ import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import LightningCountdown from './LightningCountdown'
 import { AppContext } from '../../context/AppContext'
 import React, { useContext } from 'react'
-const InnerConditions = ({ item, location }) => {
+import {useNavigate} from 'react-router-dom'
 
-    const { showCountdowns } = useContext(AppContext)
+const InnerConditions = ({ item, location }) => {
+    const navigate = useNavigate()
+    const { showCountdowns,site, setSite, setArea, setImagePath } = useContext(AppContext)
     const { mode } = useContext(AppContext)
+    const HandleRouting = () =>{
+        if (location === 'Patrick SFB') {
+            setArea([location])
+            setImagePath('../../images/psfb.PNG')
+            navigate('/area')
+        }else{
+            setSite(location)
+            navigate('/site')
+        }
+        
+    }
 
     let border = (
         (item.type == 'Clear' ? mode.clear.border : (item.category == 'Warning') ? mode.warning.border : (item.category == 'Watch') ? mode.watch.border : mode.advisory.border)
         )
     return (
-        <div style={{
+        <div  style={{
             display: 'flex',
             marginBottom: '5px',
-            lineHeight: '100%'
-
-        }}>
-            <div style={{
+            lineHeight: '100%',
+           
+        }}
+            >
+            <div onClick={HandleRouting} style={{
+                cursor:'pointer',
                 width: '50%',
                 margin: '0',
                 verticalAlign: 'middle',
@@ -36,13 +51,14 @@ const InnerConditions = ({ item, location }) => {
             </div>
 
 
-            <div style={{
+            <div onClick={HandleRouting} style={{
+                cursor:'pointer',
                 width: '70%',
                 margin: '0 auto',
                 marginRight: '5px',
                 marginBottom: '5px',
                 backgroundColor: ((item.type === 'Clear')? mode.clear.innerDiv : (item.category === 'Warning') ? mode.warning.innerDiv : (item.category==='Watch')? mode.watch.innerDiv : mode.advisory.innerDiv),
-                border: `2px solid ${border}`,
+                border:`2px solid ${border}`,
                 borderRadius: '25px',
                 textAlign: 'left',
                 paddingLeft: '5px',
@@ -77,7 +93,7 @@ const InnerConditions = ({ item, location }) => {
                         paddingBottom: '3px',
                         marginBottom: '3px',
                     }}>
-                        {item.type === 'Clear' ? 'Clear' : item.category}
+                        {item.type === 'Clear' ? 'Clear' : item.type}
                     </div>
                 </div>
                 <div style={{
