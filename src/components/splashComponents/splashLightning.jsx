@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, Grid, Paper } from '@mui/material';
 import { BsLightning } from 'react-icons/bs'
 import InnerLightning from './innerLightning';
@@ -15,7 +15,7 @@ const SplashLightning = ({ states }) => {
     const { showCountdowns, setArea, setImagePath, setCookieData, area, site } = useContext(AppContext)
 
     const navigate = useNavigate();
-
+    const [capeToggle, setCapeToggle] = useState(true)
     const handleCCSFS = () => {
         setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
         setImagePath('./images/CCSFS.jpg')
@@ -69,7 +69,7 @@ const SplashLightning = ({ states }) => {
                         display: 'flex',
                         
                     }}>
-                        <Paper elevation={10}
+                        {capeToggle === true && <Paper elevation={10}
                             style={{
                                 // backgroundColor: 'white',
                                 marginTop: '15px',
@@ -137,7 +137,7 @@ const SplashLightning = ({ states }) => {
                             </div>
                             {CCSFSLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
 
-                        </Paper>
+                        </Paper>}
                         <div
                             style={{
                                 width: '50%',

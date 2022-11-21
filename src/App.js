@@ -37,6 +37,7 @@ function App() {
   const [area, setArea] = useState((cookies.get('area') !== [] ? cookies.get('area') : []))
   const [site, setSite] = useState((cookies.get('site') !== [] ? cookies.get('site') : []))
   const [lightning, setLightning] = useState([])
+  const [themeToggle, setThemeToggle] = useState(false)
   const [lightningLocation, setLightningLocation] = useState([])
   const [storm, setStorm] = useState([])
   const [wind, setWind] = useState([])
@@ -106,7 +107,12 @@ function App() {
         main:'#FFFFFF'
       },
       text:{
-        primary:'#01042F'
+        primary:'#01042F',
+        secondary:colors.blue[300]
+      },
+      background:{
+
+        
       }
     },
   });
@@ -291,7 +297,9 @@ function App() {
     theming,
     SetTheming,
     lightTheme,
-    darkTheme
+    darkTheme,
+    themeToggle,
+    setThemeToggle
   }
 
   const isMobileMatch = useMediaQuery("(max-width:600px)");

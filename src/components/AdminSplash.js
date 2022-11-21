@@ -6,7 +6,7 @@ import React, { useContext, useState } from 'react';
 import LightningViolations from '../AdminComponents/LightningViolations';
 import WindViolationsView from '../AdminComponents/WindViolations'
 import SevereStormViolation from '../AdminComponents/SevereStorm';
-
+import { AppContext } from '../context/AppContext';
 const Button = styled.button`
 border-radius: 50px;
 height: 60px;
@@ -25,7 +25,7 @@ color: white;
 `
 
 const AdminSplash = ({ states }) => {
-
+    const {themeToggle} = useContext(AppContext)
     const CCSFSSevere = ['CCSFS']
     const KSCSevere = ['KSC']
     const PSFBSevere = ['PSFB']
@@ -33,7 +33,7 @@ const AdminSplash = ({ states }) => {
     return (
         <Box
             component="main"
-            sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, height: '100%', width: '90%', marginLeft: '5px' }}
+            sx={{ flexGrow: 1, bgcolor: (themeToggle === false ? 'text.primary' : 'background.default'), p: 3, height: '100%', width: '90%', marginLeft: '5px' }}
         >
             <Toolbar />
             <Grid style={{
@@ -45,7 +45,8 @@ const AdminSplash = ({ states }) => {
                     height: '50px',
                     fontSize: '40px',
                     width: '100%',
-                    paddingLeft: '20px'
+                    paddingLeft: '20px',
+                    color:(themeToggle === false ? 'white' : 'text.primary')
                 }}> Input Violations</h1>
                <LightningViolations />
                <WindViolationsView />

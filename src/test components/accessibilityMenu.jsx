@@ -8,7 +8,7 @@ import { ListItem } from '@mui/material';
 import {Divider} from '@mui/material';
 
 export default function AccessibilityMenu() {
-  const {mode, setMode, defaultTheme, protTheme, duetTheme, tritTheme, theming, SetTheming, darkTheme, lightTheme} = useContext(AppContext)
+  const {mode, setMode, defaultTheme, protTheme, duetTheme, tritTheme, theming, SetTheming, darkTheme, lightTheme, setThemeToggle} = useContext(AppContext)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,16 +20,19 @@ export default function AccessibilityMenu() {
   const handleDeutanopia = () => {
     SetTheming(lightTheme)
     setMode(duetTheme)
+    setThemeToggle(false)
     setAnchorEl(null);
   };
   const handleProtanopia = () => {
     SetTheming(lightTheme)
     setMode(protTheme)
+    setThemeToggle(false)
     setAnchorEl(null);
   };
   const handleTritanopia = () => {
     SetTheming(lightTheme)
     setMode(tritTheme)
+    setThemeToggle(false)
     setAnchorEl(null);
   };
   const handleDefaults = () =>{
@@ -39,12 +42,14 @@ export default function AccessibilityMenu() {
 
   const handleLightTheming = () =>{
     SetTheming(lightTheme)
+    setThemeToggle(false)
     setAnchorEl(null);
   }
 
   const handleDarkTheming = () =>{
     SetTheming(darkTheme)
     setMode(defaultTheme)
+    setThemeToggle(true)
     setAnchorEl(null)
   }
 

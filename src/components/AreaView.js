@@ -20,7 +20,7 @@ const cookies = new Cookies()
 
 const AreaView = () => {
     
-    const { lightning, storm, wind, area, setArea, imagePath, setImagePath, showCountdowns } = useContext(AppContext)
+    const { lightning, storm, wind, area, setArea, imagePath, setImagePath, showCountdowns, themeToggle } = useContext(AppContext)
     
    if(area!==[]){ 
     cookies.set('area', area, {path:'/'})
@@ -29,7 +29,7 @@ const AreaView = () => {
     
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', bgcolor: (themeToggle === false ? 'text.primary': 'background.default') }}>
             <LeftBar />
             <Card sx={{ height: '20%', width: '100%', marginLeft: '7.5%', marginRight: '5%' }}>
                 <Card elevation={10}  sx={{position:'relative', display: 'flex', height: '20%', margin: '10px', bgcolor: 'grey', justifyContent: 'center', marginTop:'5%' }}>

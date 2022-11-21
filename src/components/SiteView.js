@@ -38,7 +38,7 @@ const SiteView = () => {
         
     ]
     
-    const { lightning, wind, storm, area, site, setSite, showCountdowns  } = useContext(AppContext)
+    const { lightning, wind, storm, area, site, setSite, showCountdowns, themeToggle  } = useContext(AppContext)
     
     
     if (site!==[]){
@@ -51,7 +51,7 @@ const SiteView = () => {
 
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', bgcolor:(themeToggle === false ? 'text.primary' : 'background.default') }}>
         <LeftBar/>
             <Card sx={{height: '20%', width: '90%', marginLeft: '7.5%', marginRight: '5%', marginTop:'2%' }}>
                 <Card elevation={10} sx={{position:'relative', display: 'flex', height: '20%', padding:'1%', margin: '10px', bgcolor: 'grey', justifyContent: 'center' }}>

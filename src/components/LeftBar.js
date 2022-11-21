@@ -25,6 +25,9 @@ import Select from '@mui/material/Select';
 import AccessibilityMenu from '../test components/accessibilityMenu'
 import {Paper} from '@mui/material'
 import {useTheme} from '@mui/material'
+import NavBarMenu from '../test components/menu';
+import AvatarMenu from './Avatar'
+
 let wslogo = '../images/45th_Weather_Squadron_Patch.png';
 
 
@@ -34,7 +37,7 @@ const drawerWidth = 240;
 const cookies = new Cookies()
 
 export default function LeftBar() {
-    const theme= useTheme()
+    
 
     const handleChange = (event) => {
         setRefreshRate(event.target.value);
@@ -49,6 +52,24 @@ export default function LeftBar() {
     const [checked, setChecked] = useState(true)
     const [loading, setLoading] = useState(false)
     cookies.get('site')
+
+    const formStyle = {
+        color:'text.primary',
+        borderColor:'text.primary',
+        '& label.Mui-focused':{
+            color:'text.secondary',
+            borderColor:'text.secondary'
+        },
+        '& .MuiOutlinedInput-root':{
+            '&.Mui-focused fieldset':{
+                borderColor:'text.secondary'
+            }
+        },
+        '& .MuiOutlinedInput-selected':{
+            borderColor:'text.primary'
+        },
+        
+    }
 
 const handleHome = () => {
     navigate('/')
@@ -190,22 +211,22 @@ const handleHome = () => {
                 <AppBar
                     position="fixed"
                     
-                    sx={{ display: 'flex', flexDirection: 'row', width: `90%`, justifyContent: 'space-between', alignItems: 'center', bgcolor:'primary.main' }}
+                    sx={{ display: 'flex', flexDirection: 'row', width: `100%`, justifyContent: 'space-between', alignItems: 'center', bgcolor:'primary.main' }}
                 >
                     <Toolbar sx={{paddingTop:'5px', width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }} xs={6} md={8} lg={10} >
-
+                        <NavBarMenu/>
                         <div onClick={handleHome} style={{cursor:'pointer', display: 'flex', width: '40%', placeContent: 'left'}}>
                             <Typography color='text.primary' variant="h6" noWrap component="Paper" >
                                 <h1 style={{ color:'text.primary', fontSize: '30px' }}><CloudOutlinedIcon sx={{ height: '40px', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
                             </Typography>
                         </div>
-                        <div style={{ width: '40%', paddingLeft: '6%' }}>
+                        <div style={{ width: '40%', paddingLeft: '10.7%' }}>
                             <MapModal />
                         </div>
 
                         <div style={{ width: '50%', display: 'flex', flexDirection: 'row', width: '30%', justifyContent: 'space-evenly' }}>
-                            <FormControl fullWidth sx={{width: '28%'}}>
-                                <InputLabel sx={{color:'#01042F'}} id="Refresh-Rate-label">Refresh Rate</InputLabel>
+                            <FormControl sx={formStyle} fullWidth style={{width: '28%'}}>
+                                <InputLabel sx={formStyle} id="Refresh-Rate-label">Refresh Rate</InputLabel>
                                 <Select
                                     labelId="Refresh-Rate-label"
                                     id="Refresh-Rate"
@@ -225,18 +246,15 @@ const handleHome = () => {
                                 <Button href='/admin' sx={buttonSX}>Admin</Button>
                             }
                             {(cookies.get('authentication') === undefined) ? <Button onClick={handleSignIn} sx={buttonSX}>Sign In</Button> : <Button href='/' sx={buttonSX} onClick={handleSignOut} >Sign Out</Button>}
+                            {/* <AvatarMenu/> */}
                             <div style={{width:'5%', height:'100%', marginTop: '5px'}}>
-
-                            <AccessibilityMenu />
-                            
-
+                                <AccessibilityMenu />
                             </div>
-
                         </div>
                     </Toolbar>
                 </AppBar>
 
-                <Drawer
+                {/* <Drawer
                     sx={{
                         width: drawerWidth,
 
@@ -325,10 +343,10 @@ const handleHome = () => {
                                 </ListItem>
                             ))}
                             {/* <Divider sx={{ bgcolor: 'white' }} /> */}
-                        </List>
-                    </List>
+                        {/* </List>
+                    </List> */}
 
-                </Drawer>
+                {/* </Drawer> */} */}
             </>
         );
     }

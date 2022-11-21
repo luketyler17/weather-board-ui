@@ -4,7 +4,7 @@ import { RiThunderstormsLine } from 'react-icons/ri'
 import SevereStormBar from './severeStormBar';
 import { AppContext } from '../../context/AppContext'
 import { useNavigate } from 'react-router-dom';
-
+import StormSplashPop from './StormSplashInfoPop';
 
 
 
@@ -44,14 +44,18 @@ const SplashSevereStorm = ({ states }) => {
             bgcolor:'primary.main'
 
 
-        }} style={{
-            
-        }}>
+        }}><div style={{display:'flex', position:'relative'}}>
             <h1 style={{
+                
+                width:'90%',
                 textAlign: "left",
-                margin: '10px',
-            }}><RiThunderstormsLine /> Severe Storms</h1>
+                margin:'10px',
+                marginRight:'8%',
+                marginLeft:'10px'
 
+            }}><RiThunderstormsLine /> Severe Storms</h1>
+            <StormSplashPop/>
+            </div>
             <div className="outerContainer" style={{
                 display: 'flex',
             }}>

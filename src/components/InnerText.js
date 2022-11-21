@@ -27,8 +27,19 @@ import  {AppContext } from '../context/AppContext.jsx';
 
 
 const InnerText = () => {
-    const{loading, setLoading, lightning, storm, wind, setLightning, setStorm, setWind} = useContext(AppContext)
+    const{loading, setLoading, lightning, storm, wind, setLightning, setStorm, setWind, theming, lightTheme, darkTheme, themeToggle} = useContext(AppContext)
+    const lightBox = {
+        flexGrow: 1,
+        bgcolor: 'text.primary',
+        p:3
+        
+    }
 
+    const darkBox = {
+        flexGrow: 1,
+        bgcolor: 'background.default',
+        p:3
+    }
 
     return (
         <>
@@ -38,7 +49,9 @@ const InnerText = () => {
                 </div>) : (
                 <Box
                     component="main"
-                    sx={{ flexGrow: 1, bgcolor:'background.paper', p: 3 }}
+                    sx={themeToggle === false ? lightBox : darkBox
+                        
+                    }
                     style={{
                         height: '70%',
                         width:'100%',

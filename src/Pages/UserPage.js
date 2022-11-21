@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 
 
 const UserPage = () => {
-    const { site, area, storm, lightning, wind } = useContext(AppContext)
+    const { site, area, storm, lightning, wind, themeToggle } = useContext(AppContext)
 
     if (storm == [] || lightning == [] || wind == []) {
         return (
@@ -23,7 +23,7 @@ const UserPage = () => {
     } else {
 
         return (
-            <Box sx={{ display: 'flex', flexDirection:'row', bgcolor:'primary.main'}}>
+            <Box sx={{ display: 'flex', flexDirection:'row', bgcolor:(themeToggle === false ? 'text.primary' : 'background.default')}}>
                         <LeftBar />
                         <InnerText />
 
