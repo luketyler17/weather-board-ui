@@ -24,6 +24,8 @@ const cookies = new Cookies()
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
+ 
+
   return (
     <div
       role="tabpanel"
@@ -34,7 +36,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography >{children}</Typography>
         </Box>
       )}
     </div>
@@ -51,12 +53,22 @@ function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
+    
   };
 }
 
 export default function AreaTabs({image}) {
   const [value, setValue] = React.useState(0);
   const {area} = useContext(AppContext)
+
+  const tabStyle= {
+    color:'text.primary',
+    bgcolor:'background.default',
+    '&.Mui-selected':{
+      bgcolor:'primary.main',
+      color:'text.secondary'
+    }
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -67,9 +79,9 @@ if(area[0] !=='CIDCO Park'){
       <AreaImgContainer/>
       <Box sx={{ borderBottom: 1, borderColor: 'divider', display:'flex', justifyContent:'space-evenly' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Lightning" {...a11yProps(0)} />
-          <Tab label="Wind" {...a11yProps(1)} />
-          <Tab label="Severe Storms" {...a11yProps(2)} />
+          <Tab sx={tabStyle} label="Lightning" {...a11yProps(0)} />
+          <Tab sx={tabStyle} label="Wind" {...a11yProps(1)} />
+          <Tab sx={tabStyle} label="Severe Storms" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

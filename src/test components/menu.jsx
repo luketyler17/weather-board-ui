@@ -127,7 +127,7 @@ const siteButtonSX = {
         <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
                         <List>
                         <ListItemButton key='Home'  sx={locationButtonSX} onClick={() => navigate('/')} >
-                        <ListItemText sx={{textAlign:'center'}} primary={<h4 style={{ color: 'white' }}>Home</h4>} />
+                        <ListItemText sx={{textAlign:'center'}} primary={<h4>Home</h4>} />
                             </ListItemButton>
                         <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
@@ -170,6 +170,10 @@ const siteButtonSX = {
                                 </ListItem>
                             ))}
                             <Divider sx={{ bgcolor: 'white' }} />
+                            <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
+                                Patrick SFB
+                            </ListItemButton>
+                            <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Other' disablePadding />
                             <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
                                 Other
@@ -188,11 +192,7 @@ const siteButtonSX = {
                                     </ListItemButton>
                                 </ListItem>
                             ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
-                                Patrick SFB
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
+                            
                         </List>
                     </List>
         </MenuItem>
