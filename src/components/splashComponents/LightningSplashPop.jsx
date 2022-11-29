@@ -7,7 +7,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { Divider } from '@mui/material';
 import Link from '@mui/material';
 
-export default function StormSplashPop() {
+export default function LightningSplashPop() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate()
 
@@ -23,7 +23,7 @@ export default function StormSplashPop() {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div style= {{paddingTop:'10px'}}>
+    <div style= {{paddingTop:'10px', position:'relative', left:'87.4%'}}>
       <div aria-describedby={id} variant="contained" onClick={handleClick} >
       <HelpOutlineIcon sx={{color:'text.primary', cursor:'pointer'}}/>
       </div>
@@ -37,10 +37,9 @@ export default function StormSplashPop() {
           horizontal: 'left',
         }}
       >
-       <h5 onClick={handleClose} style={{padding:'10px'}}><strong>Severe Storms are defined as storms containing:</strong>
-        <li>Damaging Winds of 50KTS or greater</li>
-        <li>Hail stones of 0.75" or greater</li>
-        <li>Present torndaoes</li>
+       <h5 onClick={handleClose} style={{padding:'10px'}}><strong>Lightning violations are defined as:</strong>
+        <li>Phase I Lightning Watch-- Lightning is expected within 5NM of the base or coverage area</li>
+        <li>Phase II Lightning Warning-- Lightning is imminent or occurring within 5NM of the base or coverage area</li>
         <strong>For more information regarding current weather violations or forecasts (including those for Tropical Storm activity), please call the 45 Weather Squadron at 321-853-8485 or visit &nbsp;
         <a href={'https://www.patrick.spaceforce.mil/About-Us/Weather/'}>https://www.patrick.spaceforce.mil/About-Us/Weather/</a></strong>
        </h5>

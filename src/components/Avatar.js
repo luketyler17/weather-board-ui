@@ -2,7 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import AccountCircleIcon from '@mui/icons-material/AccountBox';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AccessibilityMenu from '../test components/accessibilityMenu';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
@@ -23,19 +23,26 @@ export default function AvatarMenu() {
   };
 
   const handleSignIn = () => {
-    setLoading(true)
+    
     navigate('/sign_in')
-    setLoading(false)
     setAnchorEl(null)
+    
 }
 
   const handleSignOut = () => {
-    setLoading(true)
+    
     cookies.remove('authentication', { path: '/' })
     navigate('/')
-    setLoading(false)
+    
     setAnchorEl(null)
 
+}
+const handleMyAccount = () => {
+  
+  cookies.get('authentication', {path:'/'})
+  navigate('/profile')
+  
+  setAnchorEl(null)
 }
   return (
     <div>
@@ -46,7 +53,7 @@ export default function AvatarMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <AccountCircleIcon sx={{color:'text.primary', height:'20%', width:'20%'}}/>
+        <AccountCircleIcon sx={{color:'text.primary',height:'25%', width:'auto'}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -61,7 +68,8 @@ export default function AvatarMenu() {
         {(cookies.get('authentication') === undefined) ?
          <MenuItem onClick={handleSignIn} >Sign In</MenuItem> : 
          <MenuItem href='/'  onClick={handleSignOut} >Sign Out</MenuItem>}
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+       {cookies.get('authentication') !== undefined &&
+        <MenuItem onClick={handleMyAccount}>My account</MenuItem>}
         
         
       </Menu>

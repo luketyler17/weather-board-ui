@@ -63,7 +63,7 @@ export default function MapModal() {
           <div style={{position:'relative', width:'100%', height:'100%'}}>
             <div style={{textAlign:'center', display:'flex', flexDirection:'row', justifyContent:'center', marginBottom:'8.5%'}}>
               <h4 style={{fontSize:'20px', position:'absolute', top:'0', left:'27%'}}> Current Lightning Violations</h4>
-              <CloseIcon onClick={handleClose} sx={{position:'relative', right:'-46.5%'}} />
+              <CloseIcon onClick={handleClose} sx={{position:'relative', right:'-46.5%', cursor:'pointer'}} />
                </div>
             <div style={{position:'relative', height:'800px', width:'auto'}}>
               <div style={{width:'100%', height:'90%', border:'1px solid red', position:'relative'}}>

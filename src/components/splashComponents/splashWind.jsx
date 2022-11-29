@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, Grid, Paper } from '@mui/material';
 import { RiWindyLine } from 'react-icons/ri'
 import InnerWind from './innerWInd'
 import { AppContext } from '../../context/AppContext'
 import { useNavigate } from 'react-router-dom';
+import WindSplashPop from './WindInfoPop';
 
 
 const SplashWind = ({ states }) => {
     const CCSFScategories = ["18 kt steady-state", "22 kt steady-state", "Strong Winds", "Damaging Winds"]
     const KSCcategories = ["18 kt steady-state", "Strong Winds", "Damaging Winds"]
     const PSFBcategories = ["25 kt observed", "Strong Winds", "Damaging Winds"]
-    const { showCountdowns, setArea, setCookieData, setImagePath, site, area } = useContext(AppContext)
+    const { showCountdowns, setArea, setCookieData, setImagePath, site, area, windSplashToggle, setWindSplashToggle, capeWindToggle, setCapeWindToggle, kscWindToggle, setKscWindToggle, psfbWindToggle, setPsfbWindToggle } = useContext(AppContext)
 
     const navigate = useNavigate();
 
@@ -42,12 +43,13 @@ const SplashWind = ({ states }) => {
             height: '50%',
             margin: '15px',
             bgcolor:'primary.main'
-        }}>
+        }}><div style= {{ display:'flex', position:'relative'}}>
             <h1 style={{
                 textAlign: "left",
                 margin: '10px',
             }}><RiWindyLine /> Winds</h1>
-
+                <WindSplashPop/>
+                </div>
             <div className="outerContainer" style={{
                 display: 'flex',
             }}>
@@ -57,12 +59,13 @@ const SplashWind = ({ states }) => {
                     <div style={{
                         display: 'flex'
                     }}>
-                        <Card elevation={10}
+                        {capeWindToggle === true &&
+                            <Card elevation={10}
                             style={{
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%',
-                                margin: '15px',
+                               
                                 flex: '1',
                                 paddingLeft: '5px'
 
@@ -125,14 +128,15 @@ const SplashWind = ({ states }) => {
                                 </div>
                             </div>
                             {CCSFScategories.map((category, index) => <InnerWind key={index} states={states.filter((item) => item.location === 'CCSFS').filter((i) => i.category === category)} category={category} />)}
-                        </Card>
-                        <Card elevation={10}
+                        </Card>}
+                        {kscWindToggle === true &&
+                            <Card elevation={10}
                             style={{
                                 
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%',
-                                margin: '15px',
+                               
                                 flex: '1',
                                 paddingLeft: '5px'
                             }}>
@@ -192,14 +196,15 @@ const SplashWind = ({ states }) => {
                                 </div>
                             </div>
                             {KSCcategories.map((category, index) => <InnerWind key={index} states={states.filter((item) => item.location === 'KSC').filter((i) => i.category === category)} category={category} />)}
-                        </Card >
-                        <Card elevation={10}
+                        </Card >}
+                        {psfbWindToggle === true &&
+                            <Card elevation={10}
                             style={{
                                 
                                 margin: '10px',
                                 height: '75%',
                                 width: '50%',
-                                margin: '15px',
+                                
                                 flex: '1',
                                 paddingLeft: '5px'
 
@@ -262,7 +267,7 @@ const SplashWind = ({ states }) => {
                     </div>
                 </div >
                 {PSFBcategories.map((category, index) => <InnerWind key={index} states={states.filter((item) => (item.location === 'Patrick SFB')).filter((i) => i.category === category)} category={category} />)}
-        </Card >
+        </Card >}
                     </div >
 
                 </div >

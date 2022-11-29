@@ -63,7 +63,7 @@ export default function AccessibilityMenu() {
         onClick={handleClick}
         sx={{color:'text.primary'}}
       >
-        <SettingsOutlinedIcon sx={{ margin:'0px', width:'60%', height:'80%'}}/>
+        <SettingsOutlinedIcon sx={{ margin:'0px', width:'80%', height:'15%'}}/>
       </Button>
       <Menu
         id="basic-menu"

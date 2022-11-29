@@ -8,9 +8,9 @@ import { AppContext } from '../../context/AppContext'
 import React, { useContext } from 'react'
 import {useNavigate} from 'react-router-dom'
 
-const InnerConditions = ({ item, location }) => {
+const CapeInnerConditions = ({ item, location }) => {
     const navigate = useNavigate()
-    const { showCountdowns,site, setSite, setArea, setImagePath } = useContext(AppContext)
+    const { showCountdowns,site, setSite, setArea, setImagePath, CCSFSLightning } = useContext(AppContext)
     const { mode } = useContext(AppContext)
     const HandleRouting = () =>{
         if (location === 'Patrick SFB') {
@@ -30,21 +30,25 @@ const InnerConditions = ({ item, location }) => {
     return (
         <div  style={{
             display: 'flex',
-            marginBottom:'3px',
+            marginLeft:'.5%',
+            marginRight:'1.5%',
+            marginTop:'.2%',
+            marginBottom:'.2%',
             lineHeight: '100%',
-            width:'100%',
+            width:'48%',
+            flex: (CCSFSLightning.length <= 1 ? 1 : undefined)
+            
             
            
         }}
             >
             <div onClick={HandleRouting} style={{
                 cursor:'pointer',
-                width: '40%',
-                marginRight: '10%',
+                width: '20%',
+                margin: '0',
                 verticalAlign: 'middle',
                 color: (item.type == 'Clear' ? mode.clear.locationColor : (item.category == 'Warning') ? mode.warning.locationColor : (item.category == 'Watch') ? mode.watch.locationColor : mode.advisory.locationColor),
                 fontWeight: 'bold',
-               
 
             }}>
                 {location} <div style={{
@@ -64,7 +68,7 @@ const InnerConditions = ({ item, location }) => {
                 border:`2px solid ${border}`,
                 borderRadius: '25px',
                 textAlign: 'left',
-                
+                paddingLeft: '5px',
                 filter: 'drop-shadow(0 2px 0.2rem black',
                 display: 'flex',
                 justifyContent: 'space-evenly',
@@ -154,4 +158,4 @@ const InnerConditions = ({ item, location }) => {
     )
 }
 
-export default InnerConditions
+export default CapeInnerConditions
