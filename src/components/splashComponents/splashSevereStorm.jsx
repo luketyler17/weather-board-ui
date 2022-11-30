@@ -12,7 +12,7 @@ const SplashSevereStorm = ({ states }) => {
     const CCSFSSevere = ['CCSFS']
     const KSCSevere = ['KSC']
     const PSFBSevere = ['PSFB']
-    const { showCountdowns, area, site, setImagePath, setCookieData, setArea } = useContext(AppContext)
+    const { showCountdowns, area, site, setImagePath, setCookieData, setArea, capeStormToggle, kscStormToggle, psfbStormToggle } = useContext(AppContext)
     const navigate = useNavigate()
 
     const handleCCSFS = () => {
@@ -65,12 +65,14 @@ const SplashSevereStorm = ({ states }) => {
                     <div style={{
                         display: 'flex'
                     }}>
-                        <Card elevation={10}
+                       {capeStormToggle === true && 
+                       <Card elevation={10}
                             style={{
                                
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%'
+                                width: '50%',
+                                flex: 1
 
                             }}>
 
@@ -148,13 +150,15 @@ const SplashSevereStorm = ({ states }) => {
                             </div>
                             {CCSFSSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item) => item.location === 'CCSFS')} location={location} />)}
 
-                        </Card>
-                        <Card elevation={10}
+                        </Card>}
+                        {kscStormToggle === true &&
+                            <Card elevation={10}
                             style={{
                                 
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%'
+                                width: '50%',
+                                flex: 1
 
                             }}>
 
@@ -212,13 +216,15 @@ const SplashSevereStorm = ({ states }) => {
                             </div>
                             {KSCSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item) => item.location === 'KSC')} location={location} />)}
 
-                        </Card>
-                        <Card elevation={10}
+                        </Card>}
+                        {psfbStormToggle === true &&
+                            <Card elevation={10}
                             style={{
                                 
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%'
+                                width: '50%',
+                                flex : 1
 
                             }}>
 
@@ -276,7 +282,7 @@ const SplashSevereStorm = ({ states }) => {
                             </div>
                             {PSFBSevere.map((location, index) => <SevereStormBar key={index} states={states.filter((item) => item.location === location)} location={location} />)}
 
-                        </Card>
+                        </Card>}
                     </div>
 
                 </div>

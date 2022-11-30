@@ -245,8 +245,8 @@ const handleHome = () => {
                             {cookies.get('authentication') !== undefined &&
                                 <Button href='/admin' sx={buttonSX}>Admin</Button>
                             }
-                            {(cookies.get('authentication') === undefined) ? <Button onClick={handleSignIn} sx={buttonSX}>Sign In</Button> : <Button href='/' sx={buttonSX} onClick={handleSignOut} >Sign Out</Button>}
-                            {/* <AvatarMenu/> */}
+                            {/* {(cookies.get('authentication') === undefined) ? <Button onClick={handleSignIn} sx={buttonSX}>Sign In</Button> : <Button href='/' sx={buttonSX} onClick={handleSignOut} >Sign Out</Button>} */}
+                            <AvatarMenu/>
                             <div style={{width:'5%', height:'100%', marginTop: '5px'}}>
                                 <AccessibilityMenu />
                             </div>

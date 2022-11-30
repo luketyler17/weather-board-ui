@@ -18,7 +18,7 @@ const TestHome = () => {
                     </Card>
                 </Grid>
                 <Box sx={{height:'51.5%'}}>
-                <Grid item xs={12} md={12} lg={12} xl={12} sx={{display:'flex', justifyContent:'center', margin:'1.5%', marginTop:'-28%'}}>
+                <Grid item xs={12} md={12} lg={12} xl={24} sx={{width:'auto',display:'flex', justifyContent:'center', margin:'1.5%', marginTop:'-28%'}}>
                     <Card elevation={6}>
                     <SplashTabs/>
                     </Card>

@@ -4,18 +4,54 @@ import { BsLightning } from 'react-icons/bs'
 import InnerLightning from './innerLightning';
 import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
+import LightningSplashPop from './LightningSplashPop';
+import { AiFillCodeSandboxCircle } from 'react-icons/ai';
+import CapeInnerLightning from './CapeInnerLightning';
 
 
 
 const SplashLightning = ({ states }) => {
-    const CCSFSLightning = ["Cape Central", "CX-20/16/LZ", "CX-36/46", "CX-37/ASOC/PPF", "CX-40/41/SPOC", "Port"]
-    const KSCLightning = ["KSC Industrial", "LC-39", "SLF"]
-    const OtherLightning = ["Astrotech", "CIDCO Park"]
+    // const CCSFSLightning = ["Cape Central", "CX-20/16/LZ", "CX-36/46", "CX-37/ASOC/PPF", "CX-40/41/SPOC", "Port"]
+    // const KSCLightning = ["KSC Industrial", "LC-39", "SLF"]
+    // const OtherLightning = ["Astrotech", "CIDCO Park"]
     const PSFBLightning = ["Patrick SFB"]
-    const { showCountdowns, setArea, setImagePath, setCookieData, area, site } = useContext(AppContext)
+    const { showCountdowns,
+        CCSFSLightning,
+        KSCLightning,
+        OtherLightning,
+        setArea,
+        setImagePath,
+        setCookieData,
+        area,
+        site,
+        capeLightningToggle,
+        kscLightningToggle,
+        psfbLightningToggle,
+        otherLightningToggle,
+        setOtherLightningToggle,
+        setCapeLightningToggle,
+        setKscLightningToggle
+
+    } = useContext(AppContext)
 
     const navigate = useNavigate();
     const [capeToggle, setCapeToggle] = useState(true)
+    const [kscToggle, setKscToggle] = useState(true)
+    const [psfbToggle, setPsfbToggle] = useState(true)
+    const [otherToggle, setOtherToggle] = useState(true)
+
+    const hideOther = () => {
+        OtherLightning.length === 0 ? setOtherLightningToggle(false) : setOtherLightningToggle(true)
+    }
+
+    const hideCape = () => {
+        CCSFSLightning.length === 0 ? setCapeLightningToggle(false) : setCapeLightningToggle(true)
+    }
+
+    const hideKSC = () => {
+        KSCLightning.length === 0 ? setKscLightningToggle(false) : setKscLightningToggle(true)
+    }
+
     const handleCCSFS = () => {
         setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
         setImagePath('./images/CCSFS.jpg')
@@ -51,284 +87,345 @@ const SplashLightning = ({ states }) => {
             margin: '15px',
             bgcolor: 'primary.main'
         }}
-        >
-            <h1 style={{
-                textAlign: "left",
-                margin: '10px',
+        ><div style={{ position: 'relative', display: 'flex' }}>
+                <h1 style={{
+                    textAlign: "left",
+                    margin: '10px',
 
-            }}><BsLightning /> Lightning</h1>
+                }}><BsLightning /> Lightning</h1>
+                <LightningSplashPop />
+            </div>
 
             <div className="outerContainer" style={{
                 display: 'flex',
             }}>
                 <div className="textContainer" style={{
                     flex: '1',
-                    
+
                 }}>
                     <div style={{
                         display: 'flex',
-                        
+                        flexDirection: 'column'
                     }}>
-                        {capeToggle === true && <Paper elevation={10}
-                            style={{
-                                // backgroundColor: 'white',
-                                marginTop: '15px',
-                                height: '75%',
-                                width: '50%',
-                                marginLeft: '10px',
-                                flex: '1',
-                                paddingLeft: '5px',
-                                
-                            }}
-                            xs={2}
-                            md={4}
-                        >
+                        {capeLightningToggle === true && hideCape()}
+                        {capeLightningToggle === true &&
+                            <div>
+                                <Paper elevation={10}
+                                    style={{
 
-                            <h2 onClick={handleCCSFS} style={{
-                                textAlign: "left",
-                                cursor:'pointer',
-                                textDecoration:'underline'
-                
-                            }}>Cape Canaveral Space Force Station</h2>
-                            <div style={{
-                                display: 'flex',
-                                marginBottom: '5px',
-                            }}>
-                                <div style={{
-                                    width: '50%',
-                                    margin: '0'
-                                }}></div>
-                                <div style={{
-                                    display: 'flex',
-                                    width: '70%',
-                                    justifyContent: 'space-evenly'
+                                        marginTop: '15px',
+                                        height: 'auto',
+                                        width: '99%',
+                                        margin: '10px',
+                                        paddingLeft: '5px',
 
-                                }}>
-                                    <div style={{
-                                        width: '5%'
-                                    }}>
+                                    }}
+                                    xs={2}
+                                    md={4}
+                                >
 
-                                    </div>
-                                    <div style={{
-                                        width: '20%',
-                                        fontSize: '75%',
-                                    }}>
-                                        Status
-                                    </div>
-                                    <div style={{
-                                        width: '20%',
-                                        fontSize: '75%',
-                                    }}>
-                                        Start Time
-                                    </div>
-                                    <div style={{
-                                        width: '20%',
-                                        fontSize: '75%',
-                                    }}>
-                                        End Time
-                                    </div>
-                                    <div style={{
-                                        width: '20%',
-                                        fontSize: '75%',
-                                    }}>
-                                        {showCountdowns===true? "Countdown" : ''}
-                                    </div>
-                                </div>
-                            </div>
-                            {CCSFSLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
+                                    <h2 onClick={handleCCSFS} style={{
+                                        textAlign: "left",
+                                        cursor: 'pointer',
+                                        textDecoration: 'underline'
 
-                        </Paper>}
+                                    }}>Cape Canaveral Space Force Station</h2>
+                                    <div style={{
+                                        display: 'flex',
+                                        marginBottom: '5px',
+                                        
+
+                                    }}>
+                                        <div style={{
+                                            width: '50%',
+                                            margin: '0',
+
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            
+                                        }}>
+                                            <div style={{
+                                                width: (CCSFSLightning.length <=1 ? '35%' : '36%')
+                                            }}>
+
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Status
+                                            </div>
+                                            <div style={{
+                                                width: '23%',
+                                                fontSize: '75%',
+                                                paddingLeft:(CCSFSLightning.length <=1 ? '2%' : '0%')
+                                            }}>
+                                                Start Time
+                                            </div>
+                                            <div style={{
+                                                width: '28%',
+                                                fontSize: '75%',
+                                                paddingLeft:(CCSFSLightning.length <=1 ? '1%' : '0%')
+                                            }}>
+                                                End Time
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                                paddingLeft:(CCSFSLightning.length <=1 ? '2%' : '0%')
+                                            }}>
+                                                {showCountdowns === true ? "Countdown" : ''}
+                                            </div>
+                                        </div>
+                                        {CCSFSLightning.length > 1 &&
+                                            <div style={{
+                                            display: 'flex',
+                                            width: '50%',
+                                            justifyContent: 'space-evenly',
+
+
+                                        }}>
+
+                                            <div style={{
+                                                width: '36%'
+                                            }}>
+
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Status
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Start Time
+                                            </div>
+                                            <div style={{
+                                                width: '28%',
+                                                fontSize: '75%',
+                                            }}>
+                                                End Time
+                                            </div>
+                                            <div style={{
+                                                width: '22%',
+                                                fontSize: '75%',
+                                            }}>
+                                                {showCountdowns === true ? "Countdown" : ''}
+                                            </div>
+                                        </div>}
+                                    </div>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        flexWrap: 'wrap',
+                                        
+
+                                    }}>
+                                        {CCSFSLightning.map((location, index) => <CapeInnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
+                                    </div>
+                                </Paper>
+                            </div>}
                         <div
                             style={{
-                                width: '50%',
-                                marginRight: '25px',
+                                width: '100%',
+
+                                display: 'flex',
+                                flexDirection: 'row'
                             }}>
-                            <Paper elevation={10}
-                                style={{
-                                    margin: '10px',
-                                    height: 'auto',
-                                    width: '100%',
-                                    margin: '15px',
-                                    flex: '1 1 20em',
-                                    paddingLeft: '5px'
-                                }}>
-                                <h2 onClick={handleKSC} style={{
-                                    textAlign: "left",
-                                    cursor: 'pointer',
-                                    textDecoration:'underline'
-                                }}>Kennedy Space Center</h2>
-                                <div style={{
-                                    display: 'flex',
-                                    marginBottom: '5px',
-                                    
-                                }}>
-                                    <div style={{
-                                        width: '50%',
-                                        margin: '0'
-                                    }}></div>
+                            {kscLightningToggle === true && hideKSC()}
+                            {kscLightningToggle === true &&
+                                <Paper elevation={10}
+                                    style={{
+                                        margin: '10px',
+                                        height: 'auto',
+                                        width: '30%',
+
+                                        flex: '1 1 20em',
+                                        paddingLeft: '5px'
+                                    }}>
+                                    <h2 onClick={handleKSC} style={{
+                                        textAlign: "left",
+                                        cursor: 'pointer',
+                                        textDecoration: 'underline'
+                                    }}>Kennedy Space Center</h2>
                                     <div style={{
                                         display: 'flex',
-                                        width: '70%',
-                                        justifyContent: 'space-evenly'
+                                        marginBottom: '5px',
 
                                     }}>
                                         <div style={{
-                                            width: '5%'
+                                            width: '50%',
+                                            margin: '0'
                                         }}></div>
                                         <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
+                                            display: 'flex',
+                                            width: '70%',
+                                            justifyContent: 'space-evenly'
+
                                         }}>
-                                            Status
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
-                                        }}>
-                                            Start Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
-                                        }}>
-                                            End Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
-                                        }}> {showCountdowns===true? "Countdown" : ''}
+                                            <div style={{
+                                                width: '5%'
+                                            }}></div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Status
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Start Time
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                End Time
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}> {showCountdowns === true ? "Countdown" : ''}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                {KSCLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
-                            </Paper>
-                            <Card elevation={10}
-                                style={{
-                                    
-                                    margin: '15px',
-                                    flex: '1 1 20em',
-                                    paddingLeft: '5px',
-                                    width: '100%',
-                                    height: 'auto'
+                                    {KSCLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
+                                </Paper>}
+                            {otherLightningToggle === true && hideOther()}
+                            {otherLightningToggle === true &&
+                                <Card elevation={10}
+                                    style={{
 
-                                }}>
-                                <h2 onClick={handleOther} style={{
-                                    textAlign: "left",
-                                    cursor: 'pointer',
-                                    textDecoration:'underline'
-                                }}>Other</h2>
-                                <div style={{
-                                    display: 'flex',
-                                    marginBottom: '5px',
-                                }}>
-                                    <div style={{
-                                        width: '50%',
-                                        margin: '0'
-                                    }}></div>
-                                    <div style={{
-                                        display: 'flex',
-                                        width: '70%',
-                                        justifyContent: 'space-evenly'
+                                        margin: '10px',
+                                        flex: '1 1 20em',
+                                        paddingLeft: '5px',
+                                        width: '30%',
+                                        height: 'auto'
 
                                     }}>
+                                    <h2 onClick={handleOther} style={{
+                                        textAlign: "left",
+                                        cursor: 'pointer',
+                                        textDecoration: 'underline'
+                                    }}>Other</h2>
+                                    <div style={{
+                                        display: 'flex',
+                                        marginBottom: '5px',
+                                    }}>
                                         <div style={{
-                                            width: '5%'
+                                            width: '50%',
+                                            margin: '0'
                                         }}></div>
                                         <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
+                                            display: 'flex',
+                                            width: '70%',
+                                            justifyContent: 'space-evenly'
+
                                         }}>
-                                            Status
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
-                                        }}>
-                                            Start Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
-                                        }}>
-                                            End Time
-                                        </div>
-                                        <div style={{
-                                            width: '20%',
-                                            fontSize: '75%',
-                                        }}>
-                                            {showCountdowns===true? "Countdown" : ''}
+                                            <div style={{
+                                                width: '5%'
+                                            }}></div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Status
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Start Time
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                End Time
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                {showCountdowns === true ? "Countdown" : ''}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                {OtherLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
-                            </Card>
+                                    {OtherLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
+                                </Card>}
+                            {psfbLightningToggle === true &&
+                                <Card elevation={10}
+                                    style={{
+
+                                        margin: '10px',
+                                        height: 'auto',
+                                        width: '30%',
+
+                                        flex: '1 1 20em',
+                                        paddingLeft: '5px'
+
+                                    }}>
+                                    <h2 onClick={handlePatrick} style={{
+                                        textAlign: "left",
+                                        margin: '0',
+                                        cursor: 'pointer',
+                                        textDecoration: 'underline'
+                                    }}>Patrick Space Force Base</h2>
+                                    <div style={{
+                                        display: 'flex',
+                                        marginBottom: '5px',
+                                    }}>
+                                        <div style={{
+                                            width: '50%',
+                                            margin: '0'
+                                        }}></div>
+                                        <div style={{
+                                            display: 'flex',
+                                            width: '70%',
+                                            justifyContent: 'space-evenly'
+
+                                        }}>
+                                            <div style={{
+                                                width: '5%'
+                                            }}></div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Status
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                Start Time
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                End Time
+                                            </div>
+                                            <div style={{
+                                                width: '20%',
+                                                fontSize: '75%',
+                                            }}>
+                                                {showCountdowns === true ? "Countdown" : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {PSFBLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
+                                </Card>}
                         </div>
                     </div>
 
                 </div>
             </div>
-            <Card elevation={10}
-                style={{
-                    
-                    margin: '10px',
-                    height: 'auto',
-                    width: '48.3%',
-                    marginTop: '-37px',
-                    flex: '1 1 20em',
-                    paddingLeft: '5px'
-
-                }}>
-                <h2 onClick={handlePatrick} style={{
-                    textAlign: "left",
-                    margin: '0',
-                    cursor: 'pointer',
-                    textDecoration:'underline'
-                }}>Patrick Space Force Base</h2>
-                <div style={{
-                    display: 'flex',
-                    marginBottom: '5px',
-                }}>
-                    <div style={{
-                        width: '50%',
-                        margin: '0'
-                    }}></div>
-                    <div style={{
-                        display: 'flex',
-                        width: '70%',
-                        justifyContent: 'space-evenly'
-
-                    }}>
-                        <div style={{
-                            width: '5%'
-                        }}></div>
-                        <div style={{
-                            width: '20%',
-                            fontSize: '75%',
-                        }}>
-                            Status
-                        </div>
-                        <div style={{
-                            width: '20%',
-                            fontSize: '75%',
-                        }}>
-                            Start Time
-                        </div>
-                        <div style={{
-                            width: '20%',
-                            fontSize: '75%',
-                        }}>
-                            End Time
-                        </div>
-                        <div style={{
-                            width: '20%',
-                            fontSize: '75%',
-                        }}>
-                            {showCountdowns===true? "Countdown" : ''}
-                        </div>
-                    </div>
-                </div>
-                {PSFBLightning.map((location, index) => <InnerLightning key={index} states={states.filter(array => array.location == location)} location={location} />)}
-            </Card>
         </Card>
     )
 }

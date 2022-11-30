@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-// import './App.css';
+import ProfilePage from './Pages/ProfilePage';
 import LeftBar from './components/LeftBar';
 import AdminPage from './Pages/AdminPage';
 import AreaView from './components/AreaView';
@@ -71,20 +71,33 @@ function App() {
 
   })
 
-  const [windTime, setWindTime] = React.useState('');
-  const [windTime2, setWindTime2] = React.useState('');
-  const [windStartTime, setWindStartTime] = React.useState('');
-  const [windEndTime, setWindEndTime] = React.useState('');
+  const [windTime, setWindTime] = useState('');
+  const [windTime2, setWindTime2] = useState('');
+  const [windStartTime, setWindStartTime] = useState('');
+  const [windEndTime, setWindEndTime] = useState('');
   const [weatherViolations, setWeatherViolations] = useState(undefined)
   const [CCcheckedValues, setCCcheckedValues] = useState([])
-
+  const [stormSplashToggle, setStormSplashToggle] = useState(true)
+  const [capeStormToggle, setCapeStormToggle]= useState(true)
+  const [kscStormToggle, setKscStormToggle]= useState(true)
+  const [psfbStormToggle, setPsfbStormToggle]= useState(true)
   const [KSCCheckedValues, setKSCCheckedValues] = useState([])
-
+  const [windSplashToggle, setWindSplashToggle] = useState(true)
+  const [capeWindToggle, setCapeWindToggle] = useState(true)
+  const [psfbWindToggle, setPsfbWindToggle] = useState(true)
+  const [kscWindToggle, setKscWindToggle] = useState(true)
+  const [capeLightningToggle, setCapeLightningToggle] = useState(true)
+  const [kscLightningToggle, setKscLightningToggle] = useState(true)
+  const [otherLightningToggle, setOtherLightningToggle] = useState(true)
+  const [psfbLightningToggle, setPsfbLightningToggle] = useState(true)
   const [PSFBCheckedValues, setPSFBCheckedValues] = useState([])
   const [refreshRate, setRefreshRate] = useState(60000)
   const [toggle, setToggle] = useState(0)
   const [showCountdowns, setShowCountdowns] = useState(true)
   const [someState, setSomeState] = useState(0)
+  const [CCSFSLightning, setCCSFSLightning] = useState(["Cape Central", "CX-20/16/LZ", "CX-36/46", "CX-37/ASOC/PPF", "CX-40/41/SPOC", "Port"])
+  const [KSCLightning, setKSCLightning] = useState(["KSC Industrial", "LC-39", "SLF"])
+  const [OtherLightning, setOtherLightning] = useState(["Astrotech", "CIDCO Park"])
 
   const darkTheme = createTheme({
     palette: {
@@ -299,7 +312,37 @@ function App() {
     lightTheme,
     darkTheme,
     themeToggle,
-    setThemeToggle
+    setThemeToggle,
+    stormSplashToggle,
+    setStormSplashToggle,
+    capeStormToggle,
+    kscStormToggle,
+    psfbStormToggle,
+    setPsfbStormToggle,
+    setCapeStormToggle,
+    setKscStormToggle,
+    windSplashToggle,
+    setWindSplashToggle,
+    psfbWindToggle,
+    kscWindToggle,
+    capeWindToggle,
+    setCapeWindToggle,
+    setKscWindToggle,
+    setPsfbWindToggle,
+    capeLightningToggle,
+    setCapeLightningToggle,
+    kscLightningToggle,
+    setKscLightningToggle,
+    otherLightningToggle,
+    setOtherLightningToggle,
+    psfbLightningToggle,
+    setPsfbLightningToggle,
+    CCSFSLightning,
+    setCCSFSLightning,
+    KSCLightning,
+    setKSCLightning,
+    OtherLightning,
+    setOtherLightning
   }
 
   const isMobileMatch = useMediaQuery("(max-width:600px)");
@@ -374,6 +417,7 @@ function App() {
                   <Route path='/site' element={<SiteView />} />
                   <Route path='/sign_in' element={<SignIn />} />
                   <Route path='/sign_up' element={<SignUp />} />
+                  <Route path='profile' element={<ProfilePage/>} />
                 </Routes>
               ) : (
                 windowSize.innerWidth > 500 ? (
