@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import { Card, Paper } from '@mui/material'
+import { Card, Paper, useMediaQuery } from '@mui/material'
 import { AppContext } from '../../context/AppContext'
 
 const LightningProfile = () => {
+    const flexBasis = useMediaQuery('(min-width: 700px)')
     const {
         setCapeLightningToggle,
         setPsfbLightningToggle,
@@ -47,9 +48,9 @@ const LightningProfile = () => {
     }
     return (
         <>
-            <Card sx={cardStyle} style={{width:'38%', height:'94%'}}>
-                <Paper elevation={2} sx={{ width:'100%', height:'20%', display:'flex', justifyContent:'center'}}>
-                <label style={{width:'100%', paddingLeft:'28%', marginTop:'2%'}}>
+            <Card sx={cardStyle} style={{ width:(flexBasis ? '38%' : '97%'), height:(flexBasis ? '94%' : '40%'), margin:(flexBasis ? undefined :'1.5%') }}>
+                <Paper elevation={2} sx={{ width:'100%', height:(flexBasis ?'20%' : '25%'), display:'flex', justifyContent:'center',}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ? '28%':'2.5%'), marginTop:'2%'}}>
                     <input type='checkbox'
                         value={'CCSFS'}
                         style={{ margin: '1%' }}
@@ -60,7 +61,7 @@ const LightningProfile = () => {
                 </label>
                 </Paper>
                 <div style ={{width:'100%', display:'flex', flexDirection:'row', flexWrap:'wrap', marginTop:'1%'}}>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'Cape Central'}
                            style={{margin:'1%'}}
@@ -68,7 +69,7 @@ const LightningProfile = () => {
                             disabled ={capeLightningToggle === false}
                     />{CCSFSLightning.includes('Cape Central') ? 'Disable Cape Central Monitoring' : 'Enable Cape Central Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={"CX-20/16/LZ"}
                            style={{margin:'1%'}}
@@ -76,7 +77,7 @@ const LightningProfile = () => {
                             disabled ={capeLightningToggle === false}
                     />{CCSFSLightning.includes("CX-20/16/LZ") ? 'Disable CX-20/16/LZ Monitoring' : 'Enable CX-20/16/LZ Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'CX-36/46'}
                            style={{margin:'1%'}}
@@ -84,7 +85,7 @@ const LightningProfile = () => {
                             disabled ={capeLightningToggle === false}
                     />{CCSFSLightning.includes('CX-36/46') ? 'Disable CX-36/46 Monitoring' : 'Enable CX-36/46 Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'CX-37/ASOC/PPF'}
                            style={{margin:'1%'}}
@@ -92,7 +93,7 @@ const LightningProfile = () => {
                             disabled={capeLightningToggle === false}
                     />{CCSFSLightning.includes('CX-37/ASOC/PPF') ? 'Disable CX-37/ASOC/PPF Monitoring' : 'Enable CX-37/ASOC/PPF Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                 <input type='checkbox'
                            value={'CX-40/41/SPOC'}
                            style={{margin:'1%'}}
@@ -100,7 +101,7 @@ const LightningProfile = () => {
                             disabled ={capeLightningToggle === false}
                     />{CCSFSLightning.includes('CX-40/41/SPOC') ? 'Disable CX-40/41/SPOC Monitoring' : 'Enable CX-40/41/SPOC Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'Port'}
                            style={{margin:'1%'}}
@@ -110,9 +111,9 @@ const LightningProfile = () => {
                 </label>
                 </div>
             </Card>
-            <Card sx={cardStyle} style={{width:'38%', height:'94%'}}> 
-            <Paper elevation={2} sx={{ width:'100%', height:'20%', display:'flex', justifyContent:'center'}}>
-            <label style={{width:'100%', paddingLeft:'20%', marginTop:'2%'}}>
+            <Card sx={cardStyle} style={{ width:(flexBasis ?'38%' : '97%'), height:(flexBasis ? '94%' : '30%'), margin:(flexBasis ? undefined : '1.5%')}}> 
+            <Paper elevation={2} sx={{ width:'100%', height:(flexBasis ?'20%' : '35%'), display:'flex'}}>
+            <label style={{width:'100%', paddingLeft:(flexBasis ? '20%' : '2.5%'), marginTop:'2%'}}>
                     <input type='checkbox'
                         value={'KSC'}
                         style={{ margin: '1%' }}
@@ -123,7 +124,7 @@ const LightningProfile = () => {
                 </label>
             </Paper>
             <div style ={{width:'100%', display:'flex', flexDirection:'column', marginTop:'1%'}}>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'KSC Industrial'}
                            style={{margin:'1%'}}
@@ -131,7 +132,7 @@ const LightningProfile = () => {
                             disabled = {kscLightningToggle === false}
                     />{KSCLightning.includes('KSC Industrial') ? 'Disable KSC Industrial Monitoring' : 'Enable KSC Industrial Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'LC-39'}
                            style={{margin:'1%'}}
@@ -139,7 +140,7 @@ const LightningProfile = () => {
                             disabled = {kscLightningToggle === false}
                     />{KSCLightning.includes('LC-39') ? 'Disable LC-39 Monitoring' : 'Enable LC-39 Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'10%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'10%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'SLF'}
                            style={{margin:'1%'}}
@@ -149,10 +150,10 @@ const LightningProfile = () => {
                 </label>
                 </div>
                 </Card>
-            <div style= {{display:'flex', flexDirection:'column', width:'22%'}}>
-            <Card sx={cardStyle} style={{width:'100%', height:'63%', marginTop:'2.4%'}}>
+            <div style= {{display:'flex', flexDirection:'column', width:(flexBasis ? '22%' :'97%'), height:(flexBasis ? 'auto' : '30%'), margin:(flexBasis ? undefined : '1.5%'), marginTop:'0%'}}>
+            <Card sx={cardStyle} style={{width:(flexBasis ?'100%' : '100%'), height:(flexBasis ? '63%' : '70%'), marginTop:'2.4%'}}>
                 <Paper elevation={2} sx={{ width:'100%', height:'30%', display:'flex', justifyContent:'center'}}>
-                <label style={{width:'100%', paddingLeft:'20%', marginTop:'4%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ? '20%' :'1%'), marginTop:'4%'}}>
                     <input type='checkbox'
                         value={'Other'}
                         style={{ margin: '1%' }}
@@ -163,7 +164,7 @@ const LightningProfile = () => {
                 </label>
                 </Paper>
                 <div style ={{width:'100%', display:'flex', flexDirection:'column', marginTop:'5%'}}>
-                <label style={{width:'100%', paddingLeft:'14%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'14%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'CIDCO Park'}
                            style={{margin:'1%'}}
@@ -171,7 +172,7 @@ const LightningProfile = () => {
                             disabled = {otherLightningToggle === false}
                     />{OtherLightning.includes('CIDCO Park') ? 'Disable CIDCO Park Monitoring' : 'Enable CIDCO Park Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'14%', margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'14%': '1%'), margin:'1%'}}>
                     <input type='checkbox'
                            value={'Astrotech'}
                            style={{margin:'1%'}}
@@ -182,8 +183,8 @@ const LightningProfile = () => {
                 </div>
                  </Card>
 
-                 <Card sx={cardStyle} style={{width:'100%', height:'28%', marginTop:'2%'}}>
-                    <label style= {{width:'100%', paddingLeft:'15%', marginTop:'9%'}}>
+                 <Card sx={cardStyle} style={{width:(flexBasis ? '100%' : '100%'), height:(flexBasis ? '28%': '20%'), marginTop:'2%'}}>
+                    <label style= {{width:'100%', paddingLeft:(flexBasis ? '15%' : '1%') , marginTop:(flexBasis ?'7%' : '2%')}}>
                     <input type='checkbox'
                         value={'PSFB'}
                         style={{ margin: '1%' }}

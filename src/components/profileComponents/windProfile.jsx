@@ -1,12 +1,12 @@
 import React, {useContext} from 'react'
-import { Card, Paper } from '@mui/material'
+import { Card, Paper, useMediaQuery } from '@mui/material'
 import { AppContext } from '../../context/AppContext'
 
 
 import {Divider} from '@mui/material'
 
 const WindProfile = () => {
-
+const flexBasis = useMediaQuery('(min-width: 700px)')
 const {windSplashToggle,
     setWindSplashToggle,
     psfbWindToggle,
@@ -50,8 +50,8 @@ return(
             
         }
     }>
-        <Paper elevation={2} sx={{ width:'100%', height:'20%', display:'flex', justifyContent:'center'}}>
-        <label style = {{width:'25%', marginLeft:'5%', marginTop:'1.5%', height:'10%', paddingLeft:'0'}}>
+        <Paper elevation={2} sx={{ width:'100%', height:(flexBasis ? '20%' : '22%'), display:'flex', justifyContent:'center'}}>
+        <label style = {{width:(flexBasis ? '40%' : '100%'), paddingLeft:(flexBasis ?'8%': '1%'), marginTop:(flexBasis ? '1.5%' : '.5%'), height:'10%'}}>
             <input type = 'checkbox'
             value= {'storms'}
             style={{
@@ -62,9 +62,9 @@ return(
             />{windSplashToggle === false ? 'Enable All Wind Monitoring' : 'Disable All Wind Monitoring'}
         </label>
         </Paper>
-        <div style ={{width:'100%', display:'flex', flexDirection:'column', padding:'0%', marginTop:'-5%'}}>
+        <div style ={{width:'100%',height:(flexBasis ? 'auto' :'75%'), display:'flex', flexDirection:'column', padding:(flexBasis ? '0%' : '2%'), marginTop:'-5%'}}>
             
-            <label style={{width:'100%', paddingLeft:'15%',  margin:'1%'}}>
+            <label style={{width:'100%', paddingLeft:(flexBasis ?'15%': '0%'),  margin:'1%'}}>
                 <input type= 'checkbox' value ={'Cape Winds'}
                 style={{
                     margin:'1%'
@@ -74,7 +74,7 @@ return(
                     'Disable Cape Canaveral Wind Monitoring' : 'Enable Cape Canaveral Wind Monitoring'}
                 
             </label>
-            <label style={{width:'100%', paddingLeft:'15%', margin:'1%'}}>
+            <label style={{width:'100%', paddingLeft:(flexBasis ?'15%': '0%'), margin:'1%'}}>
                 <input type= 'checkbox' value = {'KSC Winds'}
                 style={{
                     margin:'1%'
@@ -83,7 +83,7 @@ return(
                 onChange={handleKSCWind}/>{kscWindToggle === true ?
                     'Disable Kennedy Space Center Wind Monitoring' : 'Enable Kennedy Space Center Wind Monitoring'}
             </label>
-            <label style={{ width:'100%', paddingLeft:'15%', margin:'1%'}}>
+            <label style={{ width:'100%', paddingLeft:(flexBasis ?'15%': '0%'), margin:'1%'}}>
                 <input type= 'checkbox' value={'PSFB Winds'}
                 style={{
                     margin:'1%'

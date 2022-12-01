@@ -1,11 +1,12 @@
 import React, {useContext} from 'react'
-import { Card, Paper } from '@mui/material'
+import { Card, Paper, useMediaQuery } from '@mui/material'
 import { AppContext } from '../../context/AppContext'
 
 import {Divider} from '@mui/material'
 
 const StormProfile = ()=> {
     const {setStormSplashToggle, stormSplashToggle, capeStormToggle, setCapeStormToggle, kscStormToggle, setKscStormToggle, psfbStormToggle, setPsfbStormToggle} = useContext(AppContext)
+    const flexBasis = useMediaQuery('(min-width: 700px)')
     const handleStormSplash = () =>{
         stormSplashToggle === true ? setStormSplashToggle(false) : setStormSplashToggle(true)
     }
@@ -21,7 +22,7 @@ const StormProfile = ()=> {
     return(
         <Card elevation={10} sx={
             {
-                height:'90%',
+                height:(flexBasis ? '90%' : '92%'),
                 width:'97%',
                 margin:'1.5%',
                 display:'flex',
@@ -30,8 +31,8 @@ const StormProfile = ()=> {
                 flexDirection:'row'
             }
         }>
-            <Paper elevation={2} sx={{ width:'100%', height:'20%', display:'flex', justifyContent:'center'}}>
-            <label style = {{width:'35%', marginLeft:'5%', marginTop:'1.5%', height:'10%', paddingLeft:'1.5%'}}>
+            <Paper elevation={2} sx={{ width:'100%', height:(flexBasis ? '20%' : '22%'), display:'flex', justifyContent:'center'}}>
+            <label style = {{width:(flexBasis ? '35%' : '100%'), paddingLeft:(flexBasis ?'15%': '1%'), marginTop:(flexBasis ? '1.5%': '.5%'), height:'10%', paddingLeft:'1.5%'}}>
                 <input type = 'checkbox'
                 value= {'storms'}
                 style={{
@@ -41,8 +42,8 @@ const StormProfile = ()=> {
                 />{stormSplashToggle === false ? 'Enable All Severe Storm Monitoring' : 'Disable All Severe Storm Monitoring'}
             </label>
             </Paper>
-            <div style ={{width:'100%', display:'flex', flexDirection:'column', marginTop:'-5%'}}>
-                <label style={{width:'100%', paddingLeft:'15%',  margin:'1%'}}>
+            <div style ={{width:'100%',height:(flexBasis ? 'auto' : '60%') ,display:'flex', flexDirection:'column', marginTop:'-5%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'15%': '1%'),  margin:'1%'}}>
                     <input type= 'checkbox' value ={'Cape Storms'}
                     style={{
                         margin:'1%'
@@ -52,7 +53,7 @@ const StormProfile = ()=> {
                         'Disable Cape Canaveral Storm Monitoring' : 'Enable Cape Canaveral Storm Monitoring'}
                     
                 </label>
-                <label style={{width:'100%', paddingLeft:'15%',  margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'15%': '1%'),  margin:'1%'}}>
                     <input type= 'checkbox' value = {'KSC Storms'}
                     style={{
                         margin:'1%'
@@ -61,7 +62,7 @@ const StormProfile = ()=> {
                     onChange={handleKscStorms}/>{kscStormToggle === true ?
                         'Disable Kennedy Space Center Storm Monitoring' : 'Enable Kennedy Space Center Storm Monitoring'}
                 </label>
-                <label style={{width:'100%', paddingLeft:'15%',  margin:'1%'}}>
+                <label style={{width:'100%', paddingLeft:(flexBasis ?'15%': '1%'),  margin:'1%'}}>
                     <input type= 'checkbox' value={'PSFB Storms'}
                     style={{
                         margin:'1%'

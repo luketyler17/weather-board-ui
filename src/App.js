@@ -345,7 +345,7 @@ function App() {
     setOtherLightning
   }
 
-  const isMobileMatch = useMediaQuery("(max-width:600px)");
+  const flexBasis = useMediaQuery("(min-width:700px)");
 
   useEffect(() => {
     if (someState == 0) {
@@ -408,40 +408,41 @@ function App() {
         <AppContext.Provider value={passContext}>
           <Router>
             {
-              windowSize.innerWidth > 1200 ? (
+              // windowSize.innerWidth > 1200 ? (
                 <Routes>
-                  <Route path='/' element={<UserPage />} />
-                  <Route path='/area' element={<AreaView />} />
+                  <Route path='/' element={flexBasis? <UserPage /> : <TestHome/>} />
                   <Route path='/admin' element={<AdminPage />} />
-                  <Route path='/area' element={<AreaView />} />
-                  <Route path='/site' element={<SiteView />} />
+                  <Route path='/area' element={flexBasis ? <AreaView /> : <MobileArea/>} />
+                  <Route path='/site' element={ flexBasis ? <SiteView /> : <MobileSiteView/>} />
                   <Route path='/sign_in' element={<SignIn />} />
                   <Route path='/sign_up' element={<SignUp />} />
                   <Route path='profile' element={<ProfilePage/>} />
                 </Routes>
-              ) : (
-                windowSize.innerWidth > 500 ? (
-                  <Routes>
-                    <Route path='/' element={<TabletView />} />
-                    <Route path='/admin' element={<AdminPage />} />
-                    <Route path='/area' element={<TabletArea />} />
-                    <Route path='/site' element={<TabletSiteView />} />
-                    <Route path='/sign_in' element={<SignIn />} />
-                    <Route path='/sign_up' element={<SignUp />} />
-                  </Routes>
-                ) :
-                  (
+              // ) : (
+              //   windowSize.innerWidth > 500 ? (
+              //     <Routes>
+              //       <Route path='/' element={<TabletView />} />
+              //       <Route path='/admin' element={<AdminPage />} />
+              //       <Route path='/area' element={<TabletArea />} />
+              //       <Route path='/site' element={<TabletSiteView />} />
+              //       <Route path='/sign_in' element={<SignIn />} />
+              //       <Route path='/sign_up' element={<SignUp />} />
+              //       <Route path='/profile' element={<ProfilePage/>}/>
+              //     </Routes>
+              //   ) :
+              //     (
 
-                    <Routes>
-                      <Route path='/' element={<TestHome />} />
-                      <Route path='/admin' element={<AdminPage />} />
-                      <Route path='/area' element={<MobileArea />} />
-                      <Route path='/site' element={<MobileSiteView />} />
-                      <Route path='/sign_in' element={<SignIn />} />
-                      <Route path='/sign_up' element={<SignUp />} />
-                    </Routes>
-                  )
-              )
+              //       <Routes>
+              //         <Route path='/' element={<TestHome />} />
+              //         <Route path='/admin' element={<AdminPage />} />
+              //         <Route path='/area' element={<MobileArea />} />
+              //         <Route path='/site' element={<MobileSiteView />} />
+              //         <Route path='/sign_in' element={<SignIn />} />
+              //         <Route path='/sign_up' element={<SignUp />} />
+              //         <Route path='/profile' element={<ProfilePage/>}/>
+              //       </Routes>
+              //     )
+              // )
             }
           </Router>
         </AppContext.Provider>

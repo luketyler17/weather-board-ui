@@ -23,7 +23,7 @@ export default function LightningSplashPop() {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div style= {{paddingTop:'10px', position:'relative', left:'87.4%'}}>
+    <div style= {{paddingTop:'10px'}}>
       <div aria-describedby={id} variant="contained" onClick={handleClick} >
       <HelpOutlineIcon sx={{color:'text.primary', cursor:'pointer'}}/>
       </div>

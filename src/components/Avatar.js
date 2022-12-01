@@ -7,6 +7,7 @@ import AccessibilityMenu from '../test components/accessibilityMenu';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import EmbeddedAccessibilityMenu from '../test components/embeddedAccessibility';
 
 const cookies = new Cookies()
 
@@ -44,6 +45,11 @@ const handleMyAccount = () => {
   
   setAnchorEl(null)
 }
+const handleAdmin = () => {
+  cookies.get('authentication', {path:'/'})
+  navigate('/admin')
+  setAnchorEl(null)
+}
   return (
     <div>
       <Button
@@ -53,7 +59,7 @@ const handleMyAccount = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <AccountCircleIcon sx={{color:'text.primary',height:'25%', width:'auto'}}/>
+        <AccountCircleIcon sx={{color:'text.primary', height:'40px', width:'40px'}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -69,8 +75,10 @@ const handleMyAccount = () => {
          <MenuItem onClick={handleSignIn} >Sign In</MenuItem> : 
          <MenuItem href='/'  onClick={handleSignOut} >Sign Out</MenuItem>}
        {cookies.get('authentication') !== undefined &&
-        <MenuItem onClick={handleMyAccount}>My account</MenuItem>}
-        
+       <>
+        <MenuItem onClick={handleMyAccount}>My account</MenuItem>
+        <MenuItem onClick={handleAdmin}>Admin</MenuItem>
+        </>}
         
       </Menu>
     </div>

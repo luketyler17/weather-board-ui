@@ -4,13 +4,22 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { AppContext } from '../context/AppContext';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import { ListItem } from '@mui/material';
+import { ListItem, List } from '@mui/material';
 import {Divider} from '@mui/material';
 
 export default function AccessibilityMenu() {
-  const {mode, setMode, defaultTheme, protTheme, duetTheme, tritTheme, theming, SetTheming, darkTheme, lightTheme, setThemeToggle} = useContext(AppContext)
+  const {showCountdowns, setShowCountdowns, mode, setMode, defaultTheme, protTheme, duetTheme, tritTheme, theming, SetTheming, darkTheme, lightTheme, setThemeToggle} = useContext(AppContext)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const handleCountdowns = () => {
+    if (showCountdowns === true) {
+        setShowCountdowns(false)
+
+    } else {
+        setShowCountdowns(true)
+
+    }
+}
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -63,7 +72,7 @@ export default function AccessibilityMenu() {
         onClick={handleClick}
         sx={{color:'text.primary'}}
       >
-        <SettingsOutlinedIcon sx={{ margin:'0px', width:'80%', height:'15%'}}/>
+        <SettingsOutlinedIcon sx={{height:'40px', width:'40px', marginBottom:'5px'}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -74,6 +83,7 @@ export default function AccessibilityMenu() {
           'aria-labelledby': 'basic-button',
         }}
       > 
+      
         <ListItem>Themes</ListItem>
         <Divider sx={{bgcolor:'#01042F', height:'2px'}}/>
         <MenuItem onClick={handleLightTheming}>Light Mode</MenuItem>
@@ -85,7 +95,10 @@ export default function AccessibilityMenu() {
         <MenuItem onClick={handleProtanopia}>Protanopia</MenuItem>
         <MenuItem onClick={handleDeutanopia}>Deuteranopia</MenuItem>
         <MenuItem onClick={handleTritanopia}>Tritanopia</MenuItem>
-
+        <Divider sx={{bgcolor:'#01042F', height:'2px'}} />
+        <MenuItem paddingDisabled onClick={handleCountdowns}>{showCountdowns ? 'Hide Countdowns' : 'Show Countdowns'}</MenuItem>
+        <Divider sx={{bgcolor:'#01042F', height:'2px'}} />
+        
       </Menu>
     </div>
   );

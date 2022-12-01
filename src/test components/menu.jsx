@@ -112,7 +112,7 @@ const siteButtonSX = {
         onClick={handleClick}
         sx={{color:'text.primary'}}
       >
-        <HiMenu style={{ height:'25px', width:'25px'}}/>
+        <HiMenu style={{ height:'40px', width:'40px'}}/>
       </Button>
       <Menu
         id="basic-menu"

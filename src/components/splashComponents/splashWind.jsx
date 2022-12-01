@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { Card, Grid, Paper } from '@mui/material';
+import { Card, Grid, Paper, useMediaQuery } from '@mui/material';
 import { RiWindyLine } from 'react-icons/ri'
 import InnerWind from './innerWInd'
 import { AppContext } from '../../context/AppContext'
 import { useNavigate } from 'react-router-dom';
 import WindSplashPop from './WindInfoPop';
+
 
 
 const SplashWind = ({ states }) => {
@@ -37,6 +38,8 @@ const SplashWind = ({ states }) => {
         navigate('/area')
     }
 
+    const tabletFlex = useMediaQuery('(min-width: 1200px)')
+
 
     return (
         <Card elevation={5} sx={{
@@ -47,24 +50,28 @@ const SplashWind = ({ states }) => {
             <h1 style={{
                 textAlign: "left",
                 margin: '10px',
+                width: (tabletFlex ? '97%' : '95%'),
             }}><RiWindyLine /> Winds</h1>
                 <WindSplashPop/>
                 </div>
             <div className="outerContainer" style={{
                 display: 'flex',
+                
             }}>
                 <div className="textContainer" style={{
                     flex: '1',
+                    
                 }}>
                     <div style={{
-                        display: 'flex'
+                        display: 'flex',
+                        flexDirection: (tabletFlex ? undefined : 'column')
                     }}>
                         {capeWindToggle === true &&
                             <Card elevation={10}
                             style={{
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%',
+                                width: (tabletFlex ?'50%' : '98%' ),
                                
                                 flex: '1',
                                 paddingLeft: '5px'
@@ -79,6 +86,7 @@ const SplashWind = ({ states }) => {
                             <div style={{
                                 display: 'flex',
                                 marginBottom: '5px',
+                                
                             }}>
                                 <div style={{
                                     width: '40%',
@@ -135,7 +143,7 @@ const SplashWind = ({ states }) => {
                                 
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%',
+                                width: (tabletFlex ? '50%' : '98%'),
                                
                                 flex: '1',
                                 paddingLeft: '5px'
@@ -203,7 +211,7 @@ const SplashWind = ({ states }) => {
                                 
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%',
+                                width: (tabletFlex ? '50%' : '98%'),
                                 
                                 flex: '1',
                                 paddingLeft: '5px'

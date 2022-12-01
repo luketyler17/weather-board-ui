@@ -11,12 +11,13 @@ import { RiThunderstormsLine } from 'react-icons/ri'
 import StormProfile from '../components/profileComponents/stormProfile'
 import WindProfile from '../components/profileComponents/windProfile'
 import LightningProfile from '../components/profileComponents/lightningProfile'
+import MobileNav from '../test components/MobileNav'
 
 const ProfilePage = () =>{
     const {themeToggle} = useContext(AppContext)
     const flexBasis = useMediaQuery('(min-width: 700px)')
     const boxStyle = {
-        height:'100vh',
+        height:(flexBasis ? '100vh': '165vh'),
         width:'auto',
         display:'flex',
         flexDirection: 'column',
@@ -26,14 +27,14 @@ const ProfilePage = () =>{
     const cardStyle = {
         padding:'1%',
         display:'flex',
-        flexDirection:'row',
+        flexDirection:(flexBasis ?'row' : 'column'),
         flexWrap:'wrap',
         height: '50%',
         width: 'auto',
         marginTop:'.5%',
         marginBottom:'.5%',
         marginLeft:'2%',
-        marginRight:'2%',
+        marginRight:(flexBasis ? '2%' :'5%'),
         textAlign:'left',
         justifyContent:'space-evenly'
 
@@ -49,25 +50,25 @@ const ProfilePage = () =>{
     }
     return(
         <Box>
-        <LeftBar/>
-        <Box sx={boxStyle}>
-            <Card  sx={cardStyle}>
+        {flexBasis ? <LeftBar/> : <MobileNav/>}
+        <Box sx={boxStyle} >
+            <Card  sx={cardStyle} style ={{height : (flexBasis ? '50%' : '60%')}}>  
                 
                 <h2 style={{textDecoration:'underline'}}><BsLightning/> Lightning Settings</h2>
                 
-                <Paper sx ={paperStyle} style={{display:'flex', justifyContent:'space-evenly'}}>
+                <Paper sx ={paperStyle} style={{display:'flex', height:(flexBasis ? '85%' :'90%'), flexDirection:(flexBasis ? 'row' :'column'), justifyContent:'space-evenly'}}>
                     <LightningProfile/>
                 </Paper>
             </Card>
-            <Card sx={cardStyle} >
-                <div style= {{width:'48%', margin:'.5%'}}>
+            <Card sx={cardStyle} style ={{flexDirection:(flexBasis ? 'row' : 'column'), height: (flexBasis ? '50%' : '40%')}} >
+                <div style= {{width:(flexBasis ? '48%' : '100%'), margin:'.1%', height:(flexBasis ? 'auto' :'45%')}}>
                 <h2 style={{textDecoration:'underline'}}><RiWindyLine/> Wind Settings</h2>
                 <Paper sx ={paperStyle}>
                     <WindProfile/>
                 </Paper>
                 </div>
-                <div style = {{width:'48%', margin:'.5%'}}>
-                    <h2 style={{textDecoration:'underline'}}><RiThunderstormsLine/> Storm Settings</h2>
+                <div style = {{width:(flexBasis ? '48%' : '100%'), margin:'.1%', height:(flexBasis ? 'auto' : '48%')}}>
+                    <h2 style={{textDecoration:'underline' }}><RiThunderstormsLine/> Storm Settings</h2>
                     <Paper sx={paperStyle}>
                         <StormProfile/>
                     </Paper>

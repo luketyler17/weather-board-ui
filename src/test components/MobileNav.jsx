@@ -11,6 +11,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import {Grid }from '@mui/material';
 import NavBarMenu from '../test components/menu'
 import AccessibilityMenu from './accessibilityMenu'
+import AvatarMenu from '../components/Avatar';
 
 const cookies = new Cookies()
 
@@ -59,6 +60,7 @@ export default function MobileNav() {
                         </Grid>
                         <Grid item xs={1} md={1} lg={1} xl={1} sx={{paddingTop:'1.5%'}}>
                         <AccessibilityMenu/>
+                        <AvatarMenu/>
                         </Grid>
 
                     </Grid>

@@ -7,6 +7,7 @@ import LightningCountdown from './LightningCountdown'
 import { AppContext } from '../../context/AppContext'
 import React, { useContext } from 'react'
 import {useNavigate} from 'react-router-dom'
+import { useMediaQuery } from '@mui/material'
 
 const CapeInnerConditions = ({ item, location }) => {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ const CapeInnerConditions = ({ item, location }) => {
         }
         
     }
-
+    const tabletFlex = useMediaQuery('(min-width : 1200px)')
     let border = (
         (item.type == 'Clear' ? mode.clear.border : (item.category == 'Warning') ? mode.warning.border : (item.category == 'Watch') ? mode.watch.border : mode.advisory.border)
         )
@@ -35,7 +36,7 @@ const CapeInnerConditions = ({ item, location }) => {
             marginTop:'.2%',
             marginBottom:'.2%',
             lineHeight: '100%',
-            width:'48%',
+            width: (tabletFlex ? '48%' : '100%'),
             flex: (CCSFSLightning.length <= 1 ? 1 : undefined)
             
             
@@ -44,8 +45,8 @@ const CapeInnerConditions = ({ item, location }) => {
             >
             <div onClick={HandleRouting} style={{
                 cursor:'pointer',
-                width: '20%',
-                margin: '0',
+                width: (tabletFlex ? '20%' : '40%'),
+                marginRight:(tabletFlex ? '0' : '10%'),
                 verticalAlign: 'middle',
                 color: (item.type == 'Clear' ? mode.clear.locationColor : (item.category == 'Warning') ? mode.warning.locationColor : (item.category == 'Watch') ? mode.watch.locationColor : mode.advisory.locationColor),
                 fontWeight: 'bold',

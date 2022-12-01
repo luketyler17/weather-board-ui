@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
@@ -9,6 +9,7 @@ import CCSFSWindSplash from './InnerComponents/CCSFSWindSplash';
 import KSCWindSplash from './InnerComponents/KSCWindSplash';
 import PSFBWindSplash from './InnerComponents/PSFBWindSplash';
 import { Card } from '@mui/material';
+import { AppContext } from '../context/AppContext';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -47,14 +48,15 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function WindHomeAccordion() {
-  const [expanded, setExpanded] = React.useState('panel1');
-
+  const {capeWindToggle, kscWindToggle, psfbWindToggle} = useContext(AppContext)
+  const [expanded, setExpanded] = React.useState(capeWindToggle === true ? 'panel1' : capeWindToggle===false && kscWindToggle === false ? 'panel3' : 'panel2');
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   return (
     <div>
+     {capeWindToggle === true &&
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Cape Canaveral Space Force Station</Typography>
@@ -71,7 +73,8 @@ export default function WindHomeAccordion() {
         </Card>
           <CCSFSWindSplash/>
         </AccordionDetails>
-      </Accordion>
+      </Accordion>}
+      {kscWindToggle === true &&
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography>Kennedy Space Center</Typography>
@@ -88,7 +91,8 @@ export default function WindHomeAccordion() {
         </Card>
             <KSCWindSplash/>
         </AccordionDetails>
-      </Accordion>
+      </Accordion>}
+      { psfbWindToggle === true &&
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Patrick SFB</Typography>
@@ -105,7 +109,7 @@ export default function WindHomeAccordion() {
         </Card>
         <PSFBWindSplash/>
         </AccordionDetails>
-      </Accordion>
+      </Accordion>}
     </div>
   );
 }
