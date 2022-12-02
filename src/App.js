@@ -24,7 +24,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { colors } from '@mui/material';
 
-const url = 'https://weatherwarn.herokuapp.com'
+const url = 'https://weather-board.onrender.com'
 const cookies = new Cookies()
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;

@@ -30,7 +30,7 @@ color: white;
 const WindButton = () => {
 
     const { setLoading, toggle, setToggle, CCcheckedValues, CCWindProperties, KSCCheckedValues, KSCWindProperties, PSFBCheckedValues, PSFBWindProperties, windTime, windTime2, windStartTime, windEndTime } = useContext(AppContext);
-    const url = 'https://weatherwarn.herokuapp.com'
+    const url = 'https://weather-board.onrender.com'
 
     const handleSubmit = () => {
         let fullStart = windStartTime + ' ' + windTime + ":00"

@@ -19,7 +19,7 @@ import { CircularProgress } from '@mui/material';
 
 const bcrypt = require('bcryptjs')
 
-const url = 'https://weatherwarn.herokuapp.com'
+const url = 'https://weather-board.onrender.com'
 
 const cookies = new Cookies();
 

@@ -26,7 +26,7 @@ color: white;
   font-family: Kanit;
 }
 `
-const url = 'https://weatherwarn.herokuapp.com'
+const url = 'https://weather-board.onrender.com'
 
 const AdminButton = ({ locations, violations, startTime, endTime, startDate, endDate }) => {
   const { toggle, setToggle, setLoading } = useContext(AppContext);

@@ -22,7 +22,7 @@ import { useNavigate } from 'react-router-dom';
 
 const bcrypt = require('bcryptjs')
 
-const url = 'https://weatherwarn.herokuapp.com'
+const url = 'https://weather-board.onrender.com'
 
 const cookies = new Cookies();
 
