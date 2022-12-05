@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Card, Grid, Paper } from '@mui/material';
+import { Card, Grid, Paper, useMediaQuery } from '@mui/material';
 import { RiThunderstormsLine } from 'react-icons/ri'
 import SevereStormBar from './severeStormBar';
 import { AppContext } from '../../context/AppContext'
@@ -36,7 +36,7 @@ const SplashSevereStorm = ({ states }) => {
         navigate('/area')
     }
 
-
+    const tabletFlex = useMediaQuery('(min-width: 1200px)')
     return (
         <Card elevation={5} sx={{
             height: '50%',
@@ -47,11 +47,10 @@ const SplashSevereStorm = ({ states }) => {
         }}><div style={{display:'flex', position:'relative'}}>
             <h1 style={{
                 
-                width:'90%',
+                width:'96.5%',
                 textAlign: "left",
                 margin:'10px',
-                marginRight:'8%',
-                marginLeft:'10px'
+                marginLeft:'1%'
 
             }}><RiThunderstormsLine /> Severe Storms</h1>
             <StormSplashPop/>
@@ -63,7 +62,8 @@ const SplashSevereStorm = ({ states }) => {
                     flex: '1',
                 }}>
                     <div style={{
-                        display: 'flex'
+                        display: 'flex',
+                        flexDirection:(tabletFlex ? undefined : 'column')
                     }}>
                        {capeStormToggle === true && 
                        <Card elevation={10}
@@ -71,7 +71,7 @@ const SplashSevereStorm = ({ states }) => {
                                
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%',
+                                width: (tabletFlex ? '50%' : '98%'),
                                 flex: 1
 
                             }}>
@@ -157,7 +157,7 @@ const SplashSevereStorm = ({ states }) => {
                                 
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%',
+                                width: (tabletFlex ? '50%' : '98%'),
                                 flex: 1
 
                             }}>
@@ -223,7 +223,7 @@ const SplashSevereStorm = ({ states }) => {
                                 
                                 margin: '10px',
                                 height: '75%',
-                                width: '50%',
+                                width: (tabletFlex ? '50%' : '98%'),
                                 flex : 1
 
                             }}>

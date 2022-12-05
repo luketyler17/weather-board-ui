@@ -6,8 +6,8 @@ import { AppContext } from '../../context/AppContext';
 
 
 const OtherLightningSplash = () => {
-    const OtherLightning = ["Astrotech", "CIDCO Park"]
-    const { lightning } = useContext(AppContext)
+    
+    const { OtherLightning, lightning } = useContext(AppContext)
 
     return (
         <Card elevation={10} sx={{paddingTop:'2%'}}>

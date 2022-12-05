@@ -10,7 +10,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
-
+import { useMediaQuery } from '@mui/material';
 import Cookies from 'universal-cookie';
 
 
@@ -19,7 +19,7 @@ const cookies = new Cookies()
 export default function NavBarMenu() {
     cookies.get('area')
     let userInfo = cookies.get('authentication')
-
+    const mobileFlex = useMediaQuery('(min-width:700px)')
     const { area, setArea, site, setSite, setImagePath, setCookieData} = useContext(AppContext)
     const navigate = useNavigate();
     cookies.get('site')
@@ -112,7 +112,7 @@ const siteButtonSX = {
         onClick={handleClick}
         sx={{color:'text.primary'}}
       >
-        <HiMenu style={{ height:'25px', width:'25px'}}/>
+        <HiMenu style={{ height:(mobileFlex ? '40px' : '25px'), width:(mobileFlex ? '40px' : '25px')}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -124,11 +124,11 @@ const siteButtonSX = {
         }}
       >
         <MenuItem onClick={handleClose}>
-        <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
+            
                         <List>
-                        <ListItemButton key='Home'  sx={locationButtonSX} onClick={() => navigate('/')} >
+                        <ListItem key='Home'  sx={locationButtonSX} onClick={() => navigate('/')} >
                         <ListItemText sx={{textAlign:'center'}} primary={<h4>Home</h4>} />
-                            </ListItemButton>
+                            </ListItem>
                         <Divider sx={{ bgcolor: 'white' }} />
                             <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
                             <ListItemButton key='CCSFS'  sx={locationButtonSX} onClick={() => handleCCSFS()} >
@@ -194,7 +194,7 @@ const siteButtonSX = {
                             ))}
                             
                         </List>
-                    </List>
+                    
         </MenuItem>
 
       </Menu>

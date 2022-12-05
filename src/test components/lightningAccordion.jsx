@@ -49,15 +49,18 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function LightningHomeAccordion() {
-  const [expanded, setExpanded] = React.useState('panel1');
-  const {showCountdowns} = useContext(AppContext)
+  const {capeLightningToggle, kscLightningToggle, psfbLightningToggle, otherLightningToggle} = useContext(AppContext)
+  const [expanded, setExpanded] = React.useState(capeLightningToggle=== false && kscLightningToggle === false && psfbLightningToggle === false ? 'panel4':
+                                                 capeLightningToggle === false && kscLightningToggle === false ? 'panel3' : capeLightningToggle === false ? 'panel2' : 'panel1'
+  );
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   return (
     <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+      {capeLightningToggle === true &&
+        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Cape Canaveral Space Force Station</Typography>
         </AccordionSummary>
@@ -73,8 +76,9 @@ export default function LightningHomeAccordion() {
         </Card>
             <CCSFSLightningSplash/>
         </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+      </Accordion>}
+      {kscLightningToggle === true &&
+        <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography>Kennedy Space Center</Typography>
         </AccordionSummary>
@@ -90,8 +94,9 @@ export default function LightningHomeAccordion() {
         </Card>
             <KSCLightningSplash/>
         </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+      </Accordion>}
+      {psfbLightningToggle === true &&
+        <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Patrick SFB</Typography>
         </AccordionSummary>
@@ -107,8 +112,9 @@ export default function LightningHomeAccordion() {
         </Card>
             <PSFBLightningSplash/>
         </AccordionDetails>
-      </Accordion>
-      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+      </Accordion>}
+      {otherLightningToggle === true &&
+        <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
           <Typography>Other</Typography>
         </AccordionSummary>
@@ -124,7 +130,7 @@ export default function LightningHomeAccordion() {
         </Card>
             <OtherLightningSplash/>
         </AccordionDetails>
-      </Accordion>
+      </Accordion>}
     </div>
   );
 }

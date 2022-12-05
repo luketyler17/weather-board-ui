@@ -23,8 +23,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccessibilityMenu from '../test components/accessibilityMenu'
-import {Paper} from '@mui/material'
-import {useTheme} from '@mui/material'
+import { Paper, useMediaQuery } from '@mui/material'
+import { useTheme } from '@mui/material'
 import NavBarMenu from '../test components/menu';
 import AvatarMenu from './Avatar'
 
@@ -37,8 +37,10 @@ const drawerWidth = 240;
 const cookies = new Cookies()
 
 export default function LeftBar() {
-    
 
+    const tabletFlex= useMediaQuery('(min-width: 1200px)')
+    const mobileFlex= useMediaQuery('(min-width: 700px)')
+    const cloudFlex = useMediaQuery('(min-width: 425px)')
     const handleChange = (event) => {
         setRefreshRate(event.target.value);
     };
@@ -46,7 +48,7 @@ export default function LeftBar() {
     cookies.get('area')
     let userInfo = cookies.get('authentication')
 
-    const {area, setArea, site, setSite, imagePath, setImagePath, cookieData, setCookieData, showCountdowns, setShowCountdowns, setRefreshRate, refreshRate } = useContext(AppContext)
+    const { area, setArea, site, setSite, imagePath, setImagePath, cookieData, setCookieData, showCountdowns, setShowCountdowns, setRefreshRate, refreshRate } = useContext(AppContext)
     const navigate = useNavigate();
 
     const [checked, setChecked] = useState(true)
@@ -54,26 +56,26 @@ export default function LeftBar() {
     cookies.get('site')
 
     const formStyle = {
-        color:'text.primary',
-        borderColor:'text.primary',
-        '& label.Mui-focused':{
-            color:'text.secondary',
-            borderColor:'text.secondary'
+        color: 'text.primary',
+        borderColor: 'text.primary',
+        '& label.Mui-focused': {
+            color: 'text.secondary',
+            borderColor: 'text.secondary'
         },
-        '& .MuiOutlinedInput-root':{
-            '&.Mui-focused fieldset':{
-                borderColor:'text.secondary'
+        '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+                borderColor: 'text.secondary'
             }
         },
-        '& .MuiOutlinedInput-selected':{
-            borderColor:'text.primary'
+        '& .MuiOutlinedInput-selected': {
+            borderColor: 'text.primary'
         },
-        
+
     }
 
-const handleHome = () => {
-    navigate('/')
-}
+    const handleHome = () => {
+        navigate('/')
+    }
 
     const handleCCSFS = () => {
         setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
@@ -139,8 +141,8 @@ const handleHome = () => {
 
     const buttonSX = {
         width: 'auto',
-        height:'50%',
-        marginTop:'2%',
+        height: '50%',
+        marginTop: '2%',
         color: 'white',
         backgroundColor: '#01042F',
         borderRadius: '20px',
@@ -207,25 +209,27 @@ const handleHome = () => {
 
         return (
             <>
-                
+
                 <AppBar
                     position="fixed"
-                    
-                    sx={{ display: 'flex', flexDirection: 'row', width: `100%`, justifyContent: 'space-between', alignItems: 'center', bgcolor:'primary.main' }}
+
+                    sx={{ display: 'flex', flexDirection: 'row', width: `100%`, height: '5%', alignItems: 'center', bgcolor: 'primary.main' }}
                 >
-                    <Toolbar sx={{paddingTop:'5px', width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }} xs={6} md={8} lg={10} >
-                        <NavBarMenu/>
-                        <div onClick={handleHome} style={{cursor:'pointer', display: 'flex', width: '40%', placeContent: 'left'}}>
-                            <Typography color='text.primary' variant="h6" noWrap component="Paper" >
-                                <h1 style={{ color:'text.primary', fontSize: '30px' }}><CloudOutlinedIcon sx={{ height: '40px', width: '40px' }} />&nbsp;Weather Warning eBoard</h1>
+                    <Toolbar sx={{ paddingTop: '5px', width: '100%', display: 'flex' }}>
+
+                            <NavBarMenu />
+                        <div onClick={handleHome} style={{ margin:'10px',position:'fixed', left:(tabletFlex ?'5%' :'10%'), width: (tabletFlex ? '30%' : 'auto'), cursor: 'pointer', display: 'flex', justifyContent: 'left'}}>
+                            <Typography sx={{marginLeft:'25px'}} color='text.primary' variant={tabletFlex ? 'h5' :'h7'} noWrap component="Paper" >
+                                {cloudFlex && <CloudOutlinedIcon sx={{ height:'35px', width: 'auto' }} />}&nbsp;Weather Warning eBoard
                             </Typography>
                         </div>
-                        <div style={{ width: '40%', paddingLeft: '10.7%' }}>
+                        {mobileFlex &&
+                        <div style={{ marginLeft:'45.5%' }}>
                             <MapModal />
-                        </div>
+                        </div>}
 
-                        <div style={{ width: '50%', display: 'flex', flexDirection: 'row', width: '30%', justifyContent: 'space-evenly' }}>
-                            <FormControl sx={formStyle} fullWidth style={{width: '28%'}}>
+                        <div style={{position:'fixed', right:'8%', width: '8%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                            {/* <FormControl sx={formStyle} fullWidth style={{width: '28%'}}>
                                 <InputLabel sx={formStyle} id="Refresh-Rate-label">Refresh Rate</InputLabel>
                                 <Select
                                     labelId="Refresh-Rate-label"
@@ -238,115 +242,14 @@ const handleHome = () => {
                                     <MenuItem value={60000}>60 Seconds</MenuItem>
                                     <MenuItem value={300000}>5 Minutes</MenuItem>
                                 </Select>
-                            </FormControl>
-                            <Button sx={buttonSX} onClick={handleCountdowns}>
-                                {showCountdowns ? 'Hide Countdowns' : 'Show Countdowns'}
-                            </Button>
-                            {cookies.get('authentication') !== undefined &&
-                                <Button href='/admin' sx={buttonSX}>Admin</Button>
-                            }
-                            {/* {(cookies.get('authentication') === undefined) ? <Button onClick={handleSignIn} sx={buttonSX}>Sign In</Button> : <Button href='/' sx={buttonSX} onClick={handleSignOut} >Sign Out</Button>} */}
-                            <AvatarMenu/>
-                            <div style={{width:'5%', height:'100%', marginTop: '5px'}}>
-                                <AccessibilityMenu />
-                            </div>
+                            </FormControl> */}
+                            <AvatarMenu />
+                            <AccessibilityMenu />
+                            
+
                         </div>
                     </Toolbar>
                 </AppBar>
-
-                {/* <Drawer
-                    sx={{
-                        width: drawerWidth,
-
-                        flexShrink: 1,
-                        '& .MuiDrawer-paper': {
-                            width: '10%',
-                            boxSizing: 'border-box',
-                            height: '100%',
-                            border: '1px solid #01042F',
-                            bgcolor: '#01042F',
-                        },
-                    }}
-                    variant="permanent"
-                    anchor="left"
-
-                >
-                    <Toolbar sx={{ bgcolor: '#01042F', height: '30%', display: 'flex', placeContent: 'center' }}>
-                        <img href='/' style={{ height: '150px', cursor: 'pointer', width: 'auto' }} src={wslogo} onClick={() => navigate('/')} />
-                    </Toolbar>
-
-                    <List sx={{ backgroundColor: '#01042F', height: '80%' }}>
-                        <List>
-                            <ListItem key='Locations' disablePadding />
-                            <ListItemText primary={<h2 style={{ color: 'white' }}>Locations</h2>} />
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Cape Canaveral SFS' sx={{ "&:hover": { bgcolor: 'white' } }} disablePadding />
-                            <ListItemButton key='CCSFS' sx={locationButtonSX} onClick={() => handleCCSFS()} >
-                                Cape Canaveral SFS
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'].map((text, index) => (
-                                <ListItem key={text} disablePadding >
-                                    <ListItemButton
-                                        sx={siteButtonSX}
-
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['Cape Central', 'Port', 'CX-20/16/LZ', 'CX-36/46', 'CX-37/ASOC/PPF', 'CX-40/41/SPOC'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}
-                                    >{text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Kennedy Space Center' sx={{ display: 'flex', textAlign: 'center' }} disablePadding />
-                            <ListItemButton key='KSC' sx={locationButtonSX} onClick={() => handleKSC()} >
-                                Kennedy Space Center
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['KSC Industrial', 'LC-39', 'SLF'].map((text, index) => (
-                                <ListItem key={text} disablePadding>
-                                    <ListItemButton sx={siteButtonSX}
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['KSC Industrial', 'LC-39', 'SLF'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}>
-                                        {text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItemButton key='Patrick SFB' sx={locationButtonSX} onClick={() => handlePatrick()} >
-                                Patrick SFB
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            <ListItem key='Other' disablePadding />
-                            <ListItemButton key='Other Areas' sx={locationButtonSX} onClick={() => handleOther()} >
-                                Other
-                            </ListItemButton>
-                            <Divider sx={{ bgcolor: 'white' }} />
-                            {['CIDCO Park', 'Astrotech'].map((text, index) => (
-                                <ListItem key={text} disablePadding >
-                                    <ListItemButton sx={siteButtonSX}
-                                        onClick={() => {
-                                            setSite(text)
-                                            setArea(['CIDCO Park', 'Astrotech'])
-                                            setCookieData({ area: area, site: site })
-                                            navigate('/site')
-                                        }}>
-                                        {text}
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                            {/* <Divider sx={{ bgcolor: 'white' }} /> */}
-                        {/* </List>
-                    </List> */}
-
-                {/* </Drawer> */} */}
             </>
         );
     }

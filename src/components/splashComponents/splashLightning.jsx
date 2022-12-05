@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Card, Grid, Paper } from '@mui/material';
+import { Card, Grid, Paper, useMediaQuery } from '@mui/material';
 import { BsLightning } from 'react-icons/bs'
 import InnerLightning from './innerLightning';
 import { AppContext } from '../../context/AppContext';
@@ -79,7 +79,7 @@ const SplashLightning = ({ states }) => {
         setCookieData({ area: area, site: site })
         navigate('/area')
     }
-
+const tabletFlex = useMediaQuery('(min-width: 1200px)')
 
     return (
         <Card elevation={5} xs={6} md={8} sx={{
@@ -91,6 +91,7 @@ const SplashLightning = ({ states }) => {
                 <h1 style={{
                     textAlign: "left",
                     margin: '10px',
+                    width:(tabletFlex ? '97%' : '95%')
 
                 }}><BsLightning /> Lightning</h1>
                 <LightningSplashPop />
@@ -115,7 +116,7 @@ const SplashLightning = ({ states }) => {
 
                                         marginTop: '15px',
                                         height: 'auto',
-                                        width: '99%',
+                                        width: (tabletFlex ? '99%' : '98%'),
                                         margin: '10px',
                                         paddingLeft: '5px',
 
@@ -134,18 +135,21 @@ const SplashLightning = ({ states }) => {
                                         display: 'flex',
                                         marginBottom: '5px',
                                         
+                                        
 
                                     }}>
                                         <div style={{
-                                            width: '50%',
+                                            width: (tabletFlex ?'50%' : '100%'),
                                             margin: '0',
-
+                                            
                                             display: 'flex',
                                             flexDirection: 'row',
                                             
                                         }}>
                                             <div style={{
-                                                width: (CCSFSLightning.length <=1 ? '35%' : '36%')
+                                                
+                                                width: (tabletFlex ? (CCSFSLightning.length <=1 ? '35%' : '36%') : '70%'),
+                                                
                                             }}>
 
                                             </div>
@@ -156,14 +160,14 @@ const SplashLightning = ({ states }) => {
                                                 Status
                                             </div>
                                             <div style={{
-                                                width: '23%',
+                                                width: (tabletFlex ? '23%' : '20%'),
                                                 fontSize: '75%',
                                                 paddingLeft:(CCSFSLightning.length <=1 ? '2%' : '0%')
                                             }}>
                                                 Start Time
                                             </div>
                                             <div style={{
-                                                width: '28%',
+                                                width: (tabletFlex? '28%' : '20%'),
                                                 fontSize: '75%',
                                                 paddingLeft:(CCSFSLightning.length <=1 ? '1%' : '0%')
                                             }}>
@@ -177,7 +181,7 @@ const SplashLightning = ({ states }) => {
                                                 {showCountdowns === true ? "Countdown" : ''}
                                             </div>
                                         </div>
-                                        {CCSFSLightning.length > 1 &&
+                                        {tabletFlex && CCSFSLightning.length > 1 &&
                                             <div style={{
                                             display: 'flex',
                                             width: '50%',
@@ -219,8 +223,10 @@ const SplashLightning = ({ states }) => {
                                     </div>
                                     <div style={{
                                         display: 'flex',
-                                        flexDirection: 'row',
+                                        flexDirection: (tabletFlex ? 'row' :'column'),
                                         flexWrap: 'wrap',
+                                        
+                                        width:'99.3%'
                                         
 
                                     }}>
@@ -231,9 +237,9 @@ const SplashLightning = ({ states }) => {
                         <div
                             style={{
                                 width: '100%',
-
+                                
                                 display: 'flex',
-                                flexDirection: 'row'
+                                flexDirection: (tabletFlex ?'row' : 'column')
                             }}>
                             {kscLightningToggle === true && hideKSC()}
                             {kscLightningToggle === true &&
@@ -241,9 +247,9 @@ const SplashLightning = ({ states }) => {
                                     style={{
                                         margin: '10px',
                                         height: 'auto',
-                                        width: '30%',
+                                        width: (tabletFlex ?'30%' : '98%'),
 
-                                        flex: '1 1 20em',
+                                        flex: '1',
                                         paddingLeft: '5px'
                                     }}>
                                     <h2 onClick={handleKSC} style={{
@@ -254,6 +260,7 @@ const SplashLightning = ({ states }) => {
                                     <div style={{
                                         display: 'flex',
                                         marginBottom: '5px',
+                                        
 
                                     }}>
                                         <div style={{
@@ -302,9 +309,9 @@ const SplashLightning = ({ states }) => {
                                     style={{
 
                                         margin: '10px',
-                                        flex: '1 1 20em',
+                                        flex: '1 1 ',
                                         paddingLeft: '5px',
-                                        width: '30%',
+                                        width: (tabletFlex ? '30%' : '98%'),
                                         height: 'auto'
 
                                     }}>
@@ -364,9 +371,9 @@ const SplashLightning = ({ states }) => {
 
                                         margin: '10px',
                                         height: 'auto',
-                                        width: '30%',
+                                        width: (tabletFlex ? '30%' : '98%'),
 
-                                        flex: '1 1 20em',
+                                        flex: '1 1 ',
                                         paddingLeft: '5px'
 
                                     }}>

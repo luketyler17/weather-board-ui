@@ -4,13 +4,25 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { AppContext } from '../context/AppContext';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import { ListItem } from '@mui/material';
+import { ListItem, List, useMediaQuery } from '@mui/material';
 import {Divider} from '@mui/material';
 
+
+
 export default function AccessibilityMenu() {
-  const {mode, setMode, defaultTheme, protTheme, duetTheme, tritTheme, theming, SetTheming, darkTheme, lightTheme, setThemeToggle} = useContext(AppContext)
+  const {showCountdowns, setShowCountdowns, mode, setMode, defaultTheme, protTheme, duetTheme, tritTheme, theming, SetTheming, darkTheme, lightTheme, setThemeToggle} = useContext(AppContext)
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const mobileFlex = useMediaQuery('(min-width: 700px)')
   const open = Boolean(anchorEl);
+  const handleCountdowns = () => {
+    if (showCountdowns === true) {
+        setShowCountdowns(false)
+        setAnchorEl(null)
+    } else {
+        setShowCountdowns(true)
+        setAnchorEl(null)
+    }
+}
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -52,6 +64,7 @@ export default function AccessibilityMenu() {
     setThemeToggle(true)
     setAnchorEl(null)
   }
+ 
 
   return (
     <div>
@@ -63,7 +76,7 @@ export default function AccessibilityMenu() {
         onClick={handleClick}
         sx={{color:'text.primary'}}
       >
-        <SettingsOutlinedIcon sx={{ margin:'0px', width:'80%', height:'15%'}}/>
+        <SettingsOutlinedIcon sx={{height:(mobileFlex ?'40px' : '25px'), width:(mobileFlex ? '40px' : '25px'), marginBottom:'5px'}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -74,18 +87,24 @@ export default function AccessibilityMenu() {
           'aria-labelledby': 'basic-button',
         }}
       > 
+      
         <ListItem>Themes</ListItem>
         <Divider sx={{bgcolor:'#01042F', height:'2px'}}/>
         <MenuItem onClick={handleLightTheming}>Light Mode</MenuItem>
         <MenuItem onClick={handleDarkTheming}>Dark Mode</MenuItem>
         <Divider sx={{bgcolor:'#01042F', height:'2px'}} />
-        <ListItem>Accessibility</ListItem>
+        <ListItem >Accessibility</ListItem>
         <Divider sx={{bgcolor:'#01042F', height:'2px'}} />
         <MenuItem onClick={handleDefaults}>Default</MenuItem>
         <MenuItem onClick={handleProtanopia}>Protanopia</MenuItem>
         <MenuItem onClick={handleDeutanopia}>Deuteranopia</MenuItem>
         <MenuItem onClick={handleTritanopia}>Tritanopia</MenuItem>
-
+        {mobileFlex &&<>
+          <Divider sx={{bgcolor:'#01042F', height:'2px'}} />
+        <MenuItem paddingDisabled onClick={handleCountdowns}>{showCountdowns ? 'Hide Countdowns' : 'Show Countdowns'}</MenuItem>
+        <Divider sx={{bgcolor:'#01042F', height:'2px'}} />
+        </>}
+        
       </Menu>
     </div>
   );
