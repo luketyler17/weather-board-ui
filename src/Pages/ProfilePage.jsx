@@ -16,12 +16,13 @@ import MobileNav from '../test components/MobileNav'
 const ProfilePage = () =>{
     const {themeToggle} = useContext(AppContext)
     const flexBasis = useMediaQuery('(min-width: 700px)')
+    const tabletFlex = useMediaQuery('(min-width: 1200px)')
     const boxStyle = {
         height:(flexBasis ? '100vh': '165vh'),
         width:'auto',
         display:'flex',
         flexDirection: 'column',
-        paddingTop: flexBasis ?'4%' : '9%',
+        paddingTop: (flexBasis ?'4%' : '10%'),
         bgcolor:(themeToggle === false ? 'text.primary' : "background.default")
     }
     const cardStyle = {
@@ -50,8 +51,8 @@ const ProfilePage = () =>{
     }
     return(
         <Box>
-        {flexBasis ? <LeftBar/> : <MobileNav/>}
-        <Box sx={boxStyle} >
+        <LeftBar/>
+        <Box sx={boxStyle} style={{marginTop:(tabletFlex ? '0%' : '5%')}} >
             <Card  sx={cardStyle} style ={{height : (flexBasis ? '50%' : '60%')}}>  
                 
                 <h2 style={{textDecoration:'underline'}}><BsLightning/> Lightning Settings</h2>

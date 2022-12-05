@@ -21,6 +21,7 @@ const MobileInnerWindConditions = ({ item, category}) => {
                 verticalAlign: 'middle',
                 color:  (item.type == 'Clear' ? mode.clear.locationColor : (item.type == 'Warning') ? mode.warning.locationColor : (item.type == 'Watch') ? mode.watch.locationColor : mode.advisory.locationColor),
                 fontWeight: 'bold',
+                fontSize:'60%'
 
             }}>
                 {category} <div style={{

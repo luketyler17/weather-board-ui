@@ -40,6 +40,7 @@ export default function LeftBar() {
 
     const tabletFlex= useMediaQuery('(min-width: 1200px)')
     const mobileFlex= useMediaQuery('(min-width: 700px)')
+    const cloudFlex = useMediaQuery('(min-width: 425px)')
     const handleChange = (event) => {
         setRefreshRate(event.target.value);
     };
@@ -217,9 +218,9 @@ export default function LeftBar() {
                     <Toolbar sx={{ paddingTop: '5px', width: '100%', display: 'flex' }}>
 
                             <NavBarMenu />
-                        <div onClick={handleHome} style={{ position:'fixed', left:(tabletFlex ?'5%' :'10%'), width: (tabletFlex ? '30%' : '41%'), cursor: 'pointer', display: 'flex', justifyContent: 'left' }}>
-                            <Typography color='text.primary' variant={tabletFlex ? 'h5' :'h6'} noWrap component="Paper" >
-                                {tabletFlex && <CloudOutlinedIcon sx={{ height: '35px', width: 'auto' }} />}&nbsp;Weather Warning eBoard
+                        <div onClick={handleHome} style={{ margin:'10px',position:'fixed', left:(tabletFlex ?'5%' :'10%'), width: (tabletFlex ? '30%' : 'auto'), cursor: 'pointer', display: 'flex', justifyContent: 'left'}}>
+                            <Typography sx={{marginLeft:'25px'}} color='text.primary' variant={tabletFlex ? 'h5' :'h7'} noWrap component="Paper" >
+                                {cloudFlex && <CloudOutlinedIcon sx={{ height:'35px', width: 'auto' }} />}&nbsp;Weather Warning eBoard
                             </Typography>
                         </div>
                         {mobileFlex &&

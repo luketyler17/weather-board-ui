@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Card } from '@mui/material'
-import { Paper } from '@mui/material'
+import { Paper, useMediaQuery } from '@mui/material'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import LeftBar from './LeftBar';
@@ -27,12 +27,12 @@ const AreaView = () => {
     cookies.set('imagePath', imagePath, {path:'/'})
     }
     
-
+    const flexBasis = useMediaQuery('(min-width: 1200px)')
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'row', bgcolor: (themeToggle === false ? 'text.primary': 'background.default') }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row',paddingTop:(flexBasis ? '3%' : '8%'), bgcolor: (themeToggle === false ? 'text.primary': 'background.default') }}>
             <LeftBar />
-            <Card sx={{ height: '20%', width: '100%', marginLeft: '7.5%', marginRight: '5%' }}>
-                <Card elevation={10}  sx={{position:'relative', display: 'flex', height: '20%', margin: '10px', bgcolor: 'grey', justifyContent: 'center', marginTop:'5%' }}>
+            <Card sx={{ height: '20%', width: '100%', marginLeft: '7.5%', marginRight: '5%',}}>
+                <Card elevation={10}  sx={{position:'relative', display: 'flex', height: '20%', margin: '10px', justifyContent: 'center', marginTop:'5%',  }}>
                     <Box >
                     <img src={imagePath} alt="placehoder"
                         style={{
@@ -49,7 +49,7 @@ const AreaView = () => {
                     })}
                     </Box>
                 </Card>
-                <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><BsLightning/> Lightning</h4>
+                <Card elevation={10} sx={{ margin: '10px' }}><h4><BsLightning/> Lightning</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main'}}>
                         <Card  sx={{
                             width:'100%',
@@ -109,7 +109,7 @@ const AreaView = () => {
                 </Card>
 
                 {area[0] !== 'CIDCO Park' &&
-                    <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><RiWindyLine/> Winds</h4>
+                    <Card elevation={10} sx={{ margin: '10px' }}><h4><RiWindyLine/> Winds</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card sx={{
                             width:'100%',
@@ -248,7 +248,7 @@ const AreaView = () => {
                 }
 
                 {area[0] !== 'CIDCO Park' &&
-                    <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><RiThunderstormsLine/> Severe Storms</h4>
+                    <Card elevation={10} sx={{ margin: '10px' }}><h4><RiThunderstormsLine/> Severe Storms</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card sx={{
                             width:'100%',

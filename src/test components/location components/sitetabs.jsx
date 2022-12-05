@@ -53,22 +53,30 @@ function a11yProps(index) {
 }
 
 export default function SiteTabs({ image }) {
-  console.log('Sitetabs', image)
+  
   const [value, setValue] = React.useState(0);
   const { site, storm, lightning, wind, area } = useContext(AppContext)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const tabStyle= {
+    color:'text.primary',
+    bgcolor:'background.default',
+    '&.Mui-selected':{
+      bgcolor:'primary.main',
+      color:'text.secondary'
+    }
+  }
   if (site !== 'CIDCO Park' && site !== 'Astrotech') {
     return (
       <Box sx={{ width: '100%' }}>
         <SiteImgContainer image={image[0].imgsrc}/>
         <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'space-evenly' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Lightning" {...a11yProps(0)} />
-            <Tab label="Wind" {...a11yProps(1)} />
-            <Tab label="Severe Storms" {...a11yProps(2)} />
+            <Tab sx={tabStyle} label="Lightning" {...a11yProps(0)} />
+            <Tab sx={tabStyle} label="Wind" {...a11yProps(1)} />
+            <Tab sx={tabStyle} label="Severe Storms" {...a11yProps(2)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -123,9 +131,7 @@ export default function SiteTabs({ image }) {
         <SiteImgContainer image={image[0].imgsrc}/>
         <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab sx={{ width: '100%' }} label="Lightning" {...a11yProps(0)} />
-            <Tab sx={{ width: '100%' }} label="Lightning" {...a11yProps(1)} />
-            <Tab sx={{ width: '100%' }} label="Lightning" {...a11yProps(2)} />
+            <Tab sx={tabStyle} label="Lightning" {...a11yProps(0)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>

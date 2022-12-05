@@ -7,13 +7,15 @@ import { AppContext } from '../context/AppContext';
 import ModalRings from './ModalRings';
 import { Card, CardMedia } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import MapIcon from '@mui/icons-material/Map';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '25%',
+  width: '575px',
   height:'auto',
   bgcolor: 'background.paper',
   border: '2px solid black',
@@ -27,16 +29,16 @@ const style = {
 
 const buttonSX = {
     width: 'auto',
-    color: 'white',
-    backgroundColor: '#01042F',
+    color: 'text.primary',
+    
     borderRadius: '20px',
     fontFamily: 'Kanit',
     border: 'none',
     textDecoration: 'underline',
     "&:hover": {
-        color: '#01042F',
-        backgroundColor: 'white',
-        border: '1px solid #01042F',
+        color: 'text.primary',
+       
+        border: '1px solid text.primary',
         textDecoration: 'underline',
         fontWeight: 'bold'
     }}
@@ -51,7 +53,7 @@ export default function MapModal() {
   
   return (
     <div>
-      <Button sx={buttonSX} onClick={handleOpen}>Show Map</Button>
+      <Button sx={buttonSX} onClick={handleOpen}>Show Map<ArrowDropDownIcon/></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -66,7 +68,7 @@ export default function MapModal() {
               <CloseIcon onClick={handleClose} sx={{position:'relative', right:'-46.5%', cursor:'pointer'}} />
                </div>
             <div style={{position:'relative', height:'800px', width:'auto'}}>
-              <div style={{width:'100%', height:'90%', border:'1px solid red', position:'relative'}}>
+              <div style={{width:'100%', height:'90%', position:'relative'}}>
               <CardMedia sx={{position:'absolute', width:'100%', height:'100%'}} component='img' src={'./images/wholemap.gif'} alt='N/A'/>
               {coverageAreas.map((item) =>{
                 return(

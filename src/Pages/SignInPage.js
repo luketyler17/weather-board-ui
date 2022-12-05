@@ -16,6 +16,7 @@ import Cookies from 'universal-cookie';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
+import LeftBar from '../components/LeftBar';
 
 const bcrypt = require('bcryptjs')
 
@@ -65,8 +66,9 @@ export default function SignIn() {
   }else{
 
     return (
-  
-      <Container component="main" maxWidth="xs">
+      <>
+      <LeftBar/>
+      <Container component="main" maxWidth="xs" sx={{bgcolor:'background.primary'}}>
         <CssBaseline />
         <Box
           sx={{
@@ -74,15 +76,16 @@ export default function SignIn() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            color:'text.primary'
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'text.primary' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }} color='text.primary'>
             <TextField
               margin="normal"
               required
@@ -92,6 +95,14 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              variant='filled'
+              InputLabelProps={{sx:{
+                color:'text.primary',
+                '&.Mui-focused':{
+                  color:'text.secondary',
+                },
+                }
+              }}
             />
             <TextField
               margin="normal"
@@ -102,16 +113,40 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              variant='filled'
+              InputLabelProps={{sx:{
+                color:'text.primary',
+                '&.Mui-focused':{
+                  color:'text.secondary'
+                },
+                }
+              }}
+              InputProps={{sx:{
+                '&:focus':{
+                  border:'1px solid red'
+                }
+              }}}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox value="remember" sx={{
+                color:'text.primary',
+                '&.Mui-checked':{
+                  color:'text.secondary'
+                },
+              }}
+              
+                 />}
               label="Remember me"
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, bgcolor:'text.secondary',
+            '&:hover':{
+             backgroundColor:'text.primary',
+             color:'background.paper'
+            } }}
             >
               Sign In
             </Button>
@@ -122,7 +157,7 @@ export default function SignIn() {
                   </Link> */}
               {/* </Grid> */}
               <Grid item>
-                <Link href="/sign_up" variant="body2">
+                <Link onClick={()=>navigate('/sign_up')} variant="body2" sx={{color:'text.primary', cursor:'pointer'}}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -130,7 +165,7 @@ export default function SignIn() {
           </Box>
         </Box>
       </Container>
-  
+      </>
     );
   }
 }

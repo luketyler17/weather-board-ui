@@ -19,6 +19,7 @@ import { useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
+import LeftBar from '../components/LeftBar';
 
 const bcrypt = require('bcryptjs')
 
@@ -93,6 +94,7 @@ export default function SignUp() {
 
     return (
       <>
+      <LeftBar/>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
@@ -103,7 +105,7 @@ export default function SignUp() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: 'text.primary' }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -120,7 +122,14 @@ export default function SignUp() {
                     id="firstName"
                     label="First Name"
                     autoFocus
-                    
+                    variant='filled'
+                    InputLabelProps={{sx:{
+                      color:'text.primary',
+                      '&.Mui-focused':{
+                        color:'text.secondary'
+                      },
+                      }
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -131,6 +140,14 @@ export default function SignUp() {
                     label="Last Name"
                     name="lastName"
                     autoComplete="family-name"
+                    variant='filled'
+                    InputLabelProps={{sx:{
+                      color:'text.primary',
+                      '&.Mui-focused':{
+                        color:'text.secondary'
+                      },
+                      }
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -141,6 +158,14 @@ export default function SignUp() {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
+                    variant='filled'
+                    InputLabelProps={{sx:{
+                      color:'text.primary',
+                      '&.Mui-focused':{
+                        color:'text.secondary'
+                      },
+                      }
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -152,6 +177,14 @@ export default function SignUp() {
                     type="password"
                     id="password"
                     autoComplete="new-password"
+                    variant='filled'
+                    InputLabelProps={{sx:{
+                      color:'text.primary',
+                      '&.Mui-focused':{
+                        color:'text.secondary'
+                      },
+                      }
+                    }}
                   />
                 </Grid>
                 {/* <Grid item xs={12}>
@@ -169,7 +202,11 @@ export default function SignUp() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, bgcolor:'text.secondary',
+            '&:hover':{
+             backgroundColor:'text.primary',
+             color:'background.paper'
+            } }}
               >
                 Sign Up
                 
@@ -180,7 +217,7 @@ export default function SignUp() {
               </Box>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/sign_in" variant="body2">
+                  <Link onClick={()=>navigate('/sign_in')} variant="body2" sx={{color:'text.primary', cursor:'pointer'}}>
                     Already have an account? Sign in
                   </Link>
                 </Grid>

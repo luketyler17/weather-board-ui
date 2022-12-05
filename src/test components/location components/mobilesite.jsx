@@ -8,7 +8,7 @@ import { Box } from '@mui/material'
 import Cookies from 'universal-cookie'
 import { AppContext } from '../../context/AppContext'
 import SiteTabs from './sitetabs'
-
+import LeftBar from '../../components/LeftBar'
 const cookies = new Cookies()
 const MobileSiteView = () => {
 
@@ -42,7 +42,7 @@ const MobileSiteView = () => {
             <Grid container spacing={0} sx={{height: '100%', width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent:'center' }}>
                 <Grid item xs={12} md={12} lg={12} xl={12} sx={{marginBottom:'-50%'}} >
                     <Card >
-                        <MobileNav/>
+                        <LeftBar/>
                     </Card>
                 </Grid>
                 <Box sx={{height:'52%'}}>

@@ -8,11 +8,14 @@ import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import EmbeddedAccessibilityMenu from '../test components/embeddedAccessibility';
+import { useMediaQuery } from '@mui/material';
 
 const cookies = new Cookies()
 
 export default function AvatarMenu() {
   const {setLoading} = React.useContext(AppContext)
+  const mobileFlex = useMediaQuery('(min-width:700px)')
+  const tabletFlex= useMediaQuery('(min-width: 1200px)')
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate()
@@ -59,7 +62,7 @@ const handleAdmin = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <AccountCircleIcon sx={{color:'text.primary', height:'40px', width:'40px'}}/>
+        <AccountCircleIcon sx={{color:'text.primary', height:(mobileFlex ? '40px' : '25px'), width:(mobileFlex ? '40px' : '25px'), marginRight:'-100%'}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -77,7 +80,7 @@ const handleAdmin = () => {
        {cookies.get('authentication') !== undefined &&
        <>
         <MenuItem onClick={handleMyAccount}>My account</MenuItem>
-        <MenuItem onClick={handleAdmin}>Admin</MenuItem>
+        {tabletFlex && <MenuItem onClick={handleAdmin}>Admin</MenuItem>}
         </>}
         
       </Menu>

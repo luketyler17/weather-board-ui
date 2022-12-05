@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Card, CardMedia } from '@mui/material'
-import { Paper } from '@mui/material'
+import { Paper, useMediaQuery } from '@mui/material'
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import LeftBar from './LeftBar';
@@ -45,22 +45,22 @@ const SiteView = () => {
         cookies.set('site', site, {path:'/'})
         cookies.set('area', area, {path:'/'})
     }
-    
+    const flexBasis = useMediaQuery('(min-width: 1200px)')
 
 
 
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'row', bgcolor:(themeToggle === false ? 'text.primary' : 'background.default') }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row',height:'100%',paddingTop:(flexBasis ? '3%': '8%') ,bgcolor:(themeToggle === false ? 'text.primary' : 'background.default') }}>
         <LeftBar/>
             <Card sx={{height: '20%', width: '90%', marginLeft: '7.5%', marginRight: '5%', marginTop:'2%' }}>
-                <Card elevation={10} sx={{position:'relative', display: 'flex', height: '20%', padding:'1%', margin: '10px', bgcolor: 'grey', justifyContent: 'center' }}>
+                <Card elevation={10} sx={{position:'relative', display: 'flex', height: '20%', padding:'1%', margin: '10px', justifyContent: 'center' }}>
                     <Box >
                     <SiteImage images={imageArray.filter((item)=>item.location===site)} />
                     <SiteRing item={lightning.filter((item) => item.location === site)} site={site}/>
                     </Box>
                 </Card>
-                <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><BsLightning/> Lightning</h4>
+                <Card elevation={10} sx={{ margin: '10px' }}><h4><BsLightning/> Lightning</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card style={{
                             width:'100%',
@@ -115,7 +115,7 @@ const SiteView = () => {
                 </Card>
 
                 {area[0] !== 'CIDCO Park' &&
-                    <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><RiWindyLine/> Winds</h4>
+                    <Card elevation={10} sx={{ margin: '10px' }}><h4><RiWindyLine/> Winds</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card style={{
                             width:'100%',
@@ -253,7 +253,7 @@ const SiteView = () => {
                 }
 
                 {area[0] !== 'CIDCO Park' &&
-                <Card elevation={10} sx={{ margin: '10px', bgcolor: 'grey' }}><h4><RiThunderstormsLine/> Severe Storms</h4>
+                <Card elevation={10} sx={{ margin: '10px' }}><h4><RiThunderstormsLine/> Severe Storms</h4>
                     <Paper sx={{ display: 'flex', flexDirection: 'column', padding: '10px', bgcolor:'primary.main' }}>
                     <Card style={{
                             width:'100%',
